@@ -33,12 +33,9 @@ if (window.gsap) {
 
 /* ---------- reduced motion: entrega o estado final, limpo ---------- */
 function staticFallback() {
-  // cena da dor congelada no momento da mensagem: dado barrado no cadeado
-  gsap.set("#dor-path1", { stroke: "var(--barro)" });
-  gsap.set("#dor-packet", {
-    motionPath: { path: "#dor-path1", align: "#dor-path1", alignOrigin: [0.5, 0.5], end: 1 },
-    fill: "var(--barro)",
-    opacity: 0.6,
+  // jornada congelada no fim do trecho 1, ilustração completa visível
+  gsap.set("#jor-dot", {
+    motionPath: { path: "#jor-line1", align: "#jor-line1", alignOrigin: [0.5, 0.5], end: 1 },
   });
   // a virada abre já na solução; a rota mostra o dado entregue
   setViradaState("depois", false);
@@ -283,54 +280,55 @@ function heroIntro() {
   });
 }
 
-/* ---------- 2. a dor: cena autônoma — dispara ao entrar na tela ----------
-   Sem pin, sem scrub: o scroll flui livre e a animação tem ritmo próprio. */
+/* ---------- 2. a jornada: a linha do ECG conta a história etapa por etapa ----
+   Técnica: uma timeline, tweens concorrentes (DrawSVG + MotionPath) com a
+   mesma duração e ease "none"; as ilustrações brotam em labels posicionados
+   pela fração do comprimento do trajeto onde fica cada pico. */
 function dorScene() {
   const caps = gsap.utils.toArray(".scene-caption");
   const replay = document.querySelector(".scene-replay");
 
+  const DRAW = 1.8;        // duração do trecho 1
+  const PEAK1 = 0.41;      // fração do comprimento onde fica o pico da etapa 1
+  let dotPulse = null;
+
   const tl = gsap.timeline({
     scrollTrigger: { trigger: "#dor-scene", start: "top 62%", once: true },
-    defaults: { ease: "power2.inOut" },
   });
 
-  // ato 1 — a UPA registra tudo
   tl.to(caps[0], { autoAlpha: 1, duration: 0.5, ease: "power2.out" })
-    .fromTo("#dor-path1", { drawSVG: "0% 0%" }, { drawSVG: "0% 35%", duration: 1.0 }, "<+0.15")
-    .to("#dor-packet", { autoAlpha: 1, duration: 0.25, ease: "power1.out" }, "<")
-    .to("#dor-packet", {
-      motionPath: { path: "#dor-path1", align: "#dor-path1", alignOrigin: [0.5, 0.5], end: 0.35 },
-      duration: 1.0,
-    }, "<")
+    .addLabel("go", "<+0.2")
 
-    // ato 2 — a transferência (o pacote acelera rumo ao cadeado)
-    .to(caps[0], { autoAlpha: 0, duration: 0.3 }, "+=0.55")
-    .to(caps[1], { autoAlpha: 1, duration: 0.3, ease: "power2.out" }, "<+0.1")
-    .to("#dor-path1", { drawSVG: "0% 100%", duration: 1.1, ease: "power1.in" }, "<+0.2")
-    .to("#dor-packet", {
-      motionPath: { path: "#dor-path1", align: "#dor-path1", alignOrigin: [0.5, 0.5], start: 0.35, end: 1 },
-      duration: 1.1,
-      ease: "power1.in",
-    }, "<")
+    // a linha desenha e o pacote viaja na ponta — mesmíssimo relógio
+    .fromTo("#jor-line1", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: DRAW, ease: "none" }, "go")
+    .to("#jor-dot", { autoAlpha: 1, duration: 0.2, ease: "none" }, "go")
+    .to("#jor-dot", {
+      motionPath: { path: "#jor-line1", align: "#jor-line1", alignOrigin: [0.5, 0.5] },
+      duration: DRAW,
+      ease: "none",
+    }, "go")
 
-    // ato 3 — o impacto
-    .addLabel("hit")
-    .to("#dor-lock", {
-      keyframes: { x: [0, -6, 5, -4, 3, -2, 0] },
-      duration: 0.55,
-      ease: "power1.out",
-    }, "hit")
-    .to("#dor-packet", { fill: "#A8432E", scale: 1.45, transformOrigin: "50% 50%", duration: 0.14, ease: "power2.out" }, "hit")
-    .to("#dor-path1", { stroke: "#A8432E", duration: 0.45 }, "hit")
-    .fromTo("#dor-x", { autoAlpha: 0, scale: 0.4, transformOrigin: "50% 50%" },
-      { autoAlpha: 1, scale: 1, duration: 0.35, ease: "back.out(2.5)" }, "hit+=0.12")
-    .to("#dor-packet", { x: -30, scale: 1, autoAlpha: 0.5, duration: 0.55, ease: "power3.out" }, "hit+=0.14")
-    .to(caps[1], { autoAlpha: 0, duration: 0.3 }, "hit+=0.15")
-    .to(caps[2], { autoAlpha: 1, duration: 0.45, ease: "power2.out" }, "hit+=0.35")
-    .to(replay, { autoAlpha: 1, duration: 0.4 }, "+=0.4");
+    // quando o pacote cruza o pico, a ilustração brota da linha
+    .addLabel("peak1", `go+=${(PEAK1 * DRAW).toFixed(2)}`)
+    .fromTo("#il1-ground", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.5, ease: "power1.inOut" }, "peak1")
+    .fromTo("#il1-door", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.6, ease: "power1.inOut" }, "peak1+=0.35")
+    .fromTo("#il1-cross", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.3, ease: "power1.out" }, "peak1+=0.85")
+    .fromTo("#il1-human", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.7, ease: "power1.inOut" }, "peak1+=0.5")
+    .fromTo("#jor-tag1", { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, "peak1+=0.3")
+
+    // fim do trecho: o pacote respira, esperando a etapa 2
+    .add(() => {
+      dotPulse = gsap.to("#jor-dot", {
+        scale: 1.3, transformOrigin: "50% 50%",
+        duration: 0.9, yoyo: true, repeat: -1, ease: "sine.inOut",
+      });
+    })
+    .to(replay, { autoAlpha: 1, duration: 0.4 }, "+=0.3");
 
   replay.addEventListener("click", () => {
     gsap.set(replay, { autoAlpha: 0 });
+    if (dotPulse) { dotPulse.kill(); dotPulse = null; }
+    gsap.set("#jor-dot", { scale: 1 });
     tl.restart();
   });
 }

@@ -76,55 +76,53 @@
 
       <div class="dor-stage" id="dor-scene">
         <div class="container">
-          <svg viewBox="0 0 1000 300" class="dor-svg" role="img"
-               aria-label="Ilustração: um pacote de dados tenta sair da UPA em direção ao hospital, mas bate num cadeado — o sistema fechado.">
+          <svg viewBox="0 0 1000 400" class="dor-svg" role="img"
+               aria-label="A jornada do paciente em quatro etapas sobre uma linha de eletrocardiograma: entrada na UPA, ambulância, bloqueio do sistema fechado e recomeço no hospital.">
 
-            <!-- UPA -->
-            <g id="dor-upa">
-              <rect x="60" y="60" width="160" height="120" rx="14" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="3"/>
-              <rect x="130" y="90" width="20" height="60" rx="4" fill="var(--clay)"/>
-              <rect x="110" y="110" width="60" height="20" rx="4" fill="var(--clay)"/>
-              <text x="140" y="218" text-anchor="middle" class="dor-node-label">UPA</text>
+            <!-- ETAPA 1 · a chegada: do pico do batimento nascem o chão, a porta da UPA e o humano -->
+            <g id="jor-et1" stroke="var(--clay)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <!-- o chão brota do pico -->
+              <path id="il1-ground" d="M138,294 Q138,262 152,262 H256"/>
+              <!-- porta da UPA (um traço: sobe, arco, desce) -->
+              <path id="il1-door" d="M240,262 v-64 q0,-16 -16,-16 h-20 q-16,0 -16,16 v64"/>
+              <!-- cruz sobre a porta -->
+              <path id="il1-cross" d="M206,170 h16 M214,162 v16"/>
+              <!-- humano caminhando (perna+tronco+cabeça num traço; braço e 2ª perna) -->
+              <path id="il1-human" d="M152,262 L164,236 L164,214 a7.5,7.5 0 1 1 0.01,-15 a7.5,7.5 0 1 1 -0.01,15 M164,220 L178,230 M164,236 L176,262"/>
             </g>
 
-            <!-- Hospital -->
-            <g id="dor-hc">
-              <rect x="780" y="60" width="160" height="120" rx="14" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="3"/>
-              <rect x="850" y="90" width="20" height="60" rx="4" fill="var(--petroleo)"/>
-              <rect x="830" y="110" width="60" height="20" rx="4" fill="var(--petroleo)"/>
-              <text x="860" y="218" text-anchor="middle" class="dor-node-label">HOSPITAL</text>
-            </g>
+            <!-- rótulo da etapa 1 -->
+            <text id="jor-tag1" x="138" y="378" text-anchor="middle" class="jor-tag">1 · UPA</text>
 
-            <!-- caminho fantasma (o que deveria acontecer) -->
-            <path id="dor-path2" d="M544,150 H768" fill="none" stroke="var(--linha)" stroke-width="3"
-                  stroke-dasharray="7 9" stroke-linecap="round"/>
-
-            <!-- caminho percorrido (ECG) -->
-            <path id="dor-path1" d="M230,150 H320 l8,8 10,-42 12,56 8,-22 H460" fill="none"
+            <!-- linha-jornada, trecho da etapa 1 (com o batimento) -->
+            <path id="jor-line1" d="M0,330 H120 l8,8 10,-44 12,58 8,-22 H330" fill="none"
                   stroke="var(--clay)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
 
-            <!-- cadeado -->
-            <g id="dor-lock">
-              <path d="M478,142 v-16 a22,22 0 0 1 44,0 v16" fill="none" stroke="var(--tinta)" stroke-width="7" stroke-linecap="round"/>
-              <rect x="468" y="142" width="64" height="54" rx="10" fill="var(--barro)"/>
-              <circle cx="500" cy="162" r="7" fill="var(--papel)"/>
-              <rect x="496" y="166" width="8" height="16" rx="3" fill="var(--papel)"/>
+            <!-- futuro da jornada: etapas 2–4 (fantasma, em construção) -->
+            <path id="jor-ghost" d="M330,330 H1000" fill="none" stroke="var(--linha)" stroke-width="3"
+                  stroke-dasharray="7 9" stroke-linecap="round"/>
+            <g class="jor-ghost-stop">
+              <circle cx="480" cy="330" r="15" fill="var(--papel)" stroke="var(--linha)" stroke-width="2.5"/>
+              <text x="480" y="336" text-anchor="middle" class="jor-ghost-num">2</text>
+            </g>
+            <g class="jor-ghost-stop">
+              <circle cx="690" cy="330" r="15" fill="var(--papel)" stroke="var(--linha)" stroke-width="2.5"/>
+              <text x="690" y="336" text-anchor="middle" class="jor-ghost-num">3</text>
+            </g>
+            <g class="jor-ghost-stop">
+              <circle cx="900" cy="330" r="15" fill="var(--papel)" stroke="var(--linha)" stroke-width="2.5"/>
+              <text x="900" y="336" text-anchor="middle" class="jor-ghost-num">4</text>
             </g>
 
-            <!-- negado -->
-            <g id="dor-x" stroke="var(--barro)" stroke-width="5" stroke-linecap="round">
-              <line x1="544" y1="100" x2="564" y2="120"/>
-              <line x1="564" y1="100" x2="544" y2="120"/>
-            </g>
-
-            <!-- pacote de dados -->
-            <circle id="dor-packet" cx="230" cy="150" r="8" fill="var(--clay)"/>
+            <!-- o pacote de dados -->
+            <circle id="jor-dot" cx="0" cy="330" r="8" fill="var(--clay)"/>
           </svg>
 
           <div class="scene-captions">
-            <p class="scene-caption" data-step="1">Entrada na UPA — tudo registrado.</p>
-            <p class="scene-caption" data-step="2">Transferência para o hospital.</p>
-            <p class="scene-caption" data-step="3">O dado bate no cadeado. <strong>Recomeço do zero.</strong></p>
+            <p class="scene-caption" data-step="1"><strong>Etapa 1 · Entrada na UPA.</strong> Dor no peito, exames, medicação — cada gesto vira registro.</p>
+            <p class="scene-caption" data-step="2">Etapa 2 · A ambulância parte para o hospital.</p>
+            <p class="scene-caption" data-step="3">Etapa 3 · O dado bate no sistema fechado.</p>
+            <p class="scene-caption" data-step="4">Etapa 4 · No hospital, tudo recomeça do zero.</p>
           </div>
 
           <button type="button" class="scene-replay">↺ rever</button>

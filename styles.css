@@ -256,18 +256,23 @@ a { color: var(--petroleo); }
 
 .dor-svg { width: 100%; height: auto; }
 
-.dor-node-label {
+.jor-tag {
   font-family: var(--font-mono);
-  font-size: 30px;
+  font-size: 22px;
   font-weight: 700;
   letter-spacing: 0.08em;
   fill: var(--tinta);
 }
+.jor-ghost-num {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 700;
+  fill: rgba(36, 31, 25, 0.45);
+}
 
 /* estados iniciais só valem quando o JS anima (classe js-anim);
    sem JS ou com reduced-motion, a cena fica estática e completa */
-.js-anim #dor-packet { opacity: 0; }
-.js-anim #dor-x { opacity: 0; }
+.js-anim #jor-dot { opacity: 0; }
 
 .scene-captions {
   max-width: 56ch;
