@@ -127,6 +127,8 @@ a { color: var(--petroleo); }
 .logo-text { font-family: var(--font-display); font-size: 19px; line-height: 1.1; }
 .logo-text strong { font-weight: 600; }
 
+.site-nav { display: flex; align-items: center; gap: 10px; }
+
 .header-cta {
   font-weight: 600;
   font-size: 17px;
@@ -136,9 +138,25 @@ a { color: var(--petroleo); }
   background: var(--superficie);
   padding: 9px 20px;
   border-radius: 999px;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background-color 0.2s;
+  white-space: nowrap;
 }
 .header-cta:hover { border-color: var(--clay); }
+
+/* botão de destaque do menu: O projeto */
+.header-cta--clay {
+  background: var(--clay);
+  border-color: var(--clay);
+  color: #fff;
+  box-shadow: 0 2px 10px rgba(196, 107, 74, 0.3);
+}
+.header-cta--clay:hover { background: #B25E3F; border-color: #B25E3F; }
+.header-cta--clay[aria-current="page"] { background: #A85838; border-color: #A85838; }
+
+@media (max-width: 480px) {
+  .header-cta { font-size: 15px; padding: 8px 14px; }
+  .logo-text { font-size: 17px; }
+}
 
 /* ---------- botões ---------- */
 
@@ -199,11 +217,11 @@ a { color: var(--petroleo); }
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 560;
-  font-size: clamp(40px, 6vw, 76px);
-  line-height: 1.06;
+  font-size: clamp(36px, 5.4vw, 68px);
+  line-height: 1.08;
   letter-spacing: -0.015em;
   margin: 0 0 24px;
-  max-width: 13ch;
+  max-width: 17ch;
 }
 
 .hero-sub {
@@ -564,7 +582,27 @@ a { color: var(--petroleo); }
   margin: 0 0 14px;
   letter-spacing: -0.03em;
 }
+/* variantes: número menor (cabe "1 em 5") e pilar qualitativo em frase */
+.waste-number--sm { font-size: clamp(42px, 5.2vw, 62px); }
+.waste-number--word {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 560;
+  font-size: clamp(28px, 3vw, 38px);
+  letter-spacing: normal;
+  line-height: 1.15;
+}
+
 .waste-text { margin: 0; color: rgba(36, 31, 25, 0.82); }
+
+/* a fonte mora ao lado do número, sempre */
+.waste-src {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(36, 31, 25, 0.5);
+  margin: 16px 0 0;
+  line-height: 1.5;
+}
 
 .waste-note {
   font-family: var(--font-mono);
@@ -572,6 +610,7 @@ a { color: var(--petroleo); }
   color: rgba(36, 31, 25, 0.5);
   margin: 24px 0 0;
 }
+.waste-note a { color: var(--petroleo); }
 
 /* ==========================================================================
    4. A VIRADA — antes × depois (Flip)
@@ -820,6 +859,30 @@ a { color: var(--petroleo); }
 
 .rnds { padding: clamp(64px, 9vw, 112px) 0; }
 
+/* a síntese de ouro da seção */
+.rnds-quote {
+  margin: clamp(28px, 4vw, 44px) 0 0;
+  border-left: 4px solid var(--petroleo);
+  padding: 6px 0 6px 22px;
+}
+.rnds-quote p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(23px, 3vw, 32px);
+  line-height: 1.3;
+  color: var(--petroleo);
+  margin: 0;
+  max-width: 24ch;
+}
+
+.faq-src {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(36, 31, 25, 0.5);
+  margin-top: 14px !important;
+}
+
 .faq {
   border-bottom: 1px solid var(--linha);
 }
@@ -848,6 +911,7 @@ a { color: var(--petroleo); }
 .faq[open] summary::after { transform: translateY(-50%) rotate(45deg); }
 .faq-body { padding: 0 4px 24px; }
 .faq-body p { margin: 0; max-width: 62ch; color: rgba(36, 31, 25, 0.85); }
+.faq-body p + p { margin-top: 14px; }
 
 /* ==========================================================================
    7. SEGURANÇA E LGPD
@@ -1047,6 +1111,8 @@ a { color: var(--petroleo); }
 }
 .site-footer .logo-tick { width: 40px; }
 .site-footer p { margin: 0; font-size: 16px; }
+.footer-nav { margin-left: auto; }
+.footer-nav a { font-weight: 600; font-size: 16px; }
 
 /* ==========================================================================
    breakpoints
@@ -1068,6 +1134,146 @@ a { color: var(--petroleo); }
   }
   .hero-media { justify-self: end; }
   .funciona-sub { grid-template-columns: 1.1fr 1fr; }
+}
+
+/* ==========================================================================
+   PÁGINA /o-projeto
+   ========================================================================== */
+
+.proj-hero {
+  padding: clamp(140px, 18vw, 190px) 0 clamp(40px, 6vw, 64px);
+}
+.proj-title {
+  font-family: var(--font-display);
+  font-weight: 560;
+  font-size: clamp(34px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+  margin: 0 0 20px;
+  max-width: 20ch;
+}
+.proj-hero .section-lead { font-size: clamp(19px, 2vw, 22px); }
+
+.proj-ecg { margin-top: clamp(32px, 5vw, 56px); }
+.proj-ecg svg { width: 100%; height: 70px; display: block; }
+
+.proj-section {
+  border-top: 1px solid var(--linha);
+  padding: clamp(48px, 7vw, 88px) 0;
+}
+.proj-section .h2 { max-width: 26ch; }
+.proj-prose p { max-width: 62ch; margin: 0 0 16px; color: rgba(36, 31, 25, 0.88); }
+.proj-prose p:last-child { margin-bottom: 0; }
+.proj-prose strong { color: var(--barro); }
+
+/* os 4 blocos da proposta */
+.bloco-grid {
+  display: grid;
+  gap: 16px;
+  margin-top: clamp(28px, 4vw, 40px);
+}
+.bloco-card {
+  background: var(--superficie);
+  border: 1.5px solid var(--linha);
+  border-top: 4px solid var(--petroleo);
+  border-radius: 14px;
+  padding: 22px 24px;
+}
+.bloco-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--petroleo);
+  margin: 0 0 8px;
+}
+.bloco-card h3 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+.bloco-card p { margin: 0; font-size: 17px; color: rgba(36, 31, 25, 0.82); }
+
+/* a pesquisa: números com fonte */
+.pesquisa-list {
+  list-style: none;
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 720px;
+}
+.pesquisa-list li {
+  border-left: 3px solid var(--linha);
+  padding: 4px 0 4px 18px;
+}
+.pesquisa-list strong {
+  font-family: var(--font-mono);
+  color: var(--barro);
+}
+.pesquisa-src {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: rgba(36, 31, 25, 0.5);
+  margin-top: 4px;
+}
+
+/* a jornada do projeto */
+.timeline {
+  position: relative;
+  margin-top: clamp(32px, 5vw, 48px);
+  padding-left: 26px;
+  max-width: 680px;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--linha);
+}
+.tl-item { position: relative; padding-bottom: clamp(28px, 4vw, 40px); }
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: "";
+  position: absolute;
+  left: -26px;
+  top: 5px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--clay);
+  border: 3px solid var(--papel);
+  box-shadow: 0 0 0 2px var(--clay);
+}
+.tl-item--next::before { background: var(--papel); box-shadow: 0 0 0 2px var(--linha); }
+.tl-date {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--petroleo);
+  margin: 0 0 4px;
+}
+.tl-item h3 {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  margin: 0 0 6px;
+}
+.tl-item p { margin: 0; font-size: 17px; max-width: 56ch; color: rgba(36, 31, 25, 0.82); }
+
+.proj-cta { text-align: left; }
+.proj-cta .btn { margin-top: 20px; }
+
+@media (min-width: 768px) {
+  .bloco-grid { grid-template-columns: 1fr 1fr; }
 }
 
 /* ==========================================================================

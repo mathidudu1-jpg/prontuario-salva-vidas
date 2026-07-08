@@ -22,12 +22,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Prontuário Salva-Vidas — A informação que pode te salvar não chega a tempo",
+  title: "Prontuário Salva-Vidas | Teus exames existem. Só não chegam junto com você.",
   description:
-    "Campanha cívica por uma lei de interoperabilidade de dados de saúde. Da UPA ao hospital, seus dados devem viajar com você.",
+    "Uma proposta de lei pra fazer teus dados de saúde viajarem contigo, da UPA ao hospital. Feita por um cidadão de Curitiba, com dados e fontes.",
   openGraph: {
     title: "Prontuário Salva-Vidas",
-    description: "A informação que pode te salvar não chega a tempo. Entenda a proposta.",
+    description: "Teus exames existem. Só não chegam junto com você. Entenda a proposta.",
   },
 };
 

@@ -14,8 +14,8 @@ import { SplitText } from "gsap/SplitText";
 import { Flip } from "gsap/Flip";
 
 const VIRADA_CAPTIONS = {
-  hoje: "Hoje: seus dados ficam presos onde foram criados.",
-  depois: "Com a lei: seus dados chegam junto com você.",
+  hoje: "Hoje: teu dado bate na parede e volta.",
+  depois: "Com a lei: teu dado chega junto com você.",
 };
 
 export default function Animations() {
