@@ -60,45 +60,67 @@ export default function Home() {
 
           <div className="dor-stage" id="dor-scene">
             <div className="container">
-              <svg viewBox="0 0 1000 400" className="dor-svg" role="img"
-                aria-label="A jornada do paciente em quatro etapas sobre uma linha de eletrocardiograma: entrada na UPA, ambulância, bloqueio do sistema fechado e recomeço no hospital.">
+              <svg viewBox="0 140 1000 250" className="dor-svg" role="img"
+                aria-label="A jornada do paciente em quatro etapas sobre uma linha de eletrocardiograma: entrada na UPA, trajeto de ambulância, o dado barrado num muro, e o recomeço do zero no hospital.">
 
-                {/* ETAPA 1 · a chegada: do pico do batimento nascem o chão, a porta da UPA e o humano */}
-                <g id="jor-et1" stroke="var(--clay)" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path id="il1-ground" d="M138,294 Q138,262 152,262 H256" />
-                  <path id="il1-door" d="M240,262 v-64 q0,-16 -16,-16 h-20 q-16,0 -16,16 v64" />
-                  <path id="il1-cross" d="M206,170 h16 M214,162 v16" />
-                  <path id="il1-human" d="M152,262 L164,236 L164,214 a7.5,7.5 0 1 1 0.01,-15 a7.5,7.5 0 1 1 -0.01,15 M164,220 L178,230 M164,236 L176,262" />
+                {/* ETAPA 1 · entrada na UPA: do pico nascem o chão, o prédio e o humano */}
+                <g id="jor-et1" stroke="var(--clay)" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path id="il1-ground" d="M138,294 Q138,262 152,262 H310" />
+                  <path id="il1-build" d="M302,262 V180 H200 V262" />
+                  <path id="il1-door" d="M208,262 v-42 h28 v42" />
+                  <path id="il1-cross" d="M252,208 h20 M262,198 v20" />
+                  <path id="il1-human" d="M158,262 L170,236 L170,208 a7.5,7.5 0 1 1 0.01,-15 a7.5,7.5 0 1 1 -0.01,15 M170,216 L184,226 M170,236 L182,262" />
                 </g>
+                <text id="jor-tag1" x="230" y="378" textAnchor="middle" className="jor-tag">1 · UPA</text>
 
-                <text id="jor-tag1" x="138" y="378" textAnchor="middle" className="jor-tag">1 · UPA</text>
+                {/* ETAPA 2 · a linha vira o trajeto da ambulância */}
+                <g id="jor-et2" stroke="var(--clay)" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path id="il2-road" d="M378,294 Q378,270 392,270 H556" />
+                  <g id="jor-amb">
+                    <path id="il2-body" d="M408,262 V228 H460 v12 h18 l12,14 v8" />
+                    <path id="il2-details" d="M430,242 h14 M437,235 v14 M462,236 h12 v10 M436,228 v-6 h8 v6" />
+                    <circle id="il2-wheel1" cx="428" cy="265" r="6.5" />
+                    <circle id="il2-wheel2" cx="472" cy="265" r="6.5" />
+                  </g>
+                </g>
+                <text id="jor-tag2" x="470" y="378" textAnchor="middle" className="jor-tag">2 · AMBULÂNCIA</text>
 
-                <path id="jor-line1" d="M0,330 H120 l8,8 10,-44 12,58 8,-22 H330" fill="none"
+                {/* ETAPA 3 · o muro: o sistema fechado */}
+                <g id="jor-et3" stroke="var(--barro)" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path id="il3-wall" d="M636,330 V244 H662 V330" />
+                  <path id="il3-bricks" d="M636,301 h26 M636,272 h26 M649,330 v-29 M643,301 v-29 M655,272 v-28" />
+                  <path id="il3-x" d="M642,213 L656,227 M656,213 L642,227" strokeWidth="4.5" />
+                </g>
+                <text id="jor-tag3" x="649" y="378" textAnchor="middle" className="jor-tag jor-tag--barro">3 · BLOQUEIO</text>
+
+                {/* ETAPA 4 · o recomeço: a mesma cena da etapa 1, outra porta — o ciclo reinicia */}
+                <g id="jor-et4" stroke="var(--clay)" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                  <path id="il4-ground" d="M848,294 Q848,262 862,262 H995" />
+                  <path id="il4-build" d="M905,262 V180 H988 V262" />
+                  <path id="il4-door" d="M913,262 v-42 h28 v42" />
+                  <path id="il4-cross" d="M954,208 h20 M964,198 v20" stroke="var(--petroleo)" />
+                  <path id="il4-human" d="M868,262 L880,236 L880,208 a7.5,7.5 0 1 1 0.01,-15 a7.5,7.5 0 1 1 -0.01,15 M880,216 L894,226 M880,236 L892,262" />
+                  <path id="il4-restart" d="M891,172 a11,11 0 1 1 -11,-11 M880,161 l-7,-3 M880,161 l2,-7" stroke="var(--barro)" />
+                </g>
+                <text id="jor-tag4" x="946" y="378" textAnchor="middle" className="jor-tag">4 · HOSPITAL</text>
+
+                {/* a linha-jornada em três trechos (a vida continua; o dado fica no muro) */}
+                <path id="jor-line1" d="M0,330 H120 l8,8 10,-44 12,58 8,-22 H300" fill="none"
+                  stroke="var(--clay)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <path id="jor-line2" d="M300,330 H360 l8,8 10,-44 12,58 8,-22 H520 l6,6 8,-28 10,36 6,-14 H636" fill="none"
+                  stroke="var(--clay)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
+                <path id="jor-line3" d="M662,330 H830 l8,8 10,-44 12,58 8,-22 H1000" fill="none"
                   stroke="var(--clay)" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
 
-                <path id="jor-ghost" d="M330,330 H1000" fill="none" stroke="var(--linha)" strokeWidth="3"
-                  strokeDasharray="7 9" strokeLinecap="round" />
-                <g className="jor-ghost-stop">
-                  <circle cx="480" cy="330" r="15" fill="var(--papel)" stroke="var(--linha)" strokeWidth="2.5" />
-                  <text x="480" y="336" textAnchor="middle" className="jor-ghost-num">2</text>
-                </g>
-                <g className="jor-ghost-stop">
-                  <circle cx="690" cy="330" r="15" fill="var(--papel)" stroke="var(--linha)" strokeWidth="2.5" />
-                  <text x="690" y="336" textAnchor="middle" className="jor-ghost-num">3</text>
-                </g>
-                <g className="jor-ghost-stop">
-                  <circle cx="900" cy="330" r="15" fill="var(--papel)" stroke="var(--linha)" strokeWidth="2.5" />
-                  <text x="900" y="336" textAnchor="middle" className="jor-ghost-num">4</text>
-                </g>
-
+                {/* o pacote de dados */}
                 <circle id="jor-dot" cx="0" cy="330" r="8" fill="var(--clay)" />
               </svg>
 
               <div className="scene-captions">
-                <p className="scene-caption" data-step="1"><strong>Etapa 1 · Entrada na UPA.</strong> Dor no peito, exames, medicação — cada gesto vira registro.</p>
-                <p className="scene-caption" data-step="2">Etapa 2 · A ambulância parte para o hospital.</p>
-                <p className="scene-caption" data-step="3">Etapa 3 · O dado bate no sistema fechado.</p>
-                <p className="scene-caption" data-step="4">Etapa 4 · No hospital, tudo recomeça do zero.</p>
+                <p className="scene-caption" data-step="1"><strong>Etapa 1 · Entrada na UPA.</strong> Dor no peito — cada exame vira registro.</p>
+                <p className="scene-caption" data-step="2"><strong>Etapa 2 · A ambulância parte.</strong> Seus dados tentam ir junto.</p>
+                <p className="scene-caption" data-step="3"><strong>Etapa 3 · O muro.</strong> O dado bate no sistema fechado — e fica.</p>
+                <p className="scene-caption" data-step="4"><strong>Etapa 4 · Você chega sem histórico.</strong> Tudo recomeça do zero.</p>
               </div>
 
               <button type="button" className="scene-replay">↺ rever</button>
@@ -109,8 +131,10 @@ export default function Home() {
             <div className="container netflix-block">
               <p className="section-label section-label--band">A analogia</p>
               <blockquote className="netflix-quote">
-                <p>No streaming, você continua <em>exatamente</em> de onde parou.<br />
-                  Na sua saúde, cada tela te faz <em>recomeçar do zero</em>.</p>
+                <p>
+                  <span className="netflix-line">No streaming, você continua <em className="em-go">exatamente</em> de onde parou.</span>
+                  <span className="netflix-line">Na sua saúde, cada tela te faz <em className="em-stop">recomeçar do zero</em>.</span>
+                </p>
               </blockquote>
 
               <div className="stream-cards">

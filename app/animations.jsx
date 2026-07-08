@@ -22,6 +22,11 @@ export default function Animations() {
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger, DrawSVGPlugin, MotionPathPlugin, SplitText, Flip);
 
+    if (process.env.NODE_ENV !== "production") {
+      window.gsap = gsap;
+      window.ScrollTrigger = ScrollTrigger;
+    }
+
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const cleanups = [];
     const listen = (el, ev, fn) => {
@@ -82,9 +87,11 @@ export default function Animations() {
 
     /* ---------- reduced motion: entrega o estado final, limpo ---------- */
     function staticFallback() {
-      // jornada congelada no fim do trecho 1, ilustração completa visível
+      // jornada congelada no momento da mensagem: o dado barrado no muro
       gsap.set("#jor-dot", {
-        motionPath: { path: "#jor-line1", align: "#jor-line1", alignOrigin: [0.5, 0.5], end: 1 },
+        motionPath: { path: "#jor-line2", align: "#jor-line2", alignOrigin: [0.5, 0.5], end: 1 },
+        fill: "#A8432E",
+        opacity: 0.55,
       });
       // a virada abre já na solução; a rota mostra o dado entregue
       setViradaState("depois", false);
@@ -123,51 +130,91 @@ export default function Animations() {
       });
     }
 
-    /* ---------- 2. a jornada: a linha do ECG conta a história etapa por etapa ---------- */
+    /* ---------- 2. a jornada: a linha do ECG conta a história em 4 etapas ----
+       As ilustrações (traço único) brotam dos picos quando o pacote passa;
+       no muro, o dado fica — mas a linha (a vida) continua até o hospital. */
     function dorScene() {
       const caps = gsap.utils.toArray(".scene-caption");
       const replay = document.querySelector(".dor-stage .scene-replay");
 
-      const DRAW = 1.8;   // duração do trecho 1
-      const PEAK1 = 0.41; // fração do comprimento onde fica o pico da etapa 1
-      let dotPulse = null;
+      const D1 = 1.3, D2 = 1.6, D3 = 1.3; // durações dos três trechos da linha
 
       const tl = gsap.timeline({
         scrollTrigger: { trigger: "#dor-scene", start: "top 62%", once: true },
       });
 
+      const draw = (sel, dur, pos, ease = "power1.inOut") =>
+        tl.fromTo(sel, { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: dur, ease }, pos);
+      const ride = (path, dur, pos) =>
+        tl.to("#jor-dot", {
+          motionPath: { path, align: path, alignOrigin: [0.5, 0.5] },
+          duration: dur, ease: "none",
+        }, pos);
+      const tag = (sel, pos) =>
+        tl.fromTo(sel, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, pos);
+      const caption = (idx, pos) => {
+        tl.to(caps.filter((_, i) => i !== idx), { autoAlpha: 0, duration: 0.25 }, pos);
+        tl.to(caps[idx], { autoAlpha: 1, duration: 0.35, ease: "power2.out", delay: 0.1 }, pos);
+      };
+
+      /* etapa 1 — entrada na UPA (pico a 44% do trecho 1) */
       tl.to(caps[0], { autoAlpha: 1, duration: 0.5, ease: "power2.out" })
-        .addLabel("go", "<+0.2")
+        .addLabel("go1", "<+0.2")
+        .to("#jor-dot", { autoAlpha: 1, duration: 0.2, ease: "none" }, "go1");
+      draw("#jor-line1", D1, "go1", "none");
+      ride("#jor-line1", D1, "go1");
+      tl.addLabel("peak1", "go1+=0.58");
+      draw("#il1-ground", 0.4, "peak1");
+      draw("#il1-build", 0.5, "peak1+=0.3");
+      draw("#il1-door", 0.35, "peak1+=0.7");
+      draw("#il1-cross", 0.25, "peak1+=0.95");
+      draw("#il1-human", 0.5, "peak1+=0.45");
+      tag("#jor-tag1", "peak1+=0.3");
 
-        // a linha desenha e o pacote viaja na ponta — mesmíssimo relógio
-        .fromTo("#jor-line1", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: DRAW, ease: "none" }, "go")
-        .to("#jor-dot", { autoAlpha: 1, duration: 0.2, ease: "none" }, "go")
-        .to("#jor-dot", {
-          motionPath: { path: "#jor-line1", align: "#jor-line1", alignOrigin: [0.5, 0.5] },
-          duration: DRAW,
-          ease: "none",
-        }, "go")
+      /* etapa 2 — a ambulância (pico a 24% do trecho 2) */
+      tl.addLabel("go2", `go1+=${D1 + 0.55}`);
+      caption(1, "go2-=0.15");
+      draw("#jor-line2", D2, "go2", "none");
+      ride("#jor-line2", D2, "go2");
+      tl.addLabel("peak2", "go2+=0.38");
+      draw("#il2-road", 0.4, "peak2");
+      draw("#il2-body", 0.5, "peak2+=0.3");
+      draw("#il2-details", 0.4, "peak2+=0.65");
+      draw("#il2-wheel1", 0.25, "peak2+=0.75");
+      draw("#il2-wheel2", 0.25, "peak2+=0.85");
+      tag("#jor-tag2", "peak2+=0.5");
+      // a ambulância dirige pela estrada que a linha virou
+      tl.to("#jor-amb", { x: 64, duration: 0.7, ease: "none" }, "go2+=1.15");
 
-        // quando o pacote cruza o pico, a ilustração brota da linha
-        .addLabel("peak1", `go+=${(PEAK1 * DRAW).toFixed(2)}`)
-        .fromTo("#il1-ground", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.5, ease: "power1.inOut" }, "peak1")
-        .fromTo("#il1-door", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.6, ease: "power1.inOut" }, "peak1+=0.35")
-        .fromTo("#il1-cross", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.3, ease: "power1.out" }, "peak1+=0.85")
-        .fromTo("#il1-human", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 0.7, ease: "power1.inOut" }, "peak1+=0.5")
-        .fromTo("#jor-tag1", { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, "peak1+=0.3")
+      /* etapa 3 — o muro sobe antes de o dado chegar */
+      draw("#il3-wall", 0.35, "go2+=1.0");
+      draw("#il3-bricks", 0.3, "go2+=1.2");
+      tag("#jor-tag3", "go2+=1.25");
+      tl.addLabel("hit", `go2+=${D2}`);
+      caption(2, "hit");
+      tl.to("#jor-et3", { keyframes: { x: [0, -5, 4, -3, 2, 0] }, duration: 0.45, ease: "power1.out" }, "hit")
+        .to("#jor-dot", { fill: "#A8432E", scale: 1.45, transformOrigin: "50% 50%", duration: 0.12, ease: "power2.out" }, "hit")
+        .to("#jor-dot", { x: "-=26", scale: 1, autoAlpha: 0.5, duration: 0.5, ease: "power3.out" }, "hit+=0.12");
+      draw("#il3-x", 0.3, "hit+=0.1", "power2.out");
 
-        // fim do trecho: o pacote respira, esperando a etapa 2
-        .add(() => {
-          dotPulse = gsap.to("#jor-dot", {
-            scale: 1.3, transformOrigin: "50% 50%",
-            duration: 0.9, yoyo: true, repeat: -1, ease: "sine.inOut",
-          });
-        })
+      /* etapa 4 — a vida continua sem o dado; o ciclo reinicia no hospital */
+      tl.addLabel("go3", "hit+=0.9");
+      caption(3, "go3-=0.1");
+      draw("#jor-line3", D3, "go3", "none");
+      tl.addLabel("peak4", "go3+=0.67");
+      draw("#il4-ground", 0.4, "peak4");
+      draw("#il4-build", 0.5, "peak4+=0.3");
+      draw("#il4-door", 0.35, "peak4+=0.7");
+      draw("#il4-cross", 0.25, "peak4+=0.95");
+      draw("#il4-human", 0.5, "peak4+=0.45");
+      draw("#il4-restart", 0.45, "peak4+=1.0", "power2.out");
+      tag("#jor-tag4", "peak4+=0.5");
+      // a seta de recomeço gira, inquieta
+      tl.to("#il4-restart", { rotation: -35, transformOrigin: "50% 55%", duration: 0.5, ease: "power1.inOut", yoyo: true, repeat: 1 }, "peak4+=1.55")
         .to(replay, { autoAlpha: 1, duration: 0.4 }, "+=0.3");
 
       listen(replay, "click", () => {
         gsap.set(replay, { autoAlpha: 0 });
-        if (dotPulse) { dotPulse.kill(); dotPulse = null; }
         gsap.set("#jor-dot", { scale: 1 });
         tl.restart();
       });

@@ -289,17 +289,12 @@ a { color: var(--petroleo); }
 
 .jor-tag {
   font-family: var(--font-mono);
-  font-size: 22px;
+  font-size: 21px;
   font-weight: 700;
   letter-spacing: 0.08em;
   fill: var(--tinta);
 }
-.jor-ghost-num {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 700;
-  fill: rgba(36, 31, 25, 0.45);
-}
+.jor-tag--barro { fill: var(--barro); }
 
 /* estados iniciais só valem quando o JS anima (classe js-anim);
    sem JS ou com reduced-motion, a cena fica estática e completa */
@@ -355,32 +350,33 @@ a { color: var(--petroleo); }
 }
 
 .netflix-block {
-  padding-top: clamp(72px, 10vw, 128px);
-  padding-bottom: clamp(72px, 10vw, 128px);
+  padding-top: clamp(56px, 8vw, 100px);
+  padding-bottom: clamp(56px, 8vw, 100px);
 }
 
 .section-label--band {
   color: var(--barro-bright);
   text-align: center;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .netflix-quote {
   margin: 0 auto;
-  max-width: 26ch;
   text-align: center;
 }
 .netflix-quote p {
   font-family: var(--font-display);
   font-style: italic;
   font-weight: 460;
-  font-size: clamp(30px, 4.6vw, 54px);
-  line-height: 1.25;
+  font-size: clamp(25px, 3.3vw, 40px);
+  line-height: 1.3;
   margin: 0;
   color: var(--papel);
 }
-.netflix-quote em:first-of-type { color: var(--salvia-bright); font-style: italic; }
-.netflix-quote em:last-of-type { color: var(--barro-bright); font-style: italic; }
+.netflix-line { display: block; }
+.netflix-line + .netflix-line { margin-top: 0.35em; }
+.netflix-quote .em-go { color: var(--salvia-bright); font-style: italic; }
+.netflix-quote .em-stop { color: var(--barro-bright); font-style: italic; }
 
 .stream-cards {
   display: grid;
