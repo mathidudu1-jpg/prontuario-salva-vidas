@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prontuário Salva-Vidas — A informação que pode te salvar não chega a tempo</title>
+  <meta name="description" content="Campanha cívica por uma lei de interoperabilidade de dados de saúde. Da UPA ao hospital, seus dados devem viajar com você.">
+  <meta property="og:title" content="Prontuário Salva-Vidas">
+  <meta property="og:description" content="A informação que pode te salvar não chega a tempo. Entenda a proposta.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="#" class="logo" aria-label="Prontuário Salva-Vidas — início">
+      <svg class="logo-tick" viewBox="0 0 56 24" aria-hidden="true" focusable="false">
+        <path d="M0 12 H16 l4 5 5 -14 5 18 4 -9 H56" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="logo-text">Prontuário <strong>Salva-Vidas</strong></span>
+    </a>
+    <a href="#apoie" class="header-cta">Apoie</a>
+  </header>
+
+  <main>
+
+    <!-- ============ 1. HERÓI — O SOCO ============ -->
+    <section class="hero" id="topo">
+      <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <p class="section-label">Campanha cívica · Saúde pública</p>
+          <h1 class="hero-title" id="hero-title">A informação que pode te salvar não&nbsp;chega a&nbsp;tempo.</h1>
+          <p class="hero-sub">O Prontuário Salva-Vidas defende uma lei simples: seus dados de saúde viajando com você, da UPA ao hospital.</p>
+          <div class="hero-cta">
+            <a href="#a-dor" class="btn btn-primary">Entenda a proposta</a>
+          </div>
+        </div>
+
+        <!-- TODO(matheus): substituir pelo vídeo de reels (o do "Netflix") -->
+        <div class="hero-media" aria-label="Vídeo da campanha (em breve)">
+          <div class="media-placeholder">
+            <svg viewBox="0 0 48 48" class="play-icon" aria-hidden="true" focusable="false">
+              <circle cx="24" cy="24" r="23" fill="none" stroke="currentColor" stroke-width="2"/>
+              <path d="M19 15 L34 24 L19 33 Z" fill="currentColor"/>
+            </svg>
+            <p class="placeholder-label">Vídeo · Reels</p>
+            <p class="placeholder-hint">asset a inserir</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-ecg" aria-hidden="true">
+        <svg viewBox="0 0 1440 160" preserveAspectRatio="xMidYMid slice" class="ecg-svg">
+          <path id="ecg-path" d="M0,90 H480 q12,-16 24,0 H660 l10,10 14,-72 16,96 12,-34 H900 q16,-22 32,0 H1440"
+                fill="none" stroke="var(--clay)" stroke-width="3"
+                stroke-linecap="round" stroke-linejoin="round"/>
+          <circle id="ecg-dot" cx="0" cy="90" r="5" fill="var(--clay)"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============ 2. A DOR — O ESPELHO ============ -->
+    <section class="dor" id="a-dor">
+      <div class="container">
+        <p class="section-label section-label--barro">A dor</p>
+        <h2 class="dor-title">Toda transferência é um recomeço às&nbsp;cegas.</h2>
+        <p class="dor-lead">Você dá entrada na UPA com dor no peito. Exames, medicação, suspeita diagnóstica — tudo registrado. O quadro piora e a ambulância te leva ao Hospital das Clínicas. Lá, <strong>ninguém sabe o que já foi feito</strong>: seus dados ficaram presos no sistema de&nbsp;origem.</p>
+      </div>
+
+      <div class="dor-stage" id="dor-scene">
+        <div class="container">
+          <svg viewBox="0 0 1000 300" class="dor-svg" role="img"
+               aria-label="Ilustração: um pacote de dados tenta sair da UPA em direção ao hospital, mas bate num cadeado — o sistema fechado.">
+
+            <!-- UPA -->
+            <g id="dor-upa">
+              <rect x="60" y="60" width="160" height="120" rx="14" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="3"/>
+              <rect x="130" y="90" width="20" height="60" rx="4" fill="var(--clay)"/>
+              <rect x="110" y="110" width="60" height="20" rx="4" fill="var(--clay)"/>
+              <text x="140" y="218" text-anchor="middle" class="dor-node-label">UPA</text>
+            </g>
+
+            <!-- Hospital -->
+            <g id="dor-hc">
+              <rect x="780" y="60" width="160" height="120" rx="14" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="3"/>
+              <rect x="850" y="90" width="20" height="60" rx="4" fill="var(--petroleo)"/>
+              <rect x="830" y="110" width="60" height="20" rx="4" fill="var(--petroleo)"/>
+              <text x="860" y="218" text-anchor="middle" class="dor-node-label">HOSPITAL</text>
+            </g>
+
+            <!-- caminho fantasma (o que deveria acontecer) -->
+            <path id="dor-path2" d="M544,150 H768" fill="none" stroke="var(--linha)" stroke-width="3"
+                  stroke-dasharray="7 9" stroke-linecap="round"/>
+
+            <!-- caminho percorrido (ECG) -->
+            <path id="dor-path1" d="M230,150 H320 l8,8 10,-42 12,56 8,-22 H460" fill="none"
+                  stroke="var(--clay)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <!-- cadeado -->
+            <g id="dor-lock">
+              <path d="M478,142 v-16 a22,22 0 0 1 44,0 v16" fill="none" stroke="var(--tinta)" stroke-width="7" stroke-linecap="round"/>
+              <rect x="468" y="142" width="64" height="54" rx="10" fill="var(--barro)"/>
+              <circle cx="500" cy="162" r="7" fill="var(--papel)"/>
+              <rect x="496" y="166" width="8" height="16" rx="3" fill="var(--papel)"/>
+            </g>
+
+            <!-- negado -->
+            <g id="dor-x" stroke="var(--barro)" stroke-width="5" stroke-linecap="round">
+              <line x1="544" y1="100" x2="564" y2="120"/>
+              <line x1="564" y1="100" x2="544" y2="120"/>
+            </g>
+
+            <!-- pacote de dados -->
+            <circle id="dor-packet" cx="230" cy="150" r="8" fill="var(--clay)"/>
+          </svg>
+
+          <div class="scene-captions">
+            <p class="scene-caption" data-step="1">Entrada na UPA — tudo registrado.</p>
+            <p class="scene-caption" data-step="2">Transferência para o hospital.</p>
+            <p class="scene-caption" data-step="3">O dado bate no cadeado. <strong>Recomeço do zero.</strong></p>
+          </div>
+
+          <button type="button" class="scene-replay">↺ rever</button>
+        </div>
+      </div>
+
+      <div class="netflix-band">
+      <div class="container netflix-block">
+        <p class="section-label section-label--band">A analogia</p>
+        <blockquote class="netflix-quote">
+          <p>No streaming, você continua <em>exatamente</em> de onde parou.<br>
+          Na sua saúde, cada tela te faz <em>recomeçar do zero</em>.</p>
+        </blockquote>
+
+        <div class="stream-cards">
+          <div class="stream-card stream-card--go">
+            <p class="stream-label">Seu streaming</p>
+            <p class="stream-title">Continuar assistindo</p>
+            <div class="bar"><div class="bar-fill bar-fill--go"></div></div>
+            <p class="stream-sub">Ep. 4 · de onde você parou</p>
+          </div>
+          <div class="stream-card stream-card--stop">
+            <p class="stream-label">Sua saúde</p>
+            <p class="stream-title">Recomeçar do zero</p>
+            <div class="bar"><div class="bar-fill bar-fill--stop"></div></div>
+            <p class="stream-sub">Histórico indisponível · conte tudo de novo</p>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="container">
+        <p class="dor-bridge">Isso tem nome: <strong>transferência às cegas</strong>. E tem solução — mais barata do que você imagina.</p>
+      </div>
+    </section>
+
+    <!-- ============ PRÓXIMAS SEÇÕES (em construção) ============ -->
+    <section class="wip" id="apoie">
+      <div class="container">
+        <p class="section-label">Continua</p>
+        <p class="wip-text">Os três desperdícios · A virada · Como funciona · Segurança e LGPD · Apoie</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <svg class="logo-tick" viewBox="0 0 56 24" aria-hidden="true" focusable="false">
+        <path d="M0 12 H16 l4 5 5 -14 5 18 4 -9 H56" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <p>Prontuário Salva-Vidas · <a href="mailto:contato@prontuariosalvavidas.com.br">contato@prontuariosalvavidas.com.br</a></p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

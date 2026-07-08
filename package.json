@@ -1,0 +1,12 @@
+{
+  "name": "prontuario-salva-vidas",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Landing page da campanha cívica Prontuário Salva-Vidas — interoperabilidade de dados de saúde",
+  "scripts": {
+    "dev": "serve . -l 3300"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4"
+  }
+}
