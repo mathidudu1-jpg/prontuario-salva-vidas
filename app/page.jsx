@@ -93,16 +93,22 @@ export default function Home() {
                 </g>
                 <text id="jor-tag3" x="649" y="378" textAnchor="middle" className="jor-tag jor-tag--barro">3 · BLOQUEIO</text>
 
-                {/* ETAPA 4 · o recomeço: a mesma cena da etapa 1, outra porta — o ciclo reinicia */}
+                {/* ETAPA 4 · o hospital grande: você é atendido — mas sem o seu histórico */}
                 <g id="jor-et4" stroke="var(--clay)" strokeWidth="3.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                  <path id="il4-ground" d="M848,294 Q848,262 862,262 H995" />
-                  <path id="il4-build" d="M905,262 V180 H988 V262" />
-                  <path id="il4-door" d="M913,262 v-42 h28 v42" />
-                  <path id="il4-cross" d="M954,208 h20 M964,198 v20" stroke="var(--petroleo)" />
-                  <path id="il4-human" d="M868,262 L880,236 L880,208 a7.5,7.5 0 1 1 0.01,-15 a7.5,7.5 0 1 1 -0.01,15 M880,216 L894,226 M880,236 L892,262" />
-                  <path id="il4-restart" d="M891,172 a11,11 0 1 1 -11,-11 M880,161 l-7,-3 M880,161 l2,-7" stroke="var(--barro)" />
+                  <path id="il4-ground" d="M700,294 Q700,262 714,262 H998" />
+                  <path id="il4-build" d="M724,262 V166 H976 V262" />
+                  <path id="il4-roof" d="M724,166 L752,150 H948 L976,166" />
+                  <path id="il4-cross" d="M841,190 h18 M850,181 v18" stroke="var(--petroleo)" />
+                  <path id="il4-bed" d="M756,262 V250 H856 V262 M756,250 V234 Q756,230 760,230 H778" />
+                  <circle id="il4-phead" cx="770" cy="222" r="7" />
+                  <path id="il4-patient" d="M782,228 Q802,237 818,235 Q834,233 848,246" />
+                  <g id="il4-doctor" stroke="var(--petroleo)">
+                    <circle cx="900" cy="206" r="7.5" />
+                    <path d="M900,214 V242 M900,242 L891,262 M900,242 L909,262 M900,222 L874,234" />
+                  </g>
+                  <path id="il4-q" d="M735,214 Q735,206 743,206 Q751,206 751,214 Q751,220 743,222 L743,226 M743,231 v0.6" stroke="var(--barro)" strokeWidth="3" />
                 </g>
-                <text id="jor-tag4" x="946" y="378" textAnchor="middle" className="jor-tag">4 · HOSPITAL</text>
+                <text id="jor-tag4" x="850" y="378" textAnchor="middle" className="jor-tag">4 · HOSPITAL</text>
 
                 {/* a linha-jornada em três trechos (a vida continua; o dado fica no muro) */}
                 <path id="jor-line1" d="M0,330 H120 l8,8 10,-44 12,58 8,-22 H300" fill="none"
@@ -141,15 +147,16 @@ export default function Home() {
                 <figure className="stream-card tv-card tv-card--go">
                   <div className="tv-thumb tv-thumb--go" aria-hidden="true">
                     <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
-                      <path d="M0,112 q50,-38 95,-12 q40,22 78,-18 q42,-44 92,-16 q30,16 55,4"
-                        fill="none" stroke="var(--salvia-bright)" strokeWidth="2.5" strokeLinecap="round" />
-                      <circle cx="250" cy="38" r="16" fill="none" stroke="var(--salvia-bright)" strokeWidth="2.5" />
-                      <path d="M250,14 v-6 M250,68 v-4 M226,38 h-6 M280,38 h-6" stroke="var(--salvia-bright)" strokeWidth="2.5" strokeLinecap="round" />
+                      <path className="tv-scene" d="M0,122 q46,-30 92,-8 q40,20 74,-14 q42,-40 96,-14 q30,14 58,2"
+                        fill="none" stroke="var(--salvia-bright)" strokeWidth="2.5" strokeLinecap="round" opacity="0.5" />
+                      <circle className="tv-scene" cx="250" cy="44" r="15" fill="none" stroke="var(--salvia-bright)" strokeWidth="2.5" opacity="0.5" />
                     </svg>
-                    <span className="tv-badge">EP 4</span>
+                    <span className="tv-badge">EP 4 · SÉRIE</span>
                     <span className="tv-play">
-                      <svg viewBox="0 0 24 24"><path d="M8 5 L19 12 L8 19 Z" fill="currentColor" /></svg>
+                      <svg className="ic ic-pause" viewBox="0 0 24 24"><rect x="7" y="5" width="3.6" height="14" rx="1.2" /><rect x="13.4" y="5" width="3.6" height="14" rx="1.2" /></svg>
+                      <svg className="ic ic-play" viewBox="0 0 24 24"><path d="M8 5 L19 12 L8 19 Z" /></svg>
                     </span>
+                    <div className="tv-scrubber"><span className="tv-scrubber-fill"></span><span className="tv-playhead"></span></div>
                   </div>
                   <figcaption>
                     <p className="stream-label">Seu streaming</p>
@@ -162,8 +169,14 @@ export default function Home() {
                 <figure className="stream-card tv-card tv-card--stop">
                   <div className="tv-thumb tv-thumb--stop" aria-hidden="true">
                     <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
-                      <path d="M0,75 H120 l8,8 10,-38 12,48 8,-18 H190 H320" fill="none"
-                        stroke="var(--barro-bright)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.5" />
+                      <path className="tv-flat" d="M0,60 H126 l8,9 10,-40 12,50 8,-19 H320" fill="none"
+                        stroke="var(--barro-bright)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0.32" />
+                      <line x1="150" y1="120" x2="286" y2="120" stroke="var(--barro-bright)" strokeWidth="2" opacity="0.22" />
+                      <path id="tv-reset" d="M214,78 a19,19 0 1 1 -19,-19 M195,59 l-9,-3 M195,59 l3,-9"
+                        fill="none" stroke="var(--barro-bright)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" opacity="0" />
+                      <g id="tv-walker" fill="none" stroke="var(--barro-bright)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M164,78 a5,5 0 1 1 0.01,-10 a5,5 0 1 1 -0.01,10 M164,78 V100 M164,86 L156,92 M164,86 L172,92 M164,100 L157,116 M164,100 L171,116" />
+                      </g>
                     </svg>
                     <span className="tv-badge tv-badge--err">SEM REGISTRO</span>
                   </div>
@@ -227,6 +240,7 @@ export default function Home() {
               </svg>
 
               <div className="virada-board">
+                <div className="virada-wall" aria-hidden="true"></div>
                 <div className="virada-panel virada-panel--origem">
                   <p className="virada-panel-label">UPA · onde você foi atendido</p>
                   <div className="chip-slot" id="slot-origem">
@@ -385,10 +399,46 @@ export default function Home() {
           <div className="rosto-media" id="rosto-media">
             {/* TODO(matheus): inserir foto de idoso feliz/cuidado (banco com licença livre, brasileiro se possível) */}
             <div className="rosto-inner">
-              <div className="rosto-placeholder">
-                <p className="placeholder-label">Foto · idoso feliz, cuidado</p>
-                <p className="placeholder-hint">asset a inserir</p>
+              <div className="rosto-glow" aria-hidden="true"></div>
+              <div className="rosto-illo" aria-hidden="true">
+                <svg viewBox="0 0 440 470" role="img" aria-label="Ilustração de uma pessoa idosa sorrindo, com a mão de um cuidador em seu ombro.">
+                  {/* pessoa idosa — traço quente */}
+                  <g fill="none" stroke="var(--tinta)" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                    {/* cabelo */}
+                    <path d="M158,152 C162,104 190,82 220,82 C250,82 278,104 282,152" />
+                    <path d="M178,118 q10,-12 22,-9 M212,102 q11,-7 23,-1 M246,116 q10,-8 20,-1" />
+                    {/* rosto */}
+                    <ellipse cx="220" cy="196" rx="62" ry="74" />
+                    {/* orelhas */}
+                    <path d="M158,192 q-12,3 -9,17 q2,9 11,7" />
+                    <path d="M282,192 q12,3 9,17 q-2,9 -11,7" />
+                    {/* óculos */}
+                    <ellipse cx="196" cy="188" rx="16" ry="14" />
+                    <ellipse cx="244" cy="188" rx="16" ry="14" />
+                    <path d="M212,186 q8,-5 16,0 M180,186 l-19,-4 M260,186 l19,-4" />
+                    {/* olhos sorridentes */}
+                    <path d="M189,190 q7,7 15,0 M236,190 q7,7 15,0" />
+                    {/* nariz */}
+                    <path d="M220,196 v18 q0,5 -7,6" />
+                    {/* sorriso */}
+                    <path d="M190,226 q30,26 60,0" />
+                    <path d="M201,236 q19,10 38,0" />
+                    {/* linhas de expressão */}
+                    <path d="M181,216 q-8,11 -2,21 M259,216 q8,11 2,21" />
+                    {/* pescoço + ombros */}
+                    <path d="M203,270 v14 M237,270 v14" />
+                    <path d="M120,346 C132,296 174,272 220,272 C266,272 308,296 320,346" />
+                    <path d="M198,276 l22,22 l22,-22" />
+                  </g>
+                  {/* a mão que cuida — no ombro, em clay */}
+                  <g fill="none" stroke="var(--clay)" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M291,306 q7,-17 25,-13 q17,4 16,17" />
+                    <path d="M296,308 q-3,16 -10,22 M308,305 q-1,18 -8,25 M320,305 q1,17 -4,25 M331,309 q3,13 0,19" />
+                    <path d="M332,310 q10,-3 16,5" />
+                  </g>
+                </svg>
               </div>
+              <p className="rosto-note">Ilustração — troque por uma foto real quando tiver</p>
             </div>
             <blockquote className="rosto-quote">
               <p>Ninguém deveria recontar a própria história num momento em que mal consegue{" "}falar.</p>

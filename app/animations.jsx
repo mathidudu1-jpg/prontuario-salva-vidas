@@ -36,16 +36,19 @@ export default function Animations() {
 
     let viradaTouched = false;
 
-    /* ---------- 4. a virada: Flip antes × depois ---------- */
+    /* ---------- 4. a virada: dois modos animados ----------
+       Hoje: o dado tenta cruzar, bate na parede e volta pra origem (barro).
+       Com a lei: o dado surge na UPA, é transferido e fica verde no hospital. */
     function setViradaState(state, animate) {
       const stage = document.getElementById("virada-stage");
-      const target = document.getElementById(state === "depois" ? "slot-destino" : "slot-origem");
+      const origem = document.getElementById("slot-origem");
+      const destino = document.getElementById("slot-destino");
       const chips = gsap.utils.toArray(".data-chip");
       const caption = document.getElementById("virada-caption");
+      const isDesktop = window.matchMedia("(min-width: 768px)").matches;
 
-      const apply = () => {
+      const applyMeta = () => {
         stage.dataset.state = state;
-        chips.forEach((c) => target.appendChild(c));
         caption.textContent = VIRADA_CAPTIONS[state];
         document.querySelectorAll(".toggle-btn").forEach((b) => {
           const active = b.dataset.state === state;
@@ -54,25 +57,63 @@ export default function Animations() {
         });
       };
 
+      // estático (sem JS de animação): posiciona no slot certo
       if (!animate) {
-        apply();
+        chips.forEach((c) => (state === "depois" ? destino : origem).appendChild(c));
+        applyMeta();
         gsap.set("#ecg-jagged", { autoAlpha: state === "hoje" ? 1 : 0 });
         gsap.set("#ecg-smooth", { autoAlpha: state === "depois" ? 1 : 0 });
         return;
       }
 
-      const flipState = Flip.getState(chips, { props: "borderColor,color" });
-      apply();
-      Flip.from(flipState, { duration: 0.9, ease: "power3.inOut", stagger: 0.07, absolute: true });
+      const inDestino = destino.contains(chips[0]);
 
-      // a linha tremida (hoje) vira contínua e sálvia (depois)
       if (state === "depois") {
-        gsap.to("#ecg-jagged", { autoAlpha: 0, duration: 0.35 });
-        gsap.set("#ecg-smooth", { autoAlpha: 1 });
-        gsap.fromTo("#ecg-smooth", { drawSVG: "0% 0%" }, { drawSVG: "0% 100%", duration: 1.1, ease: "power2.inOut" });
-      } else {
+        // COM A LEI — os cards surgem na UPA e são transferidos com sucesso
+        chips.forEach((c) => origem.appendChild(c)); // garante origem (snap se reexecutou)
+        gsap.set(chips, { clearProps: "x,scale,opacity" });
+        applyMeta();
+
+        const tl = gsap.timeline();
+        // 1) surgem/pulsam na UPA
+        tl.fromTo(chips, { scale: 0.7, autoAlpha: 0.45 },
+          { scale: 1, autoAlpha: 1, duration: 0.45, stagger: 0.08, ease: "back.out(2)" });
+        // 2) transferência com sucesso: Flip origem → destino (ficam verdes ao chegar)
+        tl.add(() => {
+          const s = Flip.getState(chips, { props: "borderColor,color" });
+          chips.forEach((c) => destino.appendChild(c));
+          Flip.from(s, { duration: 0.95, ease: "power3.inOut", stagger: 0.09, absolute: true });
+        }, "+=0.2");
+        // 3) a linha tremida vira contínua e sálvia
+        gsap.to("#ecg-jagged", { autoAlpha: 0, duration: 0.35, delay: 0.6 });
+        gsap.set("#ecg-smooth", { autoAlpha: 1, delay: 0.6 });
+        gsap.fromTo("#ecg-smooth", { drawSVG: "0% 0%" },
+          { drawSVG: "0% 100%", duration: 1.1, ease: "power2.inOut", delay: 0.7 });
+        return;
+      }
+
+      // HOJE — o dado tenta cruzar e é barrado
+      const playBounce = () => {
+        const lunge = isDesktop ? 46 : 22;
+        gsap.timeline()
+          .to(chips, { x: lunge, duration: 0.5, ease: "power2.in", stagger: 0.05 })
+          .set(".virada-wall", { autoAlpha: 1 }, ">-0.06")
+          .fromTo(".virada-wall", { scaleX: 1 }, { scaleX: 2.2, duration: 0.12, yoyo: true, repeat: 1, ease: "power1.out", transformOrigin: "50% 50%" }, "<")
+          .to(chips, { x: 0, duration: 0.85, ease: "back.out(1.7)", stagger: 0.05 }, ">-0.02")
+          .to(".virada-wall", { autoAlpha: 0, duration: 0.5 }, "<0.25");
         gsap.to("#ecg-smooth", { autoAlpha: 0, duration: 0.3 });
         gsap.to("#ecg-jagged", { autoAlpha: 1, duration: 0.4 });
+      };
+
+      if (inDestino) {
+        // vinha do "com a lei": traz os cards de volta pra origem, depois a tentativa
+        const s = Flip.getState(chips, { props: "borderColor,color" });
+        chips.forEach((c) => origem.appendChild(c));
+        applyMeta();
+        Flip.from(s, { duration: 0.7, ease: "power3.inOut", stagger: 0.06, absolute: true, onComplete: playBounce });
+      } else {
+        applyMeta();
+        playBounce();
       }
     }
 
@@ -99,6 +140,9 @@ export default function Animations() {
         motionPath: { path: "#route-path", align: "#route-path", alignOrigin: [0.5, 0.5], end: 1 },
         fill: "#7C9B76",
       });
+      // telinha "continuar assistindo" mostra o play em repouso
+      gsap.set(".tv-play .ic-pause", { autoAlpha: 0 });
+      gsap.set(".tv-play .ic-play", { autoAlpha: 1 });
     }
 
     /* ---------- 1. herói: ECG desenha, headline entra palavra a palavra ---------- */
@@ -137,7 +181,8 @@ export default function Animations() {
       const caps = gsap.utils.toArray(".scene-caption");
       const replay = document.querySelector(".dor-stage .scene-replay");
 
-      const D1 = 1.3, D2 = 1.6, D3 = 1.3; // durações dos três trechos da linha
+      const D1 = 2.0, D2 = 2.8, D3 = 2.0; // desenho de cada trecho (lento, p/ ler)
+      const HOLD = 1.7;                    // pausa de leitura entre as etapas
 
       const tl = gsap.timeline({
         scrollTrigger: { trigger: "#dor-scene", start: "top 62%", once: true },
@@ -153,69 +198,76 @@ export default function Animations() {
       const tag = (sel, pos) =>
         tl.fromTo(sel, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.4, ease: "power2.out" }, pos);
       const caption = (idx, pos) => {
-        tl.to(caps.filter((_, i) => i !== idx), { autoAlpha: 0, duration: 0.25 }, pos);
-        tl.to(caps[idx], { autoAlpha: 1, duration: 0.35, ease: "power2.out", delay: 0.1 }, pos);
+        tl.to(caps.filter((_, i) => i !== idx), { autoAlpha: 0, duration: 0.3 }, pos);
+        tl.to(caps[idx], { autoAlpha: 1, duration: 0.4, ease: "power2.out", delay: 0.15 }, pos);
       };
 
-      /* etapa 1 — entrada na UPA (pico a 44% do trecho 1) */
-      tl.to(caps[0], { autoAlpha: 1, duration: 0.5, ease: "power2.out" })
-        .addLabel("go1", "<+0.2")
-        .to("#jor-dot", { autoAlpha: 1, duration: 0.2, ease: "none" }, "go1");
+      /* etapa 1 — entrada na UPA */
+      tl.to(caps[0], { autoAlpha: 1, duration: 0.5, ease: "power2.out" });
+      tl.addLabel("go1", ">-=0.1");
+      tl.to("#jor-dot", { autoAlpha: 1, duration: 0.2, ease: "none" }, "go1");
       draw("#jor-line1", D1, "go1", "none");
       ride("#jor-line1", D1, "go1");
-      tl.addLabel("peak1", "go1+=0.58");
-      draw("#il1-ground", 0.4, "peak1");
-      draw("#il1-build", 0.5, "peak1+=0.3");
-      draw("#il1-door", 0.35, "peak1+=0.7");
-      draw("#il1-cross", 0.25, "peak1+=0.95");
-      draw("#il1-human", 0.5, "peak1+=0.45");
-      tag("#jor-tag1", "peak1+=0.3");
+      tl.addLabel("p1", "go1+=0.7");
+      draw("#il1-ground", 0.5, "p1");
+      draw("#il1-build", 0.6, "p1+=0.35");
+      draw("#il1-door", 0.4, "p1+=0.85");
+      draw("#il1-cross", 0.3, "p1+=1.15");
+      draw("#il1-human", 0.6, "p1+=0.55");
+      tag("#jor-tag1", "p1+=0.4");
+      tl.addLabel("go2", `go1+=${D1 + HOLD}`); // pausa de leitura
 
-      /* etapa 2 — a ambulância (pico a 24% do trecho 2) */
-      tl.addLabel("go2", `go1+=${D1 + 0.55}`);
-      caption(1, "go2-=0.15");
+      /* etapa 2 — a ambulância */
+      caption(1, "go2-=0.2");
       draw("#jor-line2", D2, "go2", "none");
       ride("#jor-line2", D2, "go2");
-      tl.addLabel("peak2", "go2+=0.38");
-      draw("#il2-road", 0.4, "peak2");
-      draw("#il2-body", 0.5, "peak2+=0.3");
-      draw("#il2-details", 0.4, "peak2+=0.65");
-      draw("#il2-wheel1", 0.25, "peak2+=0.75");
-      draw("#il2-wheel2", 0.25, "peak2+=0.85");
-      tag("#jor-tag2", "peak2+=0.5");
+      tl.addLabel("p2", "go2+=0.55");
+      draw("#il2-road", 0.5, "p2");
+      draw("#il2-body", 0.6, "p2+=0.35");
+      draw("#il2-details", 0.45, "p2+=0.8");
+      draw("#il2-wheel1", 0.3, "p2+=0.9");
+      draw("#il2-wheel2", 0.3, "p2+=1.05");
+      tag("#jor-tag2", "p2+=0.6");
       // a ambulância dirige pela estrada que a linha virou
-      tl.to("#jor-amb", { x: 64, duration: 0.7, ease: "none" }, "go2+=1.15");
+      tl.to("#jor-amb", { x: 64, duration: 1.2, ease: "none" }, `go2+=${(D2 * 0.5).toFixed(2)}`);
 
       /* etapa 3 — o muro sobe antes de o dado chegar */
-      draw("#il3-wall", 0.35, "go2+=1.0");
-      draw("#il3-bricks", 0.3, "go2+=1.2");
-      tag("#jor-tag3", "go2+=1.25");
+      tl.addLabel("wall", `go2+=${D2 - 0.9}`);
+      draw("#il3-wall", 0.45, "wall");
+      draw("#il3-bricks", 0.4, "wall+=0.25");
+      tag("#jor-tag3", "wall+=0.3");
       tl.addLabel("hit", `go2+=${D2}`);
       caption(2, "hit");
-      tl.to("#jor-et3", { keyframes: { x: [0, -5, 4, -3, 2, 0] }, duration: 0.45, ease: "power1.out" }, "hit")
-        .to("#jor-dot", { fill: "#A8432E", scale: 1.45, transformOrigin: "50% 50%", duration: 0.12, ease: "power2.out" }, "hit")
-        .to("#jor-dot", { x: "-=26", scale: 1, autoAlpha: 0.5, duration: 0.5, ease: "power3.out" }, "hit+=0.12");
-      draw("#il3-x", 0.3, "hit+=0.1", "power2.out");
+      tl.to("#jor-et3", { keyframes: { x: [0, -5, 4, -3, 2, 0] }, duration: 0.5, ease: "power1.out" }, "hit")
+        .to("#jor-dot", { fill: "#A8432E", scale: 1.45, transformOrigin: "50% 50%", duration: 0.14, ease: "power2.out" }, "hit")
+        .to("#jor-dot", { x: "-=26", scale: 1, autoAlpha: 0.5, duration: 0.55, ease: "power3.out" }, "hit+=0.14");
+      draw("#il3-x", 0.35, "hit+=0.12", "power2.out");
+      tl.addLabel("go3", `hit+=${HOLD}`); // pausa de leitura
 
-      /* etapa 4 — a vida continua sem o dado; o ciclo reinicia no hospital */
-      tl.addLabel("go3", "hit+=0.9");
-      caption(3, "go3-=0.1");
+      /* etapa 4 — o hospital grande: você é atendido, mas sem histórico */
+      caption(3, "go3-=0.2");
       draw("#jor-line3", D3, "go3", "none");
-      tl.addLabel("peak4", "go3+=0.67");
-      draw("#il4-ground", 0.4, "peak4");
-      draw("#il4-build", 0.5, "peak4+=0.3");
-      draw("#il4-door", 0.35, "peak4+=0.7");
-      draw("#il4-cross", 0.25, "peak4+=0.95");
-      draw("#il4-human", 0.5, "peak4+=0.45");
-      draw("#il4-restart", 0.45, "peak4+=1.0", "power2.out");
-      tag("#jor-tag4", "peak4+=0.5");
-      // a seta de recomeço gira, inquieta
-      tl.to("#il4-restart", { rotation: -35, transformOrigin: "50% 55%", duration: 0.5, ease: "power1.inOut", yoyo: true, repeat: 1 }, "peak4+=1.55")
-        .to(replay, { autoAlpha: 1, duration: 0.4 }, "+=0.3");
+      tl.addLabel("p4", "go3+=0.7");
+      draw("#il4-ground", 0.5, "p4");
+      draw("#il4-build", 0.7, "p4+=0.35");
+      draw("#il4-roof", 0.5, "p4+=0.9");
+      draw("#il4-cross", 0.3, "p4+=1.2");
+      draw("#il4-bed", 0.6, "p4+=0.75");
+      draw("#il4-phead", 0.3, "p4+=1.25");
+      draw("#il4-patient", 0.5, "p4+=1.35");
+      draw("#il4-doctor circle", 0.3, "p4+=1.65");
+      draw("#il4-doctor path", 0.6, "p4+=1.8");
+      tag("#jor-tag4", "p4+=0.5");
+      // a interrogação surge sobre o paciente: chega sem histórico
+      tl.fromTo("#il4-q", { autoAlpha: 0, scale: 0.5, transformOrigin: "50% 50%" },
+        { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(2)" }, "p4+=2.3");
+      tl.to("#il4-q", { y: -4, duration: 0.6, ease: "power1.inOut", yoyo: true, repeat: 3 }, "p4+=2.8");
+      tl.to(replay, { autoAlpha: 1, duration: 0.4 }, ">+0.3");
 
       listen(replay, "click", () => {
         gsap.set(replay, { autoAlpha: 0 });
         gsap.set("#jor-dot", { scale: 1 });
+        gsap.set("#il4-q", { y: 0 });
         tl.restart();
       });
     }
@@ -253,6 +305,40 @@ export default function Animations() {
         scrollTrigger: { trigger: ".dor-bridge", start: "top 85%" },
         y: 24, autoAlpha: 0, duration: 0.8, ease: "power3.out",
       });
+    }
+
+    /* ---------- as duas telinhas: o vídeo retoma × a vida recomeça ---------- */
+    function streamingPlayers() {
+      // GO — "continuar assistindo": despausa e o vídeo segue de onde parou
+      gsap.set(".tv-play .ic-pause", { autoAlpha: 1 });
+      gsap.set(".tv-play .ic-play", { autoAlpha: 0 });
+
+      const go = gsap.timeline({ repeat: -1, repeatDelay: 0.7 });
+      go.to(".tv-card--go .tv-play", { scale: 0.85, duration: 0.14, ease: "power2.in" }, 0.7)
+        .to(".tv-card--go .tv-play", { scale: 1, duration: 0.32, ease: "back.out(3)" })
+        .to(".tv-card--go .ic-pause", { autoAlpha: 0, duration: 0.18 }, "<")
+        .to(".tv-card--go .ic-play", { autoAlpha: 1, duration: 0.18 }, "<")
+        // o vídeo retoma: o scrubber avança de onde parou
+        .to(".tv-scrubber-fill", { width: "85%", duration: 1.7, ease: "power1.inOut" }, ">-0.05")
+        .to(".tv-playhead", { left: "85%", duration: 1.7, ease: "power1.inOut" }, "<")
+        .to({}, { duration: 0.5 })
+        // volta ao ponto de pausa para repetir a ideia
+        .set(".tv-card--go .ic-play", { autoAlpha: 0 })
+        .set(".tv-card--go .ic-pause", { autoAlpha: 1 })
+        .set(".tv-scrubber-fill", { width: "62%" })
+        .set(".tv-playhead", { left: "62%" });
+
+      // STOP — "recomeçar do zero": o humano refaz o mesmo caminho, sempre do início
+      const stop = gsap.timeline({ repeat: -1 });
+      stop.set("#tv-walker", { x: 0, autoAlpha: 1 })
+        .set("#tv-reset", { autoAlpha: 0, rotation: 0, transformOrigin: "50% 50%" })
+        .to("#tv-walker", { x: 96, duration: 1.6, ease: "none" })
+        .to("#tv-reset", { autoAlpha: 0.9, rotation: -300, duration: 0.55, ease: "power2.in" }, ">-0.05")
+        .to("#tv-walker", { autoAlpha: 0, duration: 0.2 }, "<0.2")
+        .set("#tv-walker", { x: 0 })
+        .to("#tv-walker", { autoAlpha: 1, duration: 0.25 })
+        .to("#tv-reset", { autoAlpha: 0, duration: 0.3 }, "<")
+        .to({}, { duration: 0.4 });
     }
 
     /* ---------- 3. desperdícios: entrada + count-up ---------- */
@@ -421,6 +507,7 @@ export default function Animations() {
           heroIntro();
           dorScene();
           netflixReveal();
+          streamingPlayers();
           wasteCounters();
           viradaAutoPlay();
           routeScene();
