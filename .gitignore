@@ -1,3 +1,8 @@
 node_modules/
+.next/
+out/
+npm-debug.log*
+.env*.local
+.vercel
 .DS_Store
 Thumbs.db

@@ -3,7 +3,7 @@
    Carregado só em desktop, sem reduced-motion. Nunca protagonista. */
 
 export async function initHeroBg(container) {
-  const THREE = await import("https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js");
+  const THREE = await import("three");
 
   const W = () => container.clientWidth;
   const H = () => container.clientHeight;

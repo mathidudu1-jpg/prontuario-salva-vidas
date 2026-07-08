@@ -6,44 +6,43 @@ Landing page da campanha cívica por uma lei de interoperabilidade de dados de s
 
 ## Stack
 
-- HTML + CSS + JS puro, sem build — mobile-first
-- [GSAP 3.13](https://gsap.com) via CDN: ScrollTrigger, DrawSVG, MotionPath, SplitText (todos gratuitos)
-- Three.js (fundo de nós do herói) — carregado dinamicamente **só em desktop**, com fallback estático e respeito a `prefers-reduced-motion`
-- Fontes: Fraunces (display) · Inter (corpo) · JetBrains Mono (dados)
+- **Next.js 15** (App Router, JavaScript) — mobile-first
+- [GSAP 3.13](https://gsap.com) via npm: ScrollTrigger, DrawSVG, MotionPath, SplitText, Flip (todos gratuitos)
+- Three.js (fundo de nós do herói) — importado dinamicamente **só em desktop**, com fallback estático e respeito a `prefers-reduced-motion`
+- Fontes via `next/font`: Fraunces (display) · Inter (corpo) · JetBrains Mono (dados)
 
 ## Rodar local
 
-```bash
-npm install   # só na primeira vez (instala o `serve`)
-npm run dev
-```
+O projeto vive no OneDrive (caminho com acentos); use a junction para desenvolvimento:
 
-Abra http://localhost:3300. (Alternativa sem install: `npx serve . -l 3300`.)
+```bash
+cd C:\prontuario-dev   # junction → a pasta real do repositório
+npm install            # só na primeira vez
+npm run dev            # http://localhost:3300
+```
 
 ## Deploy (Vercel)
 
-Site 100% estático — **não há build**. Na Vercel:
-
-1. Importe o repositório (`vercel.com/new` → Import Git Repository).
-2. Framework Preset: **Other**. Não configure Build Command nem Output Directory (deixe vazio — a raiz é servida como está).
-3. Deploy. O `vercel.json` já cuida de `cleanUrls`.
-
-Depois, aponte o domínio `prontuariosalvavidas.com.br` no painel da Vercel (Settings → Domains).
+1. Importe o repositório (`vercel.com/new`) — o preset **Next.js** é detectado automaticamente.
+2. Nenhuma configuração extra: build padrão (`next build`).
+3. Depois, aponte o domínio `prontuariosalvavidas.com.br` (Settings → Domains).
 
 ## Status
 
 - [x] 1. Herói — ECG desenhando + SplitText + fundo Three.js
-- [x] 2. A dor — cena pinada UPA → cadeado + analogia do Netflix
-- [ ] 3. Os três desperdícios (count-up)
-- [ ] 4. A virada — antes × depois (Flip)
-- [ ] 5. Como funciona — UPA → API·FHIR → HC (DrawSVG + MotionPath)
-- [ ] 6. "Mas isso já não existe?" (RNDS)
-- [ ] 7. Segurança e LGPD
-- [ ] 8. O rosto humano (foto + parallax)
-- [ ] 9. Chamada final
+- [x] 2. A dor — jornada sobre a linha do ECG + analogia do Netflix (faixa escura)
+- [x] 3. Os três desperdícios (count-up)
+- [x] 4. A virada — antes × depois (Flip + toggle)
+- [x] 5. Como funciona — UPA → API·FHIR → HC (DrawSVG + MotionPath) + blocos FHIR + dicionário
+- [x] 6. "Mas isso já não existe?" (RNDS) — conteúdo provisório, trocar pelo guia
+- [x] 7. Segurança e LGPD — trilha de auditoria
+- [x] 8. O rosto humano — placeholder + parallax
+- [x] 9. Chamada final
+- [ ] Jornada ilustrada: etapa 1 (UPA) feita · etapas 2–4 (ambulância, parede, recomeço) em validação
 
 ## Assets pendentes
 
 - [ ] Vídeo de reels (slot no herói: `.hero-media`)
 - [ ] Foto de idoso feliz/cuidado (seção 8)
-- [ ] Números do dossiê com fonte citada
+- [ ] Números do dossiê com fonte citada (seção 3)
+- [ ] PDF do dossiê e texto do PL (seção 9)
