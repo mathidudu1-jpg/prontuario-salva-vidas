@@ -140,18 +140,42 @@
         </blockquote>
 
         <div class="stream-cards">
-          <div class="stream-card stream-card--go">
-            <p class="stream-label">Seu streaming</p>
-            <p class="stream-title">Continuar assistindo</p>
-            <div class="bar"><div class="bar-fill bar-fill--go"></div></div>
-            <p class="stream-sub">Ep. 4 · de onde você parou</p>
-          </div>
-          <div class="stream-card stream-card--stop">
-            <p class="stream-label">Sua saúde</p>
-            <p class="stream-title">Recomeçar do zero</p>
-            <div class="bar"><div class="bar-fill bar-fill--stop"></div></div>
-            <p class="stream-sub">Histórico indisponível · conte tudo de novo</p>
-          </div>
+          <figure class="stream-card tv-card tv-card--go">
+            <div class="tv-thumb tv-thumb--go" aria-hidden="true">
+              <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                <path d="M0,112 q50,-38 95,-12 q40,22 78,-18 q42,-44 92,-16 q30,16 55,4"
+                      fill="none" stroke="var(--salvia-bright)" stroke-width="2.5" stroke-linecap="round"/>
+                <circle cx="250" cy="38" r="16" fill="none" stroke="var(--salvia-bright)" stroke-width="2.5"/>
+                <path d="M250,14 v-6 M250,68 v-4 M226,38 h-6 M280,38 h-6" stroke="var(--salvia-bright)" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+              <span class="tv-badge">EP 4</span>
+              <span class="tv-play">
+                <svg viewBox="0 0 24 24"><path d="M8 5 L19 12 L8 19 Z" fill="currentColor"/></svg>
+              </span>
+            </div>
+            <figcaption>
+              <p class="stream-label">Seu streaming</p>
+              <p class="stream-title">Continuar assistindo</p>
+              <div class="bar"><div class="bar-fill bar-fill--go"></div></div>
+              <p class="stream-sub">Ep. 4 · 32 min restantes · de onde você parou</p>
+            </figcaption>
+          </figure>
+
+          <figure class="stream-card tv-card tv-card--stop">
+            <div class="tv-thumb tv-thumb--stop" aria-hidden="true">
+              <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+                <path d="M0,75 H120 l8,8 10,-38 12,48 8,-18 H190 H320" fill="none"
+                      stroke="var(--barro-bright)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+              </svg>
+              <span class="tv-badge tv-badge--err">SEM REGISTRO</span>
+            </div>
+            <figcaption>
+              <p class="stream-label">Sua saúde</p>
+              <p class="stream-title">Recomeçar do zero</p>
+              <div class="bar"><div class="bar-fill bar-fill--stop"></div></div>
+              <p class="stream-sub">Histórico indisponível · conte tudo de novo</p>
+            </figcaption>
+          </figure>
         </div>
       </div>
       </div>
@@ -161,11 +185,238 @@
       </div>
     </section>
 
-    <!-- ============ PRÓXIMAS SEÇÕES (em construção) ============ -->
-    <section class="wip" id="apoie">
+    <!-- ============ 3. OS TRÊS DESPERDÍCIOS ============ -->
+    <section class="desperdicios" id="desperdicios">
       <div class="container">
-        <p class="section-label">Continua</p>
-        <p class="wip-text">Os três desperdícios · A virada · Como funciona · Segurança e LGPD · Apoie</p>
+        <p class="section-label section-label--barro">Os três desperdícios</p>
+        <h2 class="h2">Enquanto isso, todo dia, o país paga a&nbsp;conta.</h2>
+
+        <div class="waste-cards">
+          <article class="waste-card">
+            <p class="waste-kicker">Tempo</p>
+            <p class="waste-number"><span class="count" data-target="2">2</span>×</p>
+            <p class="waste-text">O mesmo exame, refeito — porque o resultado não chega junto com você.</p>
+          </article>
+          <article class="waste-card">
+            <p class="waste-kicker">Dinheiro</p>
+            <p class="waste-number">~<span class="count" data-target="46">46</span>%</p>
+            <p class="waste-text">De desperdício com exames repetidos e consultas perdidas por falta de informação.</p>
+          </article>
+          <article class="waste-card">
+            <p class="waste-kicker">Segurança</p>
+            <p class="waste-number"><span class="count" data-target="100">100</span>%</p>
+            <p class="waste-text">Das decisões na chegada dependem da memória de quem está passando mal.</p>
+          </article>
+        </div>
+        <!-- TODO(matheus): validar números finais e citar fontes do dossiê -->
+        <p class="waste-note">Números do dossiê da campanha — fontes citadas no PDF-guia.</p>
+      </div>
+    </section>
+
+    <!-- ============ 4. A VIRADA — ANTES × DEPOIS ============ -->
+    <section class="virada" id="a-virada">
+      <div class="container">
+        <p class="section-label section-label--salvia">A virada</p>
+        <h2 class="h2">Tem solução. E é mais barata que o&nbsp;problema.</h2>
+        <p class="section-lead">Uma lei de interoperabilidade obriga os sistemas a conversarem. O prontuário deixa de ser refém de cada tela — e passa a chegar <strong>junto com você</strong>.</p>
+
+        <div class="virada-stage" id="virada-stage" data-state="hoje">
+          <svg viewBox="0 0 800 80" class="virada-ecg" aria-hidden="true">
+            <path id="ecg-jagged" d="M0,40 l35,-10 28,16 24,-20 32,24 26,-18 30,12 28,-22 36,18 30,-10 34,16 28,-20 38,14 32,-16 40,18 36,-12 44,8 40,-10 48,12 51,-6 40,8 40,-2"
+                  fill="none" stroke="var(--barro)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path id="ecg-smooth" d="M0,40 H330 l10,8 12,-40 14,52 10,-20 H800"
+                  fill="none" stroke="var(--salvia)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="0"/>
+          </svg>
+
+          <div class="virada-board">
+            <div class="virada-panel virada-panel--origem">
+              <p class="virada-panel-label">UPA · onde você foi atendido</p>
+              <div class="chip-slot" id="slot-origem">
+                <span class="data-chip">Exames</span>
+                <span class="data-chip">Alergias</span>
+                <span class="data-chip">Medicações</span>
+                <span class="data-chip">Diagnóstico</span>
+              </div>
+            </div>
+            <div class="virada-panel virada-panel--destino">
+              <p class="virada-panel-label">Hospital · onde você chega</p>
+              <div class="chip-slot chip-slot--destino" id="slot-destino"></div>
+            </div>
+          </div>
+
+          <div class="virada-controls">
+            <div class="virada-toggle" role="group" aria-label="Comparar hoje e com a lei">
+              <button type="button" class="toggle-btn is-active" data-state="hoje" aria-pressed="true">Hoje</button>
+              <button type="button" class="toggle-btn" data-state="depois" aria-pressed="false">Com a lei</button>
+            </div>
+            <p class="virada-caption" id="virada-caption" aria-live="polite">Hoje: seus dados ficam presos onde foram criados.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BLOCO DOSSIÊ ============ -->
+
+    <!-- 5. COMO FUNCIONA -->
+    <section class="funciona dossie" id="como-funciona">
+      <div class="container">
+        <p class="section-label">O dossiê · Como funciona</p>
+        <h2 class="h2">O caminho do dado, do jeito&nbsp;certo.</h2>
+        <p class="section-lead">Na transferência, o sistema da UPA publica um resumo padronizado — e o hospital lê na hora, por uma <code class="mono-inline">API</code>. Sem papel, sem telefone, sem recomeço.</p>
+
+        <div class="route js-scene" id="route-scene">
+          <svg viewBox="0 0 1000 250" class="route-svg" role="img" aria-label="Diagrama: o dado sai da UPA, passa pela API padrão FHIR e chega ao hospital.">
+            <g id="node-upa">
+              <rect x="40" y="70" width="150" height="100" rx="14" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="3"/>
+              <rect x="105" y="95" width="18" height="50" rx="4" fill="var(--clay)"/>
+              <rect x="89" y="111" width="50" height="18" rx="4" fill="var(--clay)"/>
+              <text x="115" y="205" text-anchor="middle" class="route-label">UPA</text>
+            </g>
+            <path id="route-path" d="M190,120 H300 l8,8 10,-40 12,52 8,-20 H810" fill="none"
+                  stroke="var(--petroleo)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle id="route-dot" cx="190" cy="120" r="8" fill="var(--petroleo)"/>
+            <g id="node-fhir">
+              <rect x="425" y="95" width="150" height="50" rx="25" fill="var(--petroleo)"/>
+              <text x="500" y="127" text-anchor="middle" class="route-chip-label">API · FHIR</text>
+            </g>
+            <g id="node-hc">
+              <rect x="810" y="70" width="150" height="100" rx="14" fill="var(--superficie)" stroke="var(--tinta)" stroke-width="3"/>
+              <rect x="875" y="95" width="18" height="50" rx="4" fill="var(--petroleo)"/>
+              <rect x="859" y="111" width="50" height="18" rx="4" fill="var(--petroleo)"/>
+              <text x="885" y="205" text-anchor="middle" class="route-label">HOSPITAL</text>
+            </g>
+          </svg>
+          <button type="button" class="scene-replay route-replay">↺ rever</button>
+        </div>
+
+        <div class="route-legend">
+          <p class="route-legend-item route-legend-item--hoje"><span class="legend-line legend-line--hoje"></span>Hoje: cada sistema fala a própria língua — o dado não passa.</p>
+          <p class="route-legend-item route-legend-item--lei"><span class="legend-line legend-line--lei"></span>Com a lei: uma língua comum — o dado flui.</p>
+        </div>
+
+        <div class="funciona-sub">
+          <div class="lego">
+            <h3 class="h3">Blocos que se encaixam</h3>
+            <p>No padrão <code class="mono-inline">FHIR</code>, cada pedaço do prontuário é um bloco de formato universal — encaixa em qualquer sistema.</p>
+            <div class="lego-row" id="lego-row">
+              <span class="lego-block"><strong>Paciente</strong><code>Patient</code></span>
+              <span class="lego-block"><strong>Exames</strong><code>DiagnosticReport</code></span>
+              <span class="lego-block"><strong>Medicações</strong><code>MedicationRequest</code></span>
+              <span class="lego-block"><strong>Alergias</strong><code>AllergyIntolerance</code></span>
+            </div>
+            <div class="lego-slotbar" aria-hidden="true"></div>
+          </div>
+
+          <div class="dicionario">
+            <h3 class="h3">Um dicionário comum</h3>
+            <p>"Infarto", "IAM", "ataque cardíaco" — três nomes, um só significado. Para a máquina, vira <strong>um código só</strong>.</p>
+            <div class="dic-stage" id="dic-stage">
+              <div class="dic-words">
+                <span class="dic-word">infarto</span>
+                <span class="dic-word">IAM</span>
+                <span class="dic-word">ataque cardíaco</span>
+              </div>
+              <span class="dic-arrow" aria-hidden="true">→</span>
+              <span class="dic-code">I21 · CID-10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. "MAS ISSO JÁ NÃO EXISTE?" -->
+    <section class="rnds dossie">
+      <div class="container container--narrow">
+        <p class="section-label">O dossiê · Contexto</p>
+        <h2 class="h2">"Mas isso já não existe?"</h2>
+        <p class="section-lead">Quase — e é exatamente por isso que a proposta é viável. Falta obrigar a última ponta.</p>
+
+        <!-- TODO(matheus): conteúdo final destes 3 itens sai do guia (módulos RNDS/SP) -->
+        <details class="faq">
+          <summary>O Brasil já tem a RNDS. Por que ela não basta?</summary>
+          <div class="faq-body"><p>A Rede Nacional de Dados em Saúde já existe e já conecta sistemas — mas o envio de dados assistenciais na transferência de pacientes não é obrigatório na ponta. Na prática, a infraestrutura está de pé e o dado que salvaria seu atendimento continua opcional. A proposta transforma esse fluxo em obrigação legal, usando o que já foi construído.</p></div>
+        </details>
+        <details class="faq">
+          <summary>São Paulo já começou (2026)</summary>
+          <div class="faq-body"><p>O precedente existe: São Paulo aprovou a obrigatoriedade de interoperabilidade entre os sistemas da sua rede. É a prova de que o caminho é jurídica e tecnicamente possível — falta levar a régua para o resto do país.</p></div>
+        </details>
+        <details class="faq">
+          <summary>Por que uma lei, e não um aplicativo?</summary>
+          <div class="faq-body"><p>Padrão técnico sem obrigação vira recomendação — e recomendação não integra sistema de hospital. A lei não inventa tecnologia nova: ela dá prazo e consequência para o que a tecnologia já sabe fazer.</p></div>
+        </details>
+      </div>
+    </section>
+
+    <!-- 7. SEGURANÇA E LGPD -->
+    <section class="lgpd dossie">
+      <div class="container">
+        <p class="section-label">O dossiê · Segurança</p>
+        <h2 class="h2">Mais seguro que papel numa prancheta de&nbsp;ambulância.</h2>
+        <p class="section-lead">Interoperar não é escancarar. É mover o dado certo, para a pessoa certa, com registro de tudo — dentro da LGPD.</p>
+
+        <div class="lgpd-grid">
+          <ul class="lgpd-list">
+            <li><strong>Minimização</strong> — só viaja o essencial para o seu atendimento.</li>
+            <li><strong>Finalidade assistencial</strong> — o dado serve para te tratar. Nada além disso.</li>
+            <li><strong>Controle de acesso</strong> — só os profissionais envolvidos no seu caso.</li>
+            <li><strong>Trilha de auditoria</strong> — todo acesso deixa rastro: quem viu, o quê, quando.</li>
+          </ul>
+
+          <div class="audit-card" id="audit-card">
+            <p class="audit-title">
+              <svg viewBox="0 0 24 28" class="audit-shield" aria-hidden="true">
+                <path id="shield-path" d="M12 2 L22 6 V14 C22 20 17.5 24.5 12 26 C6.5 24.5 2 20 2 14 V6 Z"
+                      fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path id="shield-check" d="M7.5 13.5 L11 17 L17 10.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              Trilha de auditoria
+            </p>
+            <ul class="audit-log">
+              <li><time>14:32</time> Dra. Ana L. · HC <em>visualizou alergias</em></li>
+              <li><time>14:31</time> Enf. Carlos M. · HC <em>visualizou medicações</em></li>
+              <li><time>14:20</time> Sistema UPA Central <em>publicou resumo clínico</em></li>
+              <li><time>14:19</time> Dr. João P. · UPA <em>autorizou transferência</em></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. O ROSTO HUMANO -->
+    <section class="rosto">
+      <div class="rosto-media" id="rosto-media">
+        <!-- TODO(matheus): inserir foto de idoso feliz/cuidado (banco com licença livre, brasileiro se possível) -->
+        <div class="rosto-inner">
+          <div class="rosto-placeholder">
+            <p class="placeholder-label">Foto · idoso feliz, cuidado</p>
+            <p class="placeholder-hint">asset a inserir</p>
+          </div>
+        </div>
+        <blockquote class="rosto-quote">
+          <p>Ninguém deveria recontar a própria história num momento em que mal consegue&nbsp;falar.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- 9. CHAMADA FINAL -->
+    <section class="final" id="apoie">
+      <div class="final-ecg" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="xMidYMid slice" class="ecg-svg ecg-svg--final">
+          <path id="final-ecg-path" d="M0,70 H500 q12,-14 24,0 H660 l10,8 14,-56 16,74 12,-26 H900 q16,-18 32,0 H1440"
+                fill="none" stroke="var(--salvia)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle id="final-ecg-dot" cx="0" cy="70" r="5" fill="var(--salvia)"/>
+        </svg>
+      </div>
+      <div class="container final-inner">
+        <h2 class="final-title">Apoie o Prontuário Salva-Vidas.</h2>
+        <p class="section-lead final-lead">Uma lei simples, uma tecnologia que já existe, um direito de todo paciente: chegar ao hospital com a própria história.</p>
+        <a class="btn btn-primary" href="mailto:contato@prontuariosalvavidas.com.br?subject=Quero%20apoiar%20o%20Prontu%C3%A1rio%20Salva-Vidas">Quero apoiar</a>
+        <div class="final-links">
+          <!-- TODO(matheus): linkar PDF do dossiê e texto do PL quando prontos -->
+          <a href="#" class="final-link">Baixar o dossiê (PDF)</a>
+          <a href="#" class="final-link">Texto do Projeto de Lei <span class="final-link-soon">em redação</span></a>
+        </div>
+        <p class="final-contact">contato@prontuariosalvavidas.com.br</p>
       </div>
     </section>
 
@@ -185,6 +436,7 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/DrawSVGPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/MotionPathPlugin.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Flip.min.js"></script>
   <script type="module" src="js/main.js"></script>
 </body>
 </html>
