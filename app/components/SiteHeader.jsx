@@ -17,7 +17,7 @@ export default function SiteHeader({ active }) {
         >
           O projeto
         </Link>
-        <a href={active === "home" ? "#apoie" : "/#apoie"} className="header-cta">Apoie</a>
+        <a href={active === "home" ? "#assinar" : "/#assinar"} className="header-cta">Assine o manifesto</a>
       </nav>
     </header>
   );

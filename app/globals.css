@@ -113,6 +113,8 @@ a { color: var(--petroleo); }
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
   padding: 20px var(--gutter);
 }
 
@@ -127,7 +129,7 @@ a { color: var(--petroleo); }
 .logo-text { font-family: var(--font-display); font-size: 19px; line-height: 1.1; }
 .logo-text strong { font-weight: 600; }
 
-.site-nav { display: flex; align-items: center; gap: 10px; }
+.site-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 
 .header-cta {
   font-weight: 600;
@@ -153,9 +155,16 @@ a { color: var(--petroleo); }
 .header-cta--clay:hover { background: #B25E3F; border-color: #B25E3F; }
 .header-cta--clay[aria-current="page"] { background: #A85838; border-color: #A85838; }
 
-@media (max-width: 480px) {
-  .header-cta { font-size: 15px; padding: 8px 14px; }
-  .logo-text { font-size: 17px; }
+@media (max-width: 560px) {
+  .site-header { gap: 8px 10px; }
+  .header-cta { font-size: 14px; padding: 7px 12px; }
+  .logo-tick { width: 32px; }
+  .logo-text { font-size: 15px; }
+}
+@media (max-width: 360px) {
+  .header-cta { font-size: 12.5px; padding: 6px 10px; letter-spacing: -0.01em; }
+  .logo-text { font-size: 14px; }
+  .logo-tick { width: 30px; }
 }
 
 /* ---------- botões ---------- */
@@ -226,9 +235,20 @@ a { color: var(--petroleo); }
 
 .hero-sub {
   font-size: clamp(19px, 2vw, 22px);
-  max-width: 44ch;
-  margin: 0 0 36px;
+  max-width: 52ch;
+  margin: 0 0 32px;
   color: rgba(36, 31, 25, 0.82);
+}
+
+.hero-source {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.5;
+  color: rgba(36, 31, 25, 0.55);
+  max-width: 52ch;
+  margin: 18px 0 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--linha);
 }
 
 /* slot do vídeo de reels — placeholder */
@@ -1072,6 +1092,95 @@ a { color: var(--petroleo); }
 }
 .final-lead { margin-inline: auto; margin-bottom: 36px; }
 
+/* --- manifesto: formulário de assinatura --- */
+
+.manifesto-box {
+  max-width: 620px;
+  margin: clamp(28px, 4vw, 44px) auto 0;
+  background: var(--superficie);
+  border: 1.5px solid var(--linha);
+  border-radius: 20px;
+  padding: clamp(24px, 4vw, 36px);
+  text-align: left;
+}
+.manifesto-box--ok { text-align: center; }
+
+.manifesto-count {
+  font-size: 20px;
+  text-align: center;
+  margin: 0 0 22px;
+  color: var(--tinta);
+}
+.manifesto-count strong {
+  font-family: var(--font-mono);
+  font-size: 30px;
+  color: var(--salvia);
+  display: inline-block;
+}
+
+.manifesto-aviso {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--petroleo);
+  background: rgba(44, 87, 84, 0.07);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin: 0 0 20px;
+}
+
+.manifesto-form { display: flex; flex-direction: column; gap: 16px; }
+.mf-row { display: grid; gap: 16px; }
+
+.mf-field { display: flex; flex-direction: column; gap: 6px; }
+.mf-field span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(36, 31, 25, 0.6);
+}
+.mf-field input,
+.mf-field select {
+  font-family: var(--font-body);
+  font-size: 17px;
+  color: var(--tinta);
+  background: var(--papel);
+  border: 1.5px solid var(--linha);
+  border-radius: 10px;
+  padding: 12px 14px;
+  width: 100%;
+}
+.mf-field input:focus-visible,
+.mf-field select:focus-visible {
+  outline: 3px solid var(--petroleo);
+  outline-offset: 1px;
+  border-color: var(--petroleo);
+}
+
+.manifesto-consent {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(36, 31, 25, 0.6);
+  margin: 0;
+}
+.manifesto-erro {
+  font-size: 15px;
+  color: var(--barro);
+  margin: 0;
+}
+.manifesto-form .btn { align-self: flex-start; }
+.manifesto-form .btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+.manifesto-thanks {
+  font-family: var(--font-display);
+  font-size: clamp(21px, 2.6vw, 27px);
+  font-weight: 560;
+  color: var(--tinta);
+  margin: 0 0 8px;
+}
+.manifesto-share { font-size: 16px; color: rgba(36, 31, 25, 0.66); margin: 0; }
+
 .final-links {
   display: flex;
   flex-wrap: wrap;
@@ -1124,6 +1233,7 @@ a { color: var(--petroleo); }
   .virada-board { grid-template-columns: 1fr 1fr; }
   .virada-controls { flex-direction: row; align-items: center; gap: 24px; }
   .lgpd-grid { grid-template-columns: 1.1fr 1fr; align-items: start; }
+  .mf-row { grid-template-columns: 1fr 1fr; }
 }
 
 @media (min-width: 1024px) {

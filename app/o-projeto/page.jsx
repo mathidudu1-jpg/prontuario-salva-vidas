@@ -17,8 +17,8 @@ export default function OProjeto() {
         <section className="proj-hero">
           <div className="container container--narrow">
             <p className="section-label">O projeto · Quem faz</p>
-            <h1 className="proj-title">Oi, eu sou o Matheus. Isso aqui começou com uma pergunta boba.</h1>
-            <p className="section-lead">Tenho 24 anos, empreendo em Curitiba e passei os últimos meses obcecado com uma coisa: por que teu histórico de saúde não anda contigo?</p>
+            <h1 className="proj-title">Sou o Matheus Vuicik, e esta é a ideia que não me saiu da cabeça.</h1>
+            <p className="section-lead">Tenho 24 anos, sou empreendedor em Curitiba e passei os últimos meses estudando uma pergunta: por que o histórico de saúde de um paciente não anda junto com ele?</p>
 
             <div className="proj-ecg" aria-hidden="true">
               <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid slice">
@@ -33,18 +33,16 @@ export default function OProjeto() {
           <div className="container container--narrow proj-prose">
             <h2 className="h2">Quem sou eu</h2>
             {/* TODO(matheus): foto sua aqui, se quiser (funciona sem) */}
-            <p>Vou ser direto: médico eu não sou, político muito menos. Sou um cara de 24 anos que trabalha com tecnologia e viu de perto como qualquer loja virtual integra estoque, pagamento e entrega sem drama nenhum.</p>
-            <p>Aí eu descobri que dois hospitais públicos da mesma cidade muitas vezes não conseguem trocar um exame de sangue. <strong>Isso não saiu mais da minha cabeça.</strong></p>
+            <p>Não sou médico nem político. Sou um empreendedor de 24 anos, de Curitiba, e trabalho com tecnologia. É desse lugar que essa ideia surgiu. No meu ramo, fazer sistemas diferentes conversarem entre si é o básico do básico: qualquer loja online integra estoque, pagamento e entrega em minutos. Foi por isso que travei quando entendi como funciona a transferência de um paciente no SUS.</p>
           </div>
         </section>
 
         <section className="proj-section">
           <div className="container container--narrow proj-prose">
             <h2 className="h2">Como a ideia nasceu</h2>
-            {/* TODO(matheus): ajustar os detalhes pessoais desta história como você quiser */}
-            <p>Tudo começou com uma conversa sobre transferência de paciente e uma pergunta que eu achava boba: &quot;mas os exames não vão junto?&quot;. A resposta era pior do que eu imaginava.</p>
-            <p>Fui atrás dos números. Li os relatórios, estudei a RNDS, conversei com quem vive isso na prática. E entendi o tamanho real do buraco: o Brasil já construiu a estrada, o que falta é obrigar o caminhão a passar por ela.</p>
-            <p>Quando percebi que dava pra atacar isso com uma lei objetiva, curta e tecnicamente honesta, virou projeto. Este site é a parte pública dele.</p>
+            <p>A situação é a seguinte. Um paciente em estado grave dá entrada na UPA, faz exames, recebe medicação, e tudo é registrado no sistema. Ele piora e é transferido para um hospital de maior complexidade. Os exames, porém, não vão junto. O médico que o recebe encontra uma pessoa passando mal e uma ficha em branco, e precisa começar tudo de novo. Perde-se um tempo que, em um infarto, é a diferença entre a recuperação e a sequela.</p>
+            <p>O que me incomodou foi o contraste. Se o comércio faz seus sistemas se comunicarem sem esforço, por que a saúde, onde há vidas em jogo, não faz o mesmo?</p>
+            <p>Fui atrás das respostas. Li os relatórios, estudei a RNDS e conversei com quem recebe pacientes todos os dias. Essa investigação se tornou meu trabalho de formação na Academia MBL, e quanto mais eu avançava, mais claro ficava: o Brasil já construiu a estrutura, só falta obrigar que ela seja usada onde mais importa. O problema tem solução, e ela cabe em uma lei curta e honesta. Foi assim que a proposta ganhou forma. Este site é a parte pública dela.</p>
           </div>
         </section>
 
@@ -57,7 +55,7 @@ export default function OProjeto() {
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 01</p>
                 <h3>Interoperar</h3>
-                <p>Os sistemas de saúde passam a trocar dados no padrão nacional, o HL7 FHIR. É o mesmo que o decreto federal adotou pra RNDS.</p>
+                <p>Os sistemas de saúde passam a trocar dados no padrão nacional, o HL7 FHIR. É o mesmo que o decreto federal adotou para a RNDS.</p>
               </article>
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 02</p>
@@ -113,8 +111,8 @@ export default function OProjeto() {
             <div className="timeline">
               <div className="tl-item">
                 <p className="tl-date">2025</p>
-                <h3>A pergunta</h3>
-                <p>Uma conversa sobre transferência de paciente vira incômodo permanente. Começo a anotar.</p>
+                <h3>O incômodo</h3>
+                <p>Entender como funciona a transferência de um paciente no SUS vira um incômodo que não passa. Começo a anotar.</p>
               </div>
               <div className="tl-item">
                 <p className="tl-date">2025 → 2026</p>
@@ -125,12 +123,12 @@ export default function OProjeto() {
                 {/* TODO(matheus): confirmar período da validação com a gestão do HC */}
                 <p className="tl-date">2026</p>
                 <h3>Validação no HC</h3>
-                <p>Conversas com a gestão do Hospital de Clínicas pra testar a proposta contra a realidade de quem recebe paciente todo dia.</p>
+                <p>Conversas com a gestão do Hospital de Clínicas para testar a proposta contra a realidade de quem recebe paciente todo dia.</p>
               </div>
               <div className="tl-item">
                 <p className="tl-date">Jul/2026</p>
                 <h3>O site e a campanha</h3>
-                <p>Esta página entra no ar pra explicar a proposta em linguagem de gente.</p>
+                <p>Esta página entra no ar para explicar a proposta em linguagem simples.</p>
               </div>
               <div className="tl-item tl-item--next">
                 <p className="tl-date">Próximo passo</p>
@@ -144,9 +142,9 @@ export default function OProjeto() {
         <section className="proj-section proj-cta">
           <div className="container container--narrow proj-prose">
             <h2 className="h2">Contato e apoio</h2>
-            <p>Se você é parlamentar, assessor, gestor de saúde ou jornalista e quer pautar isso, me chama. Respondo tudo.</p>
-            <p>Se você é qualquer outra pessoa: compartilhar este site já empurra a ideia pra frente.</p>
-            <a className="btn btn-primary" href="mailto:contato@prontuariosalvavidas.com.br?subject=Sobre%20o%20Prontu%C3%A1rio%20Salva-Vidas">contato@prontuariosalvavidas.com.br</a>
+            <p>Se você é parlamentar, assessor, gestor de saúde ou jornalista e quer levar isso adiante, entre em contato. Respondo pessoalmente.</p>
+            <p>Se você é qualquer outra pessoa, assinar o manifesto e compartilhar a página já ajuda a proposta a avançar.</p>
+            <a className="btn btn-primary" href="mailto:matheuseduardovuicik@gmail.com?subject=Sobre%20o%20Prontu%C3%A1rio%20Salva-Vidas">matheuseduardovuicik@gmail.com</a>
           </div>
         </section>
       </main>

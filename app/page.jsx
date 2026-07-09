@@ -2,6 +2,7 @@ import Link from "next/link";
 import Animations from "./animations";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
+import ManifestoForm from "./components/ManifestoForm";
 
 export default function Home() {
   return (
@@ -16,11 +17,12 @@ export default function Home() {
           <div className="container hero-inner">
             <div className="hero-copy">
               <p className="section-label">Campanha cívica · Saúde pública</p>
-              <h1 className="hero-title" id="hero-title">Teus exames existem. Só não chegam junto com você.</h1>
-              <p className="hero-sub">Eu topei com isso, não consegui desengolir e transformei numa proposta de lei. Sou o Matheus, de Curitiba. Te explico rapidinho.</p>
+              <h1 className="hero-title" id="hero-title">Existe uma forma de economizar R$ 12 bilhões por ano e salvar vidas sem gastar um real. Ela cabe em uma lei.</h1>
+              <p className="hero-sub">Todo ano o Brasil desperdiça bilhões repetindo exames que já haviam sido feitos, e perde minutos decisivos no atendimento de um infarto. A tecnologia que corrige isso já existe e não custa nada. Me chamo Matheus Vuicik, sou de Curitiba, e transformei esse problema em uma proposta de lei.</p>
               <div className="hero-cta">
                 <a href="#a-dor" className="btn btn-primary">Me dá 30 segundos</a>
               </div>
+              <p className="hero-source">Os R$ 12 bilhões são o desperdício anual do país com exames desnecessários, não apenas nas transferências. Fonte: EY/IESS, 2023.</p>
             </div>
 
             {/* TODO(matheus): substituir pelo vídeo de reels (o do "Netflix") */}
@@ -49,8 +51,8 @@ export default function Home() {
         <section className="dor" id="a-dor">
           <div className="container">
             <p className="section-label section-label--barro">A dor</p>
-            <h2 className="dor-title">Trocou de hospital? Teu histórico ficou pra trás.</h2>
-            <p className="dor-lead">Funciona assim: você dá entrada na UPA com dor no peito. Exame feito, medicação anotada, tudo no sistema. O quadro piora e a ambulância te leva pro hospital grande. Chegando lá, o médico consegue ver o quê? Nada. <strong>Você, passando mal, vira a única fonte de informação.</strong></p>
+            <h2 className="dor-title">Trocou de hospital? Seu histórico ficou para trás.</h2>
+            <p className="dor-lead">A situação é a seguinte: você dá entrada na UPA com dor no peito. Faz exames, recebe medicação, tudo fica registrado no sistema. O quadro piora e a ambulância leva você para um hospital de maior complexidade. Chegando lá, o médico consegue ver o que já foi feito? Nada. <strong>Você, passando mal, vira a única fonte de informação sobre si mesmo.</strong></p>
           </div>
 
           <div className="dor-stage" id="dor-scene">
@@ -119,8 +121,8 @@ export default function Home() {
 
               <div className="scene-captions">
                 <p className="scene-caption" data-step="1"><strong>Etapa 1 · Entrada na UPA.</strong> Exame feito, tudo registrado.</p>
-                <p className="scene-caption" data-step="2"><strong>Etapa 2 · Piorou.</strong> A ambulância te leva. Teus dados tentam ir junto.</p>
-                <p className="scene-caption" data-step="3"><strong>Etapa 3 · O muro.</strong> O sistema do hospital fecha a porta pro dado.</p>
+                <p className="scene-caption" data-step="2"><strong>Etapa 2 · Piorou.</strong> A ambulância leva você. Seus dados tentam ir junto.</p>
+                <p className="scene-caption" data-step="3"><strong>Etapa 3 · O muro.</strong> O sistema do hospital fecha a porta para o dado.</p>
                 <p className="scene-caption" data-step="4"><strong>Etapa 4 · Você chega sem passado.</strong> O médico começa do zero.</p>
               </div>
 
@@ -133,8 +135,8 @@ export default function Home() {
               <p className="section-label section-label--band">A analogia</p>
               <blockquote className="netflix-quote">
                 <p>
-                  <span className="netflix-line">Na Netflix, cê continua <em className="em-go">de onde parou</em>.</span>
-                  <span className="netflix-line">Na saúde, cada hospital te faz <em className="em-stop">voltar pro episódio 1</em>.</span>
+                  <span className="netflix-line">Na Netflix, você continua <em className="em-go">de onde parou</em>.</span>
+                  <span className="netflix-line">Na saúde, cada hospital obriga você a <em className="em-stop">voltar ao episódio 1</em>.</span>
                 </p>
               </blockquote>
 
@@ -179,7 +181,7 @@ export default function Home() {
                     <p className="stream-label">Sua saúde</p>
                     <p className="stream-title">Recomeçar do zero</p>
                     <div className="bar"><div className="bar-fill bar-fill--stop"></div></div>
-                    <p className="stream-sub">Histórico indisponível. Conta tudo de novo aí.</p>
+                    <p className="stream-sub">Histórico indisponível. Conte tudo de novo.</p>
                   </figcaption>
                 </figure>
               </div>
@@ -207,17 +209,17 @@ export default function Home() {
               <article className="waste-card">
                 <p className="waste-kicker">Dinheiro</p>
                 <p className="waste-number waste-number--sm">1 em <span className="count" data-target="5">5</span></p>
-                <p className="waste-text">exames de laboratório é repetido à toa. Só com exame desnecessário, o país queimou perto de R$ 12 bilhões.</p>
+                <p className="waste-text">exames de laboratório é repetido sem necessidade. Só com exame desnecessário, o país gasta cerca de R$ 12 bilhões por ano.</p>
                 <p className="waste-src">Fontes: Abramed · EY/IESS (2023)</p>
               </article>
               <article className="waste-card">
                 <p className="waste-kicker">Segurança</p>
                 <p className="waste-number">+<span className="count" data-target="50">50</span>%</p>
-                <p className="waste-text">dos erros de medicação acontecem na alta ou na transferência. Bem na hora em que teu histórico some.</p>
+                <p className="waste-text">dos erros de medicação acontecem na alta ou na transferência entre unidades. Justamente quando o seu histórico some.</p>
                 <p className="waste-src">Fonte: Rev. Latino-Am. de Enfermagem (2016), base OMS</p>
               </article>
             </div>
-            <p className="waste-note">Todo número deste site tem fonte, sempre pertinho do número. O resto da pesquisa está na página <Link href="/o-projeto">O projeto</Link>.</p>
+            <p className="waste-note">Todo número deste site tem fonte, sempre logo ao lado. O resto da pesquisa está na página <Link href="/o-projeto">O projeto</Link>.</p>
           </div>
         </section>
 
@@ -226,7 +228,7 @@ export default function Home() {
           <div className="container">
             <p className="section-label section-label--salvia">A virada</p>
             <h2 className="h2">Tem conserto. E custa menos que o problema.</h2>
-            <p className="section-lead">A proposta é uma lei que obriga os sistemas de saúde a conversarem entre si. Na prática: teu prontuário chega no hospital <strong>junto com você</strong>, sem depender da tua memória.</p>
+            <p className="section-lead">A proposta é uma lei que obriga os sistemas de saúde a conversarem entre si. Na prática, o seu prontuário chega ao hospital <strong>junto com você</strong>, sem depender da sua memória.</p>
 
             <div className="virada-stage" id="virada-stage" data-state="hoje">
               <svg viewBox="0 0 800 80" className="virada-ecg" aria-hidden="true">
@@ -258,7 +260,7 @@ export default function Home() {
                   <button type="button" className="toggle-btn is-active" data-state="hoje" aria-pressed="true">Hoje</button>
                   <button type="button" className="toggle-btn" data-state="depois" aria-pressed="false">Com a lei</button>
                 </div>
-                <p className="virada-caption" id="virada-caption" aria-live="polite">Hoje: teu dado bate na parede e volta.</p>
+                <p className="virada-caption" id="virada-caption" aria-live="polite">Hoje: o seu dado bate na parede e volta.</p>
               </div>
             </div>
           </div>
@@ -306,7 +308,7 @@ export default function Home() {
             <div className="funciona-sub">
               <div className="lego">
                 <h3 className="h3">Blocos que se encaixam</h3>
-                <p>O padrão <code className="mono-inline">FHIR</code> corta o prontuário em blocos de formato universal. Qualquer sistema moderno encaixa esses blocos. É o mesmo padrão que o decreto federal adotou pra RNDS.</p>
+                <p>O padrão <code className="mono-inline">FHIR</code> divide o prontuário em blocos de formato universal. Qualquer sistema moderno encaixa esses blocos. É o mesmo padrão que o decreto federal adotou para a RNDS.</p>
                 <div className="lego-row" id="lego-row">
                   <span className="lego-block"><strong>Paciente</strong><code>Patient</code></span>
                   <span className="lego-block"><strong>Exames</strong><code>DiagnosticReport</code></span>
@@ -360,7 +362,7 @@ export default function Home() {
             <details className="faq">
               <summary>Por que uma lei, e não um aplicativo?</summary>
               <div className="faq-body">
-                <p>Porque computador já tem: 92% dos estabelecimentos de saúde usam sistema eletrônico e 97,6% das UBS registram no e-SUS. O problema é que padrão sem obrigação vira recomendação, e recomendação não integra sistema de hospital. A lei dá prazo e consequência pro que a tecnologia já sabe fazer.</p>
+                <p>Porque computador já existe: 92% dos estabelecimentos de saúde usam sistema eletrônico e 97,6% das UBS registram no e-SUS. O problema é que padrão sem obrigação vira recomendação, e recomendação não integra sistema de hospital. A lei dá prazo e consequência para o que a tecnologia já sabe fazer.</p>
                 <p className="faq-src">Fontes: TIC Saúde 2024, CETIC · Ministério da Saúde</p>
               </div>
             </details>
@@ -372,13 +374,13 @@ export default function Home() {
           <div className="container">
             <p className="section-label">O dossiê · Segurança</p>
             <h2 className="h2">Mais seguro que papel numa prancheta de{" "}ambulância.</h2>
-            <p className="section-lead">Digitalizar esse fluxo assusta gente, e eu entendo. Só que o padrão atual é papel andando de ambulância e telefonema sem registro. A lei coloca o dado dentro da LGPD, com regra e com rastro.</p>
+            <p className="section-lead">Digitalizar esse fluxo assusta, e eu entendo. Mas o padrão atual é papel andando de ambulância e telefonema sem registro. A lei coloca o dado dentro da LGPD, com regra e com rastro.</p>
 
             <div className="lgpd-grid">
               <ul className="lgpd-list">
-                <li><strong>Minimização</strong>: só viaja o essencial pro teu atendimento.</li>
-                <li><strong>Finalidade assistencial</strong>: o dado serve pra te tratar e ponto.</li>
-                <li><strong>Controle de acesso</strong>: só quem está cuidando do teu caso.</li>
+                <li><strong>Minimização</strong>: só viaja o essencial para o seu atendimento.</li>
+                <li><strong>Finalidade assistencial</strong>: o dado serve para tratar você, e nada além disso.</li>
+                <li><strong>Controle de acesso</strong>: apenas quem está cuidando do seu caso.</li>
                 <li><strong>Trilha de auditoria</strong>: todo acesso fica registrado, com nome e hora.</li>
               </ul>
 
@@ -454,8 +456,8 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 9. CHAMADA FINAL */}
-        <section className="final" id="apoie">
+        {/* 9. ASSINE O MANIFESTO */}
+        <section className="final" id="assinar">
           <div className="final-ecg" aria-hidden="true">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="xMidYMid slice" className="ecg-svg ecg-svg--final">
               <path id="final-ecg-path" d="M0,70 H500 q12,-14 24,0 H660 l10,8 14,-56 16,74 12,-26 H900 q16,-18 32,0 H1440"
@@ -464,16 +466,19 @@ export default function Home() {
             </svg>
           </div>
           <div className="container final-inner">
-            <h2 className="final-title">Apoie o Prontuário Salva-Vidas.</h2>
-            <p className="section-lead final-lead">O caminho técnico está pronto. Falta virar obrigação, e obrigação nasce de pressão pública. Se isso fez sentido pra você, me ajuda a colocar na pauta.</p>
-            <a className="btn btn-primary" href="mailto:contato@prontuariosalvavidas.com.br?subject=Quero%20apoiar%20o%20Prontu%C3%A1rio%20Salva-Vidas">Quero apoiar</a>
+            <p className="section-label section-label--salvia">O manifesto</p>
+            <h2 className="final-title">Assine o manifesto.</h2>
+            <p className="section-lead final-lead">O caminho técnico está pronto. O que falta é virar obrigação, e obrigação nasce de pressão pública. Assine abaixo para somar seu nome a essa proposta. Quanto mais gente, mais difícil de ignorar.</p>
+
+            <ManifestoForm />
+
             <div className="final-links">
               {/* TODO(matheus): linkar PDF do dossiê e texto do PL quando prontos */}
               <a href="#" className="final-link">Baixar o dossiê (PDF)</a>
               <a href="#" className="final-link">Texto do Projeto de Lei <span className="final-link-soon">em redação</span></a>
               <Link href="/o-projeto" className="final-link">A história por trás do projeto</Link>
             </div>
-            <p className="final-contact">contato@prontuariosalvavidas.com.br</p>
+            <p className="final-contact"><a href="mailto:matheuseduardovuicik@gmail.com">matheuseduardovuicik@gmail.com</a></p>
           </div>
         </section>
       </main>
