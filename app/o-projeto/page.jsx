@@ -2,9 +2,17 @@ import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 
 export const metadata = {
-  title: "O projeto | Prontuário Salva-Vidas",
+  title: "O projeto",
   description:
     "A história por trás do Prontuário Salva-Vidas: como funciona a proposta, a pesquisa com fontes e quem está por trás dela.",
+  alternates: { canonical: "/o-projeto" },
+  openGraph: {
+    title: "O projeto | Prontuário Salva-Vidas",
+    description:
+      "Como funciona a proposta, a pesquisa com fontes e quem está por trás dela.",
+    url: "/o-projeto",
+    type: "article",
+  },
 };
 
 export default function OProjeto() {
