@@ -226,11 +226,11 @@ a { color: var(--petroleo); }
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 560;
-  font-size: clamp(36px, 5.4vw, 68px);
-  line-height: 1.08;
-  letter-spacing: -0.015em;
+  font-size: clamp(27px, 3.4vw, 44px);
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   margin: 0 0 24px;
-  max-width: 17ch;
+  max-width: 20ch;
 }
 
 .hero-sub {
