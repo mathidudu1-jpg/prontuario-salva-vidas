@@ -4,7 +4,7 @@ import SiteFooter from "../components/SiteFooter";
 export const metadata = {
   title: "O projeto | Prontuário Salva-Vidas",
   description:
-    "Quem está por trás do Prontuário Salva-Vidas, como a ideia nasceu, a proposta em detalhe e a pesquisa com fontes.",
+    "A história por trás do Prontuário Salva-Vidas: como funciona a proposta, a pesquisa com fontes e quem está por trás dela.",
 };
 
 export default function OProjeto() {
@@ -13,12 +13,18 @@ export default function OProjeto() {
       <SiteHeader active="projeto" />
 
       <main>
-        {/* quem sou eu */}
+        {/* abertura: O Projeto */}
         <section className="proj-hero">
           <div className="container container--narrow">
-            <p className="section-label">O projeto · Quem faz</p>
-            <h1 className="proj-title">Sou o Matheus Vuicik, e esta é a ideia que não me saiu da cabeça.</h1>
-            <p className="section-lead">Tenho 24 anos, sou empreendedor em Curitiba e passei os últimos meses estudando uma pergunta: por que o histórico de saúde de um paciente não anda junto com ele?</p>
+            <p className="section-label">Campanha cívica · Saúde pública</p>
+            <h1 className="proj-title">O Projeto</h1>
+
+            <div className="proj-prose proj-narrative">
+              <p>São três da manhã. Um homem chega à emergência com dor no peito, faz exames, um eletrocardiograma, recebe medicação. Piora, e precisa ser transferido às pressas para um hospital de maior complexidade. A ambulância corre. Com ele vai uma guia de transferência preenchida à mão, um resumo apressado do que aconteceu. Os exames, as imagens e os resultados completos ficam para trás, no sistema da unidade de origem.</p>
+              <p>Do outro lado, o médico recebe um paciente grave e um papel manuscrito. Não tem acesso ao eletro que já foi feito, ao resultado do sangue, à dose exata que já foi aplicada. Na dúvida, refaz. Repete exame, repete espera, enquanto o relógio corre contra a vida daquele homem.</p>
+              <p>Isso se repete todos os dias, no Paraná inteiro. Não por falta de tecnologia, nem de dinheiro. O prontuário eletrônico com toda a informação existe, ele só não atravessa de um hospital para o outro.</p>
+              <p className="proj-punch">Este projeto faz o prontuário viajar junto com o paciente.</p>
+            </div>
 
             <div className="proj-ecg" aria-hidden="true">
               <svg viewBox="0 0 800 70" preserveAspectRatio="xMidYMid slice">
@@ -31,18 +37,10 @@ export default function OProjeto() {
 
         <section className="proj-section">
           <div className="container container--narrow proj-prose">
-            <h2 className="h2">Quem sou eu</h2>
-            {/* TODO(matheus): foto sua aqui, se quiser (funciona sem) */}
-            <p>Não sou médico nem político. Sou um empreendedor de 24 anos, de Curitiba, e trabalho com tecnologia. É desse lugar que essa ideia surgiu. No meu ramo, fazer sistemas diferentes conversarem entre si é o básico do básico: qualquer loja online integra estoque, pagamento e entrega em minutos. Foi por isso que travei quando entendi como funciona a transferência de um paciente no SUS.</p>
-          </div>
-        </section>
-
-        <section className="proj-section">
-          <div className="container container--narrow proj-prose">
-            <h2 className="h2">Como a ideia nasceu</h2>
-            <p>A situação é a seguinte. Um paciente em estado grave dá entrada na UPA, faz exames, recebe medicação, e tudo é registrado no sistema. Ele piora e é transferido para um hospital de maior complexidade. Os exames, porém, não vão junto. O médico que o recebe encontra uma pessoa passando mal e uma ficha em branco, e precisa começar tudo de novo. Perde-se um tempo que, em um infarto, é a diferença entre a recuperação e a sequela.</p>
-            <p>O que me incomodou foi o contraste. Se o comércio faz seus sistemas se comunicarem sem esforço, por que a saúde, onde há vidas em jogo, não faz o mesmo?</p>
-            <p>Fui atrás das respostas. Li os relatórios, estudei a RNDS e conversei com quem recebe pacientes todos os dias. Essa investigação se tornou meu trabalho de formação na Academia MBL, e quanto mais eu avançava, mais claro ficava: o Brasil já construiu a estrutura, só falta obrigar que ela seja usada onde mais importa. O problema tem solução, e ela cabe em uma lei curta e honesta. Foi assim que a proposta ganhou forma. Este site é a parte pública dela.</p>
+            <h2 className="h2">Como funciona</h2>
+            <p>Hoje, quando um paciente é transferido, o hospital de destino recebe um resumo em papel e um telefonema. O registro completo, com exames, imagens e medicações, continua trancado no sistema de onde ele saiu. Cada hospital tem o seu próprio sistema, e esses sistemas não conversam entre si.</p>
+            <p>A proposta corrige isso com uma regra simples. No momento em que a transferência é aprovada, o sistema de origem gera automaticamente um resumo clínico completo, com tudo o que foi feito, e o envia para o hospital de destino antes mesmo de a ambulância chegar. Quando o paciente entra pela porta, o médico já viu o histórico dele na tela.</p>
+            <p>Para isso funcionar, os sistemas precisam falar a mesma língua. Essa língua já existe e é um padrão nacional adotado pelo Ministério da Saúde. O Brasil já construiu essa estrutura; o que falta é obrigá-la a ser usada no momento mais crítico, o da transferência de urgência. É exatamente isso que a lei faz.</p>
           </div>
         </section>
 
@@ -101,6 +99,14 @@ export default function OProjeto() {
 
             {/* TODO(matheus): linkar o PDF do dossiê quando publicar */}
             <p className="waste-note">O dossiê completo, com metodologia e todas as referências, sai em PDF nesta página.</p>
+          </div>
+        </section>
+
+        <section className="proj-section">
+          <div className="container container--narrow proj-prose">
+            <h2 className="h2">Quem está por trás</h2>
+            {/* TODO(matheus): foto sua aqui, se quiser (funciona sem) */}
+            <p>Me chamo Matheus Vuicik, tenho 24 anos e sou empreendedor em Curitiba. Cheguei a esse tema pela tecnologia. Enquanto desenvolvia o site sobre a construção do HCzinho, o novo hospital pediátrico do Paraná, acabei em contato com pessoas que trabalham na gerência do Hospital de Clínicas. Num desses contatos, alguém comentou como um paciente transferido de uma unidade para outra costuma chegar sem o histórico clínico, obrigando a equipe a recomeçar exames que já tinham sido feitos. Aquilo me chamou a atenção. Fui atrás para entender o tamanho do problema e enxerguei uma melhoria possível, concreta e barata. Estudei a fundo, aprofundei durante minha formação na Academia MBL, e o que era uma curiosidade virou esta proposta de lei.</p>
           </div>
         </section>
 
