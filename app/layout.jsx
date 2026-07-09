@@ -22,12 +22,12 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Prontuário Salva-Vidas | Teus exames existem. Só não chegam junto com você.",
+  title: "Prontuário Salva-Vidas | Uma lei para seus dados de saúde chegarem com você",
   description:
-    "Uma proposta de lei pra fazer teus dados de saúde viajarem contigo, da UPA ao hospital. Feita por um cidadão de Curitiba, com dados e fontes.",
+    "Todo ano o Brasil desperdiça R$ 12 bilhões repetindo exames. A tecnologia que corrige isso já existe. Uma proposta de lei de Matheus Vuicik, de Curitiba, com dados e fontes.",
   openGraph: {
     title: "Prontuário Salva-Vidas",
-    description: "Teus exames existem. Só não chegam junto com você. Entenda a proposta.",
+    description: "Seus exames existem, mas não chegam junto com você. Entenda a proposta.",
   },
 };
 
