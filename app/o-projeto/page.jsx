@@ -122,34 +122,28 @@ export default function OProjeto() {
 
         <section className="proj-section">
           <div className="container container--narrow">
-            <h2 className="h2">A jornada até aqui</h2>
+            <h2 className="h2">Como isso começou</h2>
 
             <div className="timeline">
               <div className="tl-item">
-                <p className="tl-date">2025</p>
-                <h3>O incômodo</h3>
-                <p>Entender como funciona a transferência de um paciente no SUS vira um incômodo que não passa. Começo a anotar.</p>
+                <h3>A tarefa</h3>
+                <p>Durante o curso de formação política na Academia MBL, uma atividade pedia identificar um problema real e propor uma solução. Foi o ponto de partida.</p>
               </div>
               <div className="tl-item">
-                <p className="tl-date">2025 → 2026</p>
+                <h3>O problema</h3>
+                <p>Trabalhando com tecnologia, e tendo feito o site sobre a construção do HCzinho, eu já tinha contato com o universo da saúde. Ao pesquisar, esbarrei numa falha concreta: o histórico do paciente não acompanha ele quando é transferido de um hospital para outro.</p>
+              </div>
+              <div className="tl-item">
                 <h3>A pesquisa</h3>
-                <p>Levantamento dos dados com fonte, estudo do marco legal da RNDS e do mapa de maturidade digital dos hospitais.</p>
+                <p>Fui a fundo nos dados, no marco legal da RNDS, no sistema Care e no mapa de maturidade digital dos hospitais, até a ideia virar uma proposta de lei estruturada.</p>
               </div>
               <div className="tl-item">
-                {/* TODO(matheus): confirmar período da validação com a gestão do HC */}
-                <p className="tl-date">2026</p>
-                <h3>Validação no HC</h3>
-                <p>Conversas com a gestão do Hospital de Clínicas para testar a proposta contra a realidade de quem recebe paciente todo dia.</p>
-              </div>
-              <div className="tl-item">
-                <p className="tl-date">Jul/2026</p>
-                <h3>O site e a campanha</h3>
-                <p>Esta página entra no ar para explicar a proposta em linguagem simples.</p>
+                <h3>O site</h3>
+                <p>Esta página, agora no ar, reúne tudo em linguagem simples: o problema, os dados e o texto da proposta.</p>
               </div>
               <div className="tl-item tl-item--next">
-                <p className="tl-date">Próximo passo</p>
-                <h3>O protocolo</h3>
-                <p>Texto final do PL protocolado na Assembleia Legislativa do Paraná e busca de deputados estaduais dispostos a pautar.</p>
+                <h3>O que vem agora</h3>
+                <p>Reunir apoio popular no manifesto, buscar quem ajude a lapidar o texto para protocolo e encontrar um parlamentar disposto a levar a proposta adiante.</p>
               </div>
             </div>
           </div>
