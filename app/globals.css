@@ -165,101 +165,64 @@ a { color: var(--petroleo); }
 }
 .nav-cta:hover { background: #B25E3F; color: #fff; }
 
-/* --- botão hambúrguer (mobile) --- */
-.nav-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  gap: 5px;
-  width: 46px;
-  height: 46px;
-  padding: 0;
-  border: 1.5px solid var(--linha);
-  background: var(--superficie);
-  border-radius: 12px;
-  cursor: pointer;
-  flex-shrink: 0;
-}
-.nav-toggle span {
-  display: block;
-  width: 22px;
-  height: 2.5px;
-  margin: 0 auto;
-  background: var(--tinta);
-  border-radius: 2px;
-  transition: transform 0.22s ease, opacity 0.2s ease;
-}
-.nav-toggle.is-open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
-.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
-.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+/* --- ilha de navegação inferior (mobile, estilo WhatsApp/Instagram) --- */
+.bottom-nav { display: none; }
 
-/* --- menu mobile (drawer lateral) --- */
-.mobile-menu-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 55;
-  background: rgba(36, 31, 25, 0.4);
-  animation: pv-fade 0.2s ease;
-}
-.mobile-menu {
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 65;
-  width: min(340px, 84vw);
-  height: 100%;
-  height: 100dvh;
-  background: var(--papel);
-  box-shadow: -10px 0 34px rgba(36, 31, 25, 0.16);
-  padding: 92px 26px 32px;
+.bn-tab {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  transform: translateX(100%);
-  visibility: hidden;
-  transition: transform 0.26s ease, visibility 0.26s ease;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-}
-.mobile-menu.is-open { transform: translateX(0); visibility: visible; }
-
-.mobile-link {
-  font-family: var(--font-display);
-  font-size: 23px;
-  font-weight: 560;
-  text-decoration: none;
-  color: var(--tinta);
-  padding: 15px 6px;
-  border-bottom: 1px solid var(--linha);
-}
-.mobile-link:hover { color: var(--clay); }
-.mobile-link[aria-current="page"] { color: var(--clay); }
-
-.mobile-cta {
-  margin-top: 20px;
-  border: none;
-  border-bottom: none;
-  background: var(--clay);
-  color: #fff;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  min-width: 62px;
+  padding: 8px 6px 7px;
   border-radius: 999px;
-  padding: 16px;
-  font-family: var(--font-body);
-  font-weight: 700;
-  font-size: 18px;
-  box-shadow: 0 3px 14px rgba(196, 107, 74, 0.3);
+  text-decoration: none;
+  color: rgba(250, 246, 238, 0.66);
+  transition: color 0.18s ease, background-color 0.18s ease;
 }
-.mobile-cta:hover { color: #fff; }
+.bn-icon { width: 24px; height: 24px; display: block; flex-shrink: 0; }
+.bn-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+.bn-tab:hover { color: var(--papel); }
+/* aba da página atual: pílula clay preenchida */
+.bn-tab.is-active {
+  color: #fff;
+  background: var(--clay);
+}
+/* a CTA "Assinar" se destaca em clay claro */
+.bn-tab--cta { color: #E08A6A; }
+.bn-tab--cta:hover { color: #EA9A7A; }
 
-@keyframes pv-fade { from { opacity: 0; } to { opacity: 1; } }
-
-/* troca desktop-nav ↔ hambúrguer */
 @media (max-width: 860px) {
+  /* no mobile a nav de texto some; a ilha assume */
   .site-nav { display: none; }
-  .nav-toggle { display: flex; }
+
+  .bottom-nav {
+    display: flex;
+    position: fixed;
+    left: 50%;
+    bottom: calc(14px + env(safe-area-inset-bottom, 0px));
+    transform: translateX(-50%);
+    z-index: 60;
+    max-width: calc(100vw - 24px);
+    padding: 7px;
+    gap: 2px;
+    background: rgba(36, 31, 25, 0.94);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border-radius: 999px;
+    box-shadow: 0 10px 34px rgba(36, 31, 25, 0.3), 0 0 0 1px rgba(250, 246, 238, 0.06);
+  }
+  /* espaço para o conteúdo (rodapé) não ficar preso atrás da ilha */
+  body { padding-bottom: 96px; }
 }
 
-/* logo não empurra o hambúrguer em telas estreitas */
+/* logo compacto em telas estreitas */
 @media (max-width: 480px) {
   .logo-tick { width: 34px; }
   .logo-text { font-size: 16px; }
@@ -267,6 +230,7 @@ a { color: var(--petroleo); }
 @media (max-width: 360px) {
   .logo-tick { width: 30px; }
   .logo-text { font-size: 15px; }
+  .bn-tab { min-width: 56px; padding-left: 4px; padding-right: 4px; }
 }
 
 /* âncoras não ficam escondidas sob o header fixo */
@@ -274,9 +238,7 @@ a { color: var(--petroleo); }
 section[id] { scroll-margin-top: 80px; }
 
 @media (prefers-reduced-motion: reduce) {
-  .mobile-menu { transition: none; }
-  .mobile-menu-backdrop { animation: none; }
-  .nav-toggle span { transition: none; }
+  .bn-tab { transition: none; }
 }
 
 /* ---------- botões ---------- */
