@@ -96,6 +96,8 @@ export default function ProjetoDeLei() {
 
             <article className="lei-art">
               <p><span className="lei-art-num">Art. 5º</span> A padronização de que trata esta Lei aplica-se aos fornecedores de sistemas e de equipamentos de saúde, que deverão adotar campos, formatos e terminologias uniformes, conforme o padrão nacional, como condição para a contratação e para a participação em licitações com o poder público estadual.</p>
+              <p className="lei-par"><span className="lei-par-label">§ 1º</span> O registro do diagnóstico será feito mediante seleção estruturada na Classificação Internacional de Doenças (CID), e o dos exames e das medicações, nas respectivas tabelas oficiais, vedado o registro exclusivamente em texto livre para esses campos.</p>
+              <p className="lei-par"><span className="lei-par-label">§ 2º</span> Os sistemas oferecerão o preenchimento assistido desses campos no momento do atendimento, de modo a padronizar a informação em sua origem.</p>
             </article>
 
             <article className="lei-art">

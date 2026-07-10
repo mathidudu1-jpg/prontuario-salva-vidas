@@ -386,6 +386,7 @@ export default function Home() {
                   <span className="dic-arrow" aria-hidden="true">→</span>
                   <span className="dic-code">I21 · CID-10</span>
                 </div>
+                <p className="dic-rule">Agora isso vira regra da lei: o diagnóstico passa a ser registrado pela seleção da lista oficial da CID no momento do atendimento, e não em texto livre. Ao escolher <strong>infarto</strong>, o sistema grava sozinho o código único correspondente — e o dado nasce padronizado, legível por qualquer sistema.</p>
               </div>
             </div>
           </div>

@@ -62,7 +62,7 @@ export default function OProjeto() {
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 01</p>
                 <h3>Interoperar</h3>
-                <p>Os sistemas de saúde passam a trocar dados no padrão nacional, o HL7 FHIR, o mesmo do decreto federal da RNDS. A padronização vale também para quem fabrica o software: campos e códigos únicos viram condição de contrato e de licitação.</p>
+                <p>Os sistemas de saúde passam a trocar dados no padrão nacional, o HL7 FHIR, o mesmo do decreto federal da RNDS. A padronização vale também para quem fabrica o software: campos e códigos únicos viram condição de contrato e de licitação. Inclui registrar o diagnóstico pela CID e os exames e medicamentos pelas tabelas oficiais, com preenchimento assistido no atendimento.</p>
               </article>
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 02</p>
@@ -160,7 +160,7 @@ export default function OProjeto() {
             <h2 className="h2">Contato e apoio</h2>
             <p>Se você é parlamentar, assessor, gestor de saúde ou jornalista e quer levar isso adiante, entre em contato. Respondo pessoalmente.</p>
             <p>Se você é qualquer outra pessoa, assinar o manifesto e compartilhar a página já ajuda a proposta a avançar.</p>
-            <a className="btn btn-primary" href="mailto:matheuseduardovuicik@gmail.com?subject=Sobre%20o%20Prontu%C3%A1rio%20Salva-Vidas">matheuseduardovuicik@gmail.com</a>
+            <a className="btn btn-primary" href="mailto:matheuseduardovuicik@gmail.com?subject=Sobre%20o%20Prontu%C3%A1rio%20Salva-Vidas">Entre em contato</a>
           </div>
         </section>
       </main>

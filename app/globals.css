@@ -1124,6 +1124,16 @@ a { color: var(--petroleo); }
   border-radius: 10px;
   padding: 10px 18px;
 }
+.dic-rule {
+  margin: 22px 0 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--petroleo);
+  font-size: 17px;
+  line-height: 1.6;
+  color: rgba(36, 31, 25, 0.82);
+  max-width: 60ch;
+}
+.dic-rule strong { color: var(--petroleo); }
 
 /* ==========================================================================
    6. RNDS — acordeão sóbrio
