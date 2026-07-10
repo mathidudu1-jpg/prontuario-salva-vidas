@@ -303,6 +303,25 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ============ 4B. CURITIBA JÁ PROVOU QUE FUNCIONA ============ */}
+        <section className="curitiba">
+          <div className="container curitiba-inner">
+            <div className="curitiba-copy">
+              <p className="section-label section-label--band">Destaque municipal · Curitiba</p>
+              <h2 className="h2 h2--light">Curitiba já provou que funciona.</h2>
+              <p>Curitiba conectou a própria rede há mais de vinte anos. Desde 2000, o e-Saúde interliga as unidades de saúde e as UPAs do município, e o prontuário de quem é atendido numa unidade pode ser visto na outra. Dentro da rede municipal, a informação flui.</p>
+              <p>O problema começa na fronteira: quando o paciente precisa de um hospital, a comunicação volta ao papel, com relatórios médicos impressos indo e voltando.</p>
+              <p className="curitiba-punch">A cidade que provou que integrar funciona merece que a integração atravesse a porta do hospital.</p>
+              <p className="waste-src waste-src--light">Fontes: Saúde em Debate, estudo sobre as UPAs do Paraná · Prefeitura de Curitiba (estimativa)</p>
+            </div>
+            <div className="curitiba-stat" data-reveal>
+              <p className="curitiba-num">≈100 mil</p>
+              <p className="curitiba-caption">atendimentos por mês nas UPAs de Curitiba</p>
+              <p className="curitiba-since">e-Saúde interligando a rede municipal desde 2000</p>
+            </div>
+          </div>
+        </section>
+
         {/* ============ BLOCO DOSSIÊ ============ */}
 
         {/* 5. COMO FUNCIONA */}
@@ -372,6 +391,63 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 5B. O QUE VIAJA COM VOCÊ */}
+        <section className="viaja dossie">
+          <div className="container">
+            <p className="section-label">O dossiê · O que viaja com você</p>
+            <h2 className="h2">Não é um resumo de meia página. É o registro inteiro.</h2>
+            <p className="section-lead">Hoje, isso tudo fica para trás. Com a lei, viaja junto, completo: o registro integral do episódio.</p>
+
+            <div className="viaja-grid" data-reveal-group>
+              <article className="viaja-card">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M12,4 h8 M14,4 v8 L8,23 a2.5,2.5 0 0 0 2.2,4 h11.6 a2.5,2.5 0 0 0 2.2,-4 L18,12 V4 M11,19 h10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <h3>Exames e resultados</h3>
+              </article>
+              <article className="viaja-card">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="5" y="6" width="22" height="20" rx="2.5" fill="none" stroke="currentColor" strokeWidth="2" /><path d="M11,11 v10 M16,10 v12 M21,11 v10" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+                <h3>Imagens: raio-X, tomografia</h3>
+              </article>
+              <article className="viaja-card">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6,15 l7,-7 a4.2,4.2 0 0 1 6,6 l-7,7 a4.2,4.2 0 0 1 -6,-6 Z M9.5,11.5 l6,6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /><circle cx="23" cy="23" r="6" fill="none" stroke="currentColor" strokeWidth="2" /><path d="M23,20.5 v2.5 h2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+                <h3>Medicações com horários</h3>
+              </article>
+              <article className="viaja-card">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16,5 L28,26 H4 Z" fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" /><path d="M16,13 v6 M16,22.5 v0.6" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /></svg>
+                <h3>Alergias</h3>
+              </article>
+              <article className="viaja-card">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5,26 h22 M5,26 V6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /><path d="M8,21 l5,-5 4,3 6,-8" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                <h3>Evolução clínica</h3>
+              </article>
+              <article className="viaja-card">
+                <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="6" width="18" height="21" rx="2.5" fill="none" stroke="currentColor" strokeWidth="2" /><rect x="12" y="4" width="8" height="4" rx="1.5" fill="none" stroke="currentColor" strokeWidth="2" /><path d="M12,14 h8 M12,18 h8 M12,22 h5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+                <h3>Atendimentos do episódio</h3>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        {/* 5C. A REGRA VALE PARA QUEM FABRICA O SOFTWARE */}
+        <section className="regra dossie">
+          <div className="container">
+            <p className="section-label">O dossiê · A raiz do problema</p>
+            <h2 className="h2">A regra vale para quem fabrica o software.</h2>
+
+            <div className="regra-grid">
+              <div className="regra-copy proj-prose">
+                <p>Não adianta obrigar sistemas a conversar se cada fabricante inventa os próprios campos. A lei alcança a origem do problema: todo software de prontuário vendido ao poder público precisa usar os mesmos campos, com os mesmos nomes e os mesmos códigos, no padrão nacional.</p>
+                <p>Sem gasto novo: a exigência entra nos contratos e nas licitações que já acontecem.</p>
+                <p className="regra-punch">Quem não segue a gramática, não vende para o SUS.</p>
+              </div>
+              <div className="regra-chips" data-reveal-group>
+                <div className="regra-chip"><span>pressão arterial</span><span className="regra-arrow" aria-hidden="true">→</span><code>campo estruturado</code></div>
+                <div className="regra-chip"><span>diagnóstico</span><span className="regra-arrow" aria-hidden="true">→</span><code>código único</code></div>
+                <div className="regra-chip"><span>exame</span><span className="regra-arrow" aria-hidden="true">→</span><code>dicionário universal</code></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 6. "MAS ISSO JÁ NÃO EXISTE?" */}
         <section className="rnds dossie">
           <div className="container container--narrow">
@@ -413,12 +489,33 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 6B. DOIS NÍVEIS, UMA REGRA DE OURO */}
+        <section className="niveis dossie">
+          <div className="container">
+            <p className="section-label">O dossiê · Como o dado circula</p>
+            <h2 className="h2">Dois níveis, uma regra de ouro.</h2>
+
+            <div className="nivel-grid" data-reveal-group>
+              <article className="nivel-card nivel-card--urgencia">
+                <p className="bloco-num">Nível 01 · Na urgência</p>
+                <p>Aprovada a transferência, o registro integral do episódio é enviado automaticamente ao hospital de destino, antes de a ambulância chegar.</p>
+              </article>
+              <article className="nivel-card nivel-card--dia">
+                <p className="bloco-num">Nível 02 · No dia a dia</p>
+                <p>O histórico completo do paciente fica acessível ao profissional que assume o cuidado, mediante vínculo de atendimento e com registro de cada acesso: quem viu, o quê, quando.</p>
+              </article>
+            </div>
+
+            <p className="nivel-fecho" data-reveal>Disponível não é o mesmo que espalhado. Nada fica trancado, nada viaja sem necessidade e sem rastro.</p>
+          </div>
+        </section>
+
         {/* 7. SEGURANÇA E LGPD */}
         <section className="lgpd dossie">
           <div className="container">
             <p className="section-label">O dossiê · Segurança</p>
             <h2 className="h2">Mais seguro que papel numa prancheta de{" "}ambulância.</h2>
-            <p className="section-lead">Digitalizar esse fluxo assusta, e eu entendo. Mas o padrão atual é papel andando de ambulância e telefonema sem registro. A lei coloca o dado dentro da LGPD, com regra e com rastro.</p>
+            <p className="section-lead">São duas camadas. Na urgência, os dados do episódio viajam automaticamente, porque a continuidade do cuidado exige. Fora dela, o histórico só se abre com vínculo de atendimento e trilha de auditoria. Nas duas, isso protege muito mais que o padrão atual: papel na prancheta da ambulância e telefonema sem registro.</p>
 
             <div className="lgpd-grid">
               <ul className="lgpd-list">

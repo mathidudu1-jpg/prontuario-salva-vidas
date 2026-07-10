@@ -433,6 +433,22 @@ export default function Animations() {
         .from(".audit-log li", { x: 16, autoAlpha: 0, stagger: 0.13, duration: 0.45, ease: "power2.out" }, "-=0.1");
     }
 
+    /* ---------- revelações genéricas dos blocos novos ---------- */
+    function genericReveals() {
+      gsap.utils.toArray("[data-reveal]").forEach((el) => {
+        gsap.from(el, {
+          y: 26, autoAlpha: 0, duration: 0.7, ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 85%", once: true },
+        });
+      });
+      gsap.utils.toArray("[data-reveal-group]").forEach((grp) => {
+        gsap.from(grp.children, {
+          y: 26, autoAlpha: 0, duration: 0.6, stagger: 0.1, ease: "power3.out",
+          scrollTrigger: { trigger: grp, start: "top 84%", once: true },
+        });
+      });
+    }
+
     /* ---------- 8. rosto humano: parallax suave ---------- */
     function rostoParallax() {
       gsap.fromTo(".rosto-inner", { yPercent: -7 }, {
@@ -514,6 +530,7 @@ export default function Animations() {
           legoReveal();
           dicionarioReveal();
           lgpdReveal();
+          genericReveals();
           rostoParallax();
           finalScene();
           ScrollTrigger.refresh();

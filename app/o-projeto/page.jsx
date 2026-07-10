@@ -61,12 +61,12 @@ export default function OProjeto() {
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 01</p>
                 <h3>Interoperar</h3>
-                <p>Os sistemas de saúde passam a trocar dados no padrão nacional, o HL7 FHIR. É o mesmo que o decreto federal adotou para a RNDS.</p>
+                <p>Os sistemas de saúde passam a trocar dados no padrão nacional, o HL7 FHIR, o mesmo do decreto federal da RNDS. A padronização vale também para quem fabrica o software: campos e códigos únicos viram condição de contrato e de licitação.</p>
               </article>
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 02</p>
-                <h3>Resumo de transferência</h3>
-                <p>Toda transferência de urgência gera um resumo clínico que chega ao destino junto com o paciente.</p>
+                <h3>Registro integral de transferência</h3>
+                <p>Toda transferência de urgência envia automaticamente o registro completo do episódio, com exames, imagens, medicações e horários, ao hospital de destino.</p>
               </article>
               <article className="bloco-card">
                 <p className="bloco-num">Bloco 03</p>
@@ -79,6 +79,8 @@ export default function OProjeto() {
                 <p>A regulação estadual ganha visão em tempo real das transferências e dos gargalos da rede.</p>
               </article>
             </div>
+
+            <p className="proj-horizonte">No horizonte: a mesma estrutura prepara o caminho para o prontuário único do paciente, um histórico que o acompanha a vida inteira, acessível a quem cuida dele, com cada acesso registrado.</p>
 
             {/* TODO(matheus): linkar o texto integral do PL quando finalizar */}
             <p className="waste-note">O texto integral do Projeto de Lei está em redação final e vai ser publicado nesta página.</p>
