@@ -26,15 +26,15 @@ export default function ProjetoDeLei() {
         {/* cabeçalho */}
         <section className="lei-hero">
           <div className="container container--narrow">
-            <p className="section-label">Assembleia Legislativa do Estado do Paraná</p>
+            <p className="section-label">Proposta de lei estadual</p>
             <h1 className="lei-title">Prontuário Salva-Vidas</h1>
             <p className="lei-subtitle">
               Política Estadual de Interoperabilidade e Continuidade da Informação em
               Saúde — Projeto de Lei
             </p>
             <p className="lei-context">
-              Este é o texto da proposta apresentada como projeto de lei estadual.
-              Abaixo, cada artigo e a justificativa.
+              Esta é a proposta de lei, aberta para leitura. Abaixo, o texto na íntegra
+              e a justificativa de cada ponto.
             </p>
             <a className="btn btn-primary" href={PDF} download>
               Baixar o PDF oficial
@@ -53,7 +53,7 @@ export default function ProjetoDeLei() {
         <section className="lei-body">
           <div className="container container--narrow">
 
-            <p className="lei-numero">Projeto de Lei nº _______ / 2026</p>
+            <p className="lei-numero">Projeto de Lei · 2026</p>
 
             <div className="lei-ementa">
               <p>
@@ -64,11 +64,6 @@ export default function ProjetoDeLei() {
                 estabelecimentos de saúde.
               </p>
             </div>
-
-            <p className="lei-enact">
-              A Assembleia Legislativa do Estado do Paraná decretou e eu, Governador do
-              Estado, sanciono a seguinte lei:
-            </p>
 
             <article className="lei-art">
               <p><span className="lei-art-num">Art. 1º</span> Fica instituída a Política Estadual de Interoperabilidade e Continuidade da Informação em Saúde, denominada “Prontuário Salva-Vidas”, com o objetivo de assegurar que a informação clínica do paciente acompanhe o seu cuidado ao longo da rede pública de saúde do Estado do Paraná, especialmente nos momentos de transferência entre estabelecimentos.</p>
@@ -124,11 +119,6 @@ export default function ProjetoDeLei() {
             <article className="lei-art">
               <p><span className="lei-art-num">Art. 10.</span> Esta Lei entra em vigor na data de sua publicação.</p>
             </article>
-
-            <div className="lei-assinatura">
-              <p>Sala das Sessões, ____ de __________ de 2026.</p>
-              <p className="lei-assinatura-cargo">Deputado(a) Estadual</p>
-            </div>
 
             {/* justificativa */}
             <div className="lei-justificativa">
