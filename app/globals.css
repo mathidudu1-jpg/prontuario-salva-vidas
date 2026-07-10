@@ -43,6 +43,8 @@ body {
   font-size: 19px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  /* o drawer off-canvas (translateX 100%) não pode gerar scroll horizontal */
+  overflow-x: hidden;
 }
 
 img, svg, video { max-width: 100%; display: block; }
@@ -104,18 +106,26 @@ a { color: var(--petroleo); }
 }
 .container--narrow { max-width: 820px; }
 
-/* ---------- header ---------- */
+/* ---------- header (fixo, transparente no topo e sólido ao rolar) ---------- */
 
 .site-header {
-  position: absolute;
+  position: fixed;
   inset: 0 0 auto;
-  z-index: 10;
+  z-index: 60;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  flex-wrap: wrap;
-  padding: 20px var(--gutter);
+  padding: 16px var(--gutter);
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+}
+.site-header.is-scrolled {
+  background: rgba(250, 246, 238, 0.9);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 1px 0 var(--linha), 0 6px 20px rgba(36, 31, 25, 0.06);
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 .logo {
@@ -124,47 +134,149 @@ a { color: var(--petroleo); }
   gap: 10px;
   text-decoration: none;
   color: var(--tinta);
+  flex-shrink: 0;
 }
-.logo-tick { width: 44px; color: var(--clay); flex-shrink: 0; }
-.logo-text { font-family: var(--font-display); font-size: 19px; line-height: 1.1; }
+.logo-tick { width: 40px; color: var(--clay); flex-shrink: 0; }
+.logo-text { font-family: var(--font-display); font-size: 19px; line-height: 1.1; white-space: nowrap; }
 .logo-text strong { font-weight: 600; }
 
-.site-nav { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+/* --- nav desktop --- */
+.site-nav { display: flex; align-items: center; gap: 4px; }
 
-.header-cta {
+.nav-link {
   font-weight: 600;
-  font-size: 17px;
+  font-size: 16px;
   text-decoration: none;
   color: var(--tinta);
-  border: 1.5px solid var(--linha);
-  background: var(--superficie);
-  padding: 9px 20px;
+  padding: 9px 15px;
   border-radius: 999px;
-  transition: border-color 0.2s, background-color 0.2s;
   white-space: nowrap;
+  transition: background-color 0.18s ease, color 0.18s ease;
 }
-.header-cta:hover { border-color: var(--clay); }
+.nav-link:hover { background: rgba(36, 31, 25, 0.06); }
+.nav-link[aria-current="page"] { color: var(--clay); }
 
-/* botão de destaque do menu: O projeto */
-.header-cta--clay {
+.nav-cta {
+  margin-left: 6px;
   background: var(--clay);
-  border-color: var(--clay);
   color: #fff;
+  padding: 10px 22px;
   box-shadow: 0 2px 10px rgba(196, 107, 74, 0.3);
 }
-.header-cta--clay:hover { background: #B25E3F; border-color: #B25E3F; }
-.header-cta--clay[aria-current="page"] { background: #A85838; border-color: #A85838; }
+.nav-cta:hover { background: #B25E3F; color: #fff; }
 
-@media (max-width: 620px) {
-  .site-header { gap: 7px 8px; padding: 12px var(--gutter); }
-  .header-cta { font-size: 13px; padding: 6px 11px; }
-  .logo-tick { width: 30px; }
-  .logo-text { font-size: 14px; }
+/* --- botão hambúrguer (mobile) --- */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 1.5px solid var(--linha);
+  background: var(--superficie);
+  border-radius: 12px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2.5px;
+  margin: 0 auto;
+  background: var(--tinta);
+  border-radius: 2px;
+  transition: transform 0.22s ease, opacity 0.2s ease;
+}
+.nav-toggle.is-open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+.nav-toggle.is-open span:nth-child(2) { opacity: 0; }
+.nav-toggle.is-open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+/* --- menu mobile (drawer lateral) --- */
+.mobile-menu-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+  background: rgba(36, 31, 25, 0.4);
+  animation: pv-fade 0.2s ease;
+}
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 65;
+  width: min(340px, 84vw);
+  height: 100%;
+  height: 100dvh;
+  background: var(--papel);
+  box-shadow: -10px 0 34px rgba(36, 31, 25, 0.16);
+  padding: 92px 26px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.26s ease, visibility 0.26s ease;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.mobile-menu.is-open { transform: translateX(0); visibility: visible; }
+
+.mobile-link {
+  font-family: var(--font-display);
+  font-size: 23px;
+  font-weight: 560;
+  text-decoration: none;
+  color: var(--tinta);
+  padding: 15px 6px;
+  border-bottom: 1px solid var(--linha);
+}
+.mobile-link:hover { color: var(--clay); }
+.mobile-link[aria-current="page"] { color: var(--clay); }
+
+.mobile-cta {
+  margin-top: 20px;
+  border: none;
+  border-bottom: none;
+  background: var(--clay);
+  color: #fff;
+  text-align: center;
+  border-radius: 999px;
+  padding: 16px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 18px;
+  box-shadow: 0 3px 14px rgba(196, 107, 74, 0.3);
+}
+.mobile-cta:hover { color: #fff; }
+
+@keyframes pv-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* troca desktop-nav ↔ hambúrguer */
+@media (max-width: 860px) {
+  .site-nav { display: none; }
+  .nav-toggle { display: flex; }
+}
+
+/* logo não empurra o hambúrguer em telas estreitas */
+@media (max-width: 480px) {
+  .logo-tick { width: 34px; }
+  .logo-text { font-size: 16px; }
 }
 @media (max-width: 360px) {
-  .header-cta { font-size: 12px; padding: 5px 9px; letter-spacing: -0.01em; }
-  .logo-text { font-size: 0; } /* só o traço do ECG nas telas mais estreitas */
-  .logo-tick { width: 28px; }
+  .logo-tick { width: 30px; }
+  .logo-text { font-size: 15px; }
+}
+
+/* âncoras não ficam escondidas sob o header fixo */
+:target { scroll-margin-top: 88px; }
+section[id] { scroll-margin-top: 80px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu { transition: none; }
+  .mobile-menu-backdrop { animation: none; }
+  .nav-toggle span { transition: none; }
 }
 
 /* ---------- botões ---------- */
@@ -828,7 +940,7 @@ a { color: var(--petroleo); }
   background: none;
   border: none;
   border-radius: 999px;
-  padding: 9px 22px;
+  padding: 12px 22px;
   cursor: pointer;
 }
 .toggle-btn.is-active { background: var(--tinta); color: var(--papel); }
@@ -1450,7 +1562,7 @@ a { color: var(--petroleo); }
   justify-content: center;
   margin-top: 32px;
 }
-.final-link { font-weight: 600; }
+.final-link { font-weight: 600; display: inline-flex; align-items: center; min-height: 44px; }
 .final-link-soon {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -1482,8 +1594,15 @@ a { color: var(--petroleo); }
 }
 .site-footer .logo-tick { width: 40px; }
 .site-footer p { margin: 0; font-size: 16px; }
+.site-footer p, .site-footer p a { overflow-wrap: anywhere; }
 .footer-nav { margin-left: auto; }
-.footer-nav a { font-weight: 600; font-size: 16px; }
+.footer-nav a {
+  font-weight: 600;
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 
 /* ==========================================================================
    breakpoints
@@ -1754,7 +1873,7 @@ a { color: var(--petroleo); }
 }
 .lei-incisos li {
   position: relative;
-  padding-left: 44px;
+  padding-left: 54px;
   margin-bottom: 12px;
   font-size: 18px;
   line-height: 1.65;
@@ -1837,16 +1956,22 @@ a { color: var(--petroleo); }
    ========================================================================== */
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .header-cta { transition: none; }
+  .btn, .nav-link, .nav-cta { transition: none; }
   .btn-primary:hover { transform: none; }
 }
 
-/* herói no mobile: o header de 3 botões pode ocupar 2 linhas, então o herói
-   alinha ao topo (em vez de centralizar) e ganha folga para não ficar por
-   baixo dele. Colocado no fim do arquivo para vencer a regra base por ordem. */
-@media (max-width: 620px) {
-  .hero { justify-content: flex-start; padding-top: 158px; }
+/* legibilidade: notas de fonte/labels sobem de 12/12.5 → 13px (piso mobile) */
+.hero-source,
+.waste-src,
+.faq-src,
+.pesquisa-src,
+.bloco-num,
+.tl-date {
+  font-size: 13px;
 }
-@media (max-width: 360px) {
-  .hero { padding-top: 148px; }
+
+/* herói no mobile: header agora é compacto (logo + hambúrguer), então o herói
+   volta a centralizar, só com um respiro de topo p/ o header fixo. */
+@media (max-width: 620px) {
+  .hero { padding-top: 120px; }
 }
