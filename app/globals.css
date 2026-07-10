@@ -633,6 +633,82 @@ a { color: var(--petroleo); }
 .waste-note a { color: var(--petroleo); }
 
 /* ==========================================================================
+   3B. A DIMENSÃO LOCAL — PARANÁ
+   ========================================================================== */
+
+.parana {
+  border-top: 1px solid var(--linha);
+  padding: clamp(64px, 9vw, 112px) 0;
+}
+
+.pr-stats {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(28px, 4vw, 44px);
+  margin-top: clamp(36px, 5vw, 56px);
+}
+
+.pr-stat {
+  display: grid;
+  gap: 10px 36px;
+}
+
+.pr-num {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: clamp(38px, 4.6vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--barro);
+  margin: 0;
+  white-space: nowrap;
+}
+
+.pr-text { margin: 0; max-width: 58ch; color: rgba(36, 31, 25, 0.85); }
+.pr-body .waste-src { margin-top: 10px; }
+
+.pr-sintese {
+  margin: clamp(40px, 6vw, 64px) 0 0;
+  border-left: 4px solid var(--barro);
+  padding: 6px 0 6px 22px;
+}
+.pr-sintese p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(21px, 2.6vw, 28px);
+  line-height: 1.35;
+  color: var(--tinta);
+  margin: 0;
+  max-width: 40ch;
+}
+
+/* ==========================================================================
+   8B. COMEÇA NO PARANÁ, SERVE PARA O BRASIL
+   ========================================================================== */
+
+.prbr {
+  border-top: 1px solid var(--linha);
+  padding: clamp(64px, 9vw, 112px) 0;
+}
+.prbr-net {
+  width: 100%;
+  max-width: 640px;
+  height: auto;
+  margin-top: clamp(28px, 4vw, 44px);
+}
+.prbr-pr {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 700;
+  fill: #fff;
+}
+
+@media (min-width: 700px) {
+  .pr-stat { grid-template-columns: 240px 1fr; align-items: start; }
+}
+
+/* ==========================================================================
    4. A VIRADA — antes × depois (Flip)
    ========================================================================== */
 

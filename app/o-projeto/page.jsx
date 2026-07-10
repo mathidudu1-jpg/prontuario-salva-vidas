@@ -55,7 +55,7 @@ export default function OProjeto() {
         <section className="proj-section">
           <div className="container container--narrow">
             <h2 className="h2">A proposta em detalhe</h2>
-            <p className="section-lead">A lei é enxuta de propósito. Ela obriga quatro coisas:</p>
+            <p className="section-lead">É uma proposta de lei estadual, do Paraná, enxuta de propósito. Ela obriga quatro coisas:</p>
 
             <div className="bloco-grid">
               <article className="bloco-card">
@@ -147,7 +147,7 @@ export default function OProjeto() {
               <div className="tl-item tl-item--next">
                 <p className="tl-date">Próximo passo</p>
                 <h3>O protocolo</h3>
-                <p>Texto final do PL protocolado e busca de parlamentares dispostos a pautar.</p>
+                <p>Texto final do PL protocolado na Assembleia Legislativa do Paraná e busca de deputados estaduais dispostos a pautar.</p>
               </div>
             </div>
           </div>

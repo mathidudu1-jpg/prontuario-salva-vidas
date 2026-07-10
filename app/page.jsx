@@ -201,25 +201,62 @@ export default function Home() {
 
             <div className="waste-cards">
               <article className="waste-card">
-                <p className="waste-kicker">Tempo</p>
+                <p className="waste-kicker">Tempo · Brasil</p>
                 <p className="waste-number waste-number--word">tempo é músculo.</p>
                 <p className="waste-text">É o que a medicina diz sobre infarto. Em AVC, tempo é cérebro. E na emergência, refazer tudo do zero joga o relógio contra o paciente.</p>
                 <p className="waste-src">Fonte: OMS, Relatório Global de Segurança do Paciente (2024)</p>
               </article>
               <article className="waste-card">
-                <p className="waste-kicker">Dinheiro</p>
+                <p className="waste-kicker">Dinheiro · Brasil</p>
                 <p className="waste-number waste-number--sm">1 em <span className="count" data-target="5">5</span></p>
                 <p className="waste-text">exames de laboratório é repetido sem necessidade. Só com exame desnecessário, o país gasta cerca de R$ 12 bilhões por ano.</p>
                 <p className="waste-src">Fontes: Abramed · EY/IESS (2023)</p>
               </article>
               <article className="waste-card">
-                <p className="waste-kicker">Segurança</p>
+                <p className="waste-kicker">Segurança · Brasil</p>
                 <p className="waste-number">+<span className="count" data-target="50">50</span>%</p>
                 <p className="waste-text">dos erros de medicação acontecem na alta ou na transferência entre unidades. Justamente quando o seu histórico some.</p>
                 <p className="waste-src">Fonte: Rev. Latino-Am. de Enfermagem (2016), base OMS</p>
               </article>
             </div>
-            <p className="waste-note">Todo número deste site tem fonte, sempre logo ao lado. O resto da pesquisa está na página <Link href="/o-projeto">O projeto</Link>.</p>
+            <p className="waste-note">Todo número deste site tem fonte, sempre logo ao lado. Estes são os números do Brasil; abaixo, a dimensão disso no Paraná. O resto da pesquisa está na página <Link href="/o-projeto">O projeto</Link>.</p>
+          </div>
+        </section>
+
+        {/* ============ 3B. A DIMENSÃO LOCAL — PARANÁ ============ */}
+        <section className="parana" id="parana">
+          <div className="container">
+            <p className="section-label section-label--barro">A dimensão local · Paraná</p>
+            <h2 className="h2">No Paraná, são mais de 100 mil chances de errar por semestre.</h2>
+            <p className="section-lead">Cada transferência é um ponto onde o histórico do paciente pode se perder. E olha o volume disso por aqui.</p>
+
+            <div className="pr-stats">
+              <div className="pr-stat" data-reveal>
+                <p className="pr-num">+100 mil</p>
+                <div className="pr-body">
+                  <p className="pr-text">transferências terrestres de urgência no Paraná apenas no primeiro semestre de 2024, mais de 15% acima do ano anterior. Em cada uma delas, o que acompanha o paciente é um resumo escrito à mão, enquanto o registro completo fica para trás.</p>
+                  <p className="waste-src">Fonte: Governo do Paraná / Sesa</p>
+                </div>
+              </div>
+              <div className="pr-stat" data-reveal>
+                <p className="pr-num">+50%</p>
+                <div className="pr-body">
+                  <p className="pr-text">dos erros de medicação acontecem justamente no momento da transferência (OMS), e cerca de 1 em cada 5 exames é repetido sem necessidade (Abramed). Ou seja: mais de 100 mil vezes por semestre, no Paraná, o sistema depende de um papel para não errar em um dos momentos mais críticos do atendimento.</p>
+                  <p className="waste-src">Fontes: OMS · Abramed (dados nacionais)</p>
+                </div>
+              </div>
+              <div className="pr-stat" data-reveal>
+                <p className="pr-num">R$ 8.371</p>
+                <div className="pr-body">
+                  <p className="pr-text">por dose: o Paraná é o único estado do país que aplica trombolítico ainda na ambulância, para ganhar minutos preciosos em infarto e AVC. Esses mesmos minutos são perdidos quando o hospital de destino recebe o paciente sem o histórico e precisa recomeçar do zero.</p>
+                  <p className="waste-src">Fonte: Sesa-PR</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote className="pr-sintese" data-reveal>
+              <p>O problema não é a falta de transferências. É que cada uma delas depende de papel, num estado que já investe pesado para ganhar tempo e depois o desperdiça na porta do hospital.</p>
+            </blockquote>
           </div>
         </section>
 
@@ -228,7 +265,7 @@ export default function Home() {
           <div className="container">
             <p className="section-label section-label--salvia">A virada</p>
             <h2 className="h2">Tem conserto. E custa menos que o problema.</h2>
-            <p className="section-lead">A proposta é uma lei que obriga os sistemas de saúde a conversarem entre si. Na prática, o seu prontuário chega ao hospital <strong>junto com você</strong>, sem depender da sua memória.</p>
+            <p className="section-lead">A proposta é uma lei estadual do Paraná que obriga os sistemas de saúde a conversarem entre si. Na prática, o seu prontuário chega ao hospital <strong>junto com você</strong>, sem depender da sua memória.</p>
 
             <div className="virada-stage" id="virada-stage" data-state="hoje">
               <svg viewBox="0 0 800 80" className="virada-ecg" aria-hidden="true">
@@ -360,6 +397,13 @@ export default function Home() {
               </div>
             </details>
             <details className="faq">
+              <summary>O Paraná já provou que integrar funciona.</summary>
+              <div className="faq-body">
+                <p>Desde 2020, o Paraná unificou a regulação de urgência de todo o estado com o sistema Care: a vaga, o leito e o transporte já são coordenados digitalmente, em rede única. O que falta é o próximo passo, fazer o dado clínico do paciente viajar junto, e não só a informação da vaga.</p>
+                <p className="faq-src">Fonte: Sesa-PR</p>
+              </div>
+            </details>
+            <details className="faq">
               <summary>Por que uma lei, e não um aplicativo?</summary>
               <div className="faq-body">
                 <p>Porque computador já existe: 92% dos estabelecimentos de saúde usam sistema eletrônico e 97,6% das UBS registram no e-SUS. O problema é que padrão sem obrigação vira recomendação, e recomendação não integra sistema de hospital. A lei dá prazo e consequência para o que a tecnologia já sabe fazer.</p>
@@ -453,6 +497,39 @@ export default function Home() {
             <blockquote className="rosto-quote">
               <p>Ninguém deveria recontar a própria história num momento em que mal consegue{" "}falar.</p>
             </blockquote>
+          </div>
+        </section>
+
+        {/* 8B. COMEÇA NO PARANÁ, SERVE PARA O BRASIL */}
+        <section className="prbr">
+          <div className="container container--narrow prbr-inner" data-reveal>
+            <p className="section-label section-label--salvia">O horizonte</p>
+            <h2 className="h2">Começa no Paraná, serve para o Brasil.</h2>
+            <p className="section-lead">O Paraná já lidera em regulação integrada e em atendimento pré-hospitalar. Ao ser o primeiro estado a transformar a interoperabilidade clínica em obrigação, com prazo e indicadores, ele cria um modelo pronto para ser adotado por outros estados e, no limite, pelo país inteiro.</p>
+            <p className="section-lead">A infraestrutura nacional já existe; falta o exemplo de quem faz funcionar na ponta. <strong>O Paraná pode ser esse exemplo.</strong></p>
+
+            <svg className="prbr-net" viewBox="0 0 800 190" aria-hidden="true">
+              <g stroke="var(--linha)" strokeWidth="2">
+                <line x1="160" y1="95" x2="340" y2="40" />
+                <line x1="160" y1="95" x2="380" y2="120" />
+                <line x1="160" y1="95" x2="330" y2="160" />
+                <line x1="340" y1="40" x2="520" y2="60" />
+                <line x1="380" y1="120" x2="540" y2="140" />
+                <line x1="520" y1="60" x2="680" y2="100" />
+                <line x1="540" y1="140" x2="680" y2="100" />
+                <line x1="340" y1="40" x2="380" y2="120" />
+              </g>
+              <g fill="var(--papel)" stroke="var(--petroleo)" strokeWidth="2.5">
+                <circle cx="340" cy="40" r="11" />
+                <circle cx="380" cy="120" r="11" />
+                <circle cx="330" cy="160" r="11" />
+                <circle cx="520" cy="60" r="11" />
+                <circle cx="540" cy="140" r="11" />
+                <circle cx="680" cy="100" r="11" />
+              </g>
+              <circle cx="160" cy="95" r="26" fill="var(--clay)" />
+              <text x="160" y="102" textAnchor="middle" className="prbr-pr">PR</text>
+            </svg>
           </div>
         </section>
 

@@ -99,10 +99,10 @@ const jsonLd = {
     },
     {
       "@type": "GovernmentService",
-      name: "Prontuário Salva-Vidas — proposta de lei de interoperabilidade em saúde",
+      name: "Prontuário Salva-Vidas — proposta de lei estadual de interoperabilidade em saúde",
       description:
-        "Proposta de lei que obriga sistemas de saúde a enviarem o resumo clínico do paciente no momento da transferência de urgência, usando o padrão nacional HL7 FHIR.",
-      areaServed: { "@type": "Country", name: "Brasil" },
+        "Proposta de lei estadual do Paraná que obriga sistemas de saúde a enviarem o registro clínico do paciente no momento da transferência de urgência, usando o padrão nacional HL7 FHIR.",
+      areaServed: { "@type": "State", name: "Paraná" },
       audience: { "@type": "Audience", audienceType: "Pacientes do SUS" },
     },
   ],
