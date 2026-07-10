@@ -647,9 +647,8 @@ export default function Home() {
             <ManifestoForm />
 
             <div className="final-links">
-              {/* TODO(matheus): linkar PDF do dossiê e texto do PL quando prontos */}
-              <a href="#" className="final-link">Baixar o dossiê (PDF)</a>
-              <a href="#" className="final-link">Texto do Projeto de Lei <span className="final-link-soon">em redação</span></a>
+              <a href="/prontuario-salva-vidas-pl.pdf" download className="final-link">Baixar o dossiê (PDF)</a>
+              <Link href="/projeto-de-lei" className="final-link">Texto do Projeto de Lei <span className="final-link-soon">em redação</span></Link>
               <Link href="/o-projeto" className="final-link">A história por trás do projeto</Link>
             </div>
             <p className="final-contact"><a href="mailto:matheuseduardovuicik@gmail.com">matheuseduardovuicik@gmail.com</a></p>

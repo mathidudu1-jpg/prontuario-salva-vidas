@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SiteHeader from "../components/SiteHeader";
 import SiteFooter from "../components/SiteFooter";
 
@@ -82,8 +83,7 @@ export default function OProjeto() {
 
             <p className="proj-horizonte">No horizonte: a mesma estrutura prepara o caminho para o prontuário único do paciente, um histórico que o acompanha a vida inteira, acessível a quem cuida dele, com cada acesso registrado.</p>
 
-            {/* TODO(matheus): linkar o texto integral do PL quando finalizar */}
-            <p className="waste-note">O texto integral do Projeto de Lei está em redação final e vai ser publicado nesta página.</p>
+            <p className="waste-note">Leia o texto integral, artigo por artigo, na página <Link href="/projeto-de-lei">Projeto de Lei</Link>.</p>
           </div>
         </section>
 

@@ -1657,6 +1657,191 @@ a { color: var(--petroleo); }
 }
 
 /* ==========================================================================
+   PÁGINA /projeto-de-lei
+   ========================================================================== */
+
+.lei-hero {
+  padding: clamp(140px, 18vw, 190px) 0 clamp(24px, 4vw, 40px);
+}
+.lei-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(38px, 6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  margin: 0 0 14px;
+}
+.lei-subtitle {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.4vw, 26px);
+  line-height: 1.3;
+  color: var(--petroleo);
+  margin: 0 0 20px;
+  max-width: 34ch;
+}
+.lei-context {
+  max-width: 58ch;
+  margin: 0 0 28px;
+  color: rgba(36, 31, 25, 0.8);
+}
+.lei-hero .proj-ecg { margin-top: clamp(28px, 4vw, 44px); }
+.lei-hero .proj-ecg svg { width: 100%; height: 70px; display: block; }
+
+.lei-body { padding: 0 0 clamp(64px, 9vw, 112px); }
+
+.lei-numero {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--petroleo);
+  margin: 0 0 20px;
+}
+
+.lei-ementa {
+  background: var(--superficie);
+  border: 1.5px solid var(--linha);
+  border-left: 4px solid var(--clay);
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 0 0 32px;
+}
+.lei-ementa p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--tinta);
+}
+
+.lei-enact {
+  font-style: italic;
+  color: rgba(36, 31, 25, 0.82);
+  margin: 0 0 36px;
+  max-width: 64ch;
+}
+
+/* artigos */
+.lei-art { margin: 0 0 26px; }
+.lei-art > p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--tinta);
+  max-width: 66ch;
+}
+.lei-art-num {
+  font-weight: 700;
+  color: var(--petroleo);
+  margin-right: 4px;
+}
+
+.lei-par {
+  margin-top: 12px !important;
+  padding-left: 22px;
+  border-left: 2px solid var(--linha);
+}
+.lei-par-label { font-style: italic; font-weight: 600; margin-right: 4px; }
+
+.lei-incisos {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  max-width: 66ch;
+}
+.lei-incisos li {
+  position: relative;
+  padding-left: 44px;
+  margin-bottom: 12px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--tinta);
+}
+.lei-incisos li:last-child { margin-bottom: 0; }
+.lei-inc-num {
+  position: absolute;
+  left: 0;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--petroleo);
+}
+
+.lei-assinatura {
+  margin: 40px 0 0;
+  text-align: center;
+  color: rgba(36, 31, 25, 0.75);
+}
+.lei-assinatura p { margin: 0 0 6px; }
+.lei-assinatura-cargo {
+  font-weight: 600;
+  color: var(--tinta);
+  letter-spacing: 0.02em;
+}
+
+/* justificativa */
+.lei-justificativa {
+  margin-top: clamp(48px, 7vw, 80px);
+  padding-top: clamp(40px, 6vw, 64px);
+  border-top: 1px solid var(--linha);
+}
+.lei-just-titulo {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--barro);
+  margin: clamp(28px, 4vw, 40px) 0 10px;
+}
+.lei-justificativa > p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.7;
+  color: rgba(36, 31, 25, 0.88);
+  max-width: 66ch;
+}
+.lei-justificativa sup {
+  font-size: 0.7em;
+  color: var(--petroleo);
+  font-weight: 700;
+  padding: 0 1px;
+}
+
+.lei-fontes {
+  margin-top: clamp(32px, 5vw, 48px);
+  background: var(--superficie-2);
+  border: 1px solid var(--linha);
+  border-radius: 12px;
+  padding: 22px 26px;
+}
+.lei-fontes-titulo {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(36, 31, 25, 0.55);
+  margin: 0 0 14px;
+}
+.lei-fontes ol {
+  margin: 0;
+  padding-left: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.lei-fontes li {
+  font-size: 15px;
+  line-height: 1.5;
+  color: rgba(36, 31, 25, 0.75);
+}
+
+.lei-download-fim {
+  margin-top: clamp(40px, 6vw, 64px);
+  text-align: center;
+}
+
+/* ==========================================================================
    reduced motion — versão estática limpa
    ========================================================================== */
 
