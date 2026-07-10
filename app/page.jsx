@@ -648,10 +648,9 @@ export default function Home() {
 
             <div className="final-links">
               <a href="/prontuario-salva-vidas-pl.pdf" download className="final-link">Baixar o dossiê (PDF)</a>
-              <Link href="/projeto-de-lei" className="final-link">Texto do Projeto de Lei <span className="final-link-soon">em redação</span></Link>
+              <Link href="/projeto-de-lei" className="final-link">Texto do Projeto de Lei</Link>
               <Link href="/o-projeto" className="final-link">A história por trás do projeto</Link>
             </div>
-            <p className="final-contact"><a href="mailto:matheuseduardovuicik@gmail.com">matheuseduardovuicik@gmail.com</a></p>
           </div>
         </section>
       </main>

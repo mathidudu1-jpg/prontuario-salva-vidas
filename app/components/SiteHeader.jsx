@@ -11,13 +11,14 @@ export default function SiteHeader({ active }) {
       </Link>
       <nav className="site-nav" aria-label="Principal">
         <Link
-          href="/o-projeto"
-          className="header-cta header-cta--clay"
-          aria-current={active === "projeto" ? "page" : undefined}
+          href="/projeto-de-lei"
+          className="header-cta"
+          aria-current={active === "lei" ? "page" : undefined}
         >
-          O projeto
+          Projeto de Lei
         </Link>
-        <a href={active === "home" ? "#assinar" : "/#assinar"} className="header-cta">Assine o manifesto</a>
+        <a href={active === "home" ? "#a-dor" : "/#a-dor"} className="header-cta">O Problema</a>
+        <a href={active === "home" ? "#assinar" : "/#assinar"} className="header-cta header-cta--clay">Assine o Manifesto</a>
       </nav>
     </header>
   );
