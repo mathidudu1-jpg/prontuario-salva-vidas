@@ -116,7 +116,7 @@ export default function OProjeto() {
           <div className="container container--narrow proj-prose">
             <h2 className="h2">Quem está por trás</h2>
             {/* TODO(matheus): foto sua aqui, se quiser (funciona sem) */}
-            <p>Me chamo Matheus Vuicik, tenho 24 anos e sou empreendedor em Curitiba. Cheguei a esse tema pela tecnologia. Enquanto desenvolvia o site sobre a construção do HCzinho, o novo hospital pediátrico do Paraná, acabei em contato com pessoas que trabalham na gerência do Hospital de Clínicas. Num desses contatos, alguém comentou como um paciente transferido de uma unidade para outra costuma chegar sem o histórico clínico, obrigando a equipe a recomeçar exames que já tinham sido feitos. Aquilo me chamou a atenção. Fui atrás para entender o tamanho do problema e enxerguei uma melhoria possível, concreta e barata. Estudei a fundo, aprofundei durante minha formação na Academia MBL, e o que era uma curiosidade virou esta proposta de lei.</p>
+            <p>Me chamo Matheus Vuicik, tenho 24 anos e sou empreendedor em Curitiba. Cheguei a esse tema pela tecnologia. Enquanto participava do desenvolvimento de uma página sobre o plano diretor do novo hospital pediátrico do Paraná, acabei em contato com pessoas que trabalham na gerência do Hospital de Clínicas. Num desses contatos, alguém comentou como um paciente transferido de uma unidade para outra costuma chegar sem o histórico clínico, obrigando a equipe a recomeçar exames que já tinham sido feitos. Aquilo me chamou a atenção. Fui atrás para entender o tamanho do problema e enxerguei uma melhoria possível, concreta e barata. Estudei a fundo, aprofundei durante minha formação na Academia MBL, e o que era uma curiosidade virou esta proposta de lei.</p>
           </div>
         </section>
 
@@ -131,7 +131,7 @@ export default function OProjeto() {
               </div>
               <div className="tl-item">
                 <h3>O problema</h3>
-                <p>Trabalhando com tecnologia, e tendo feito o site sobre a construção do HCzinho, eu já tinha contato com o universo da saúde. Ao pesquisar, esbarrei numa falha concreta: o histórico do paciente não acompanha ele quando é transferido de um hospital para outro.</p>
+                <p>Trabalhando com tecnologia, e tendo participado do desenvolvimento de uma página sobre o plano diretor do novo hospital pediátrico do Paraná, eu já tinha contato com o universo da saúde. Ao pesquisar, esbarrei numa falha concreta: o histórico do paciente não acompanha ele quando é transferido de um hospital para outro.</p>
               </div>
               <div className="tl-item">
                 <h3>A pesquisa</h3>

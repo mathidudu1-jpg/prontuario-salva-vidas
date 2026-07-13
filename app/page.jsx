@@ -17,8 +17,8 @@ export default function Home() {
           <div className="container hero-inner">
             <div className="hero-copy">
               <p className="section-label">Campanha cívica · Saúde pública</p>
-              <h1 className="hero-title" id="hero-title">Existe uma forma de economizar R$ 12 bilhões por ano e salvar vidas sem gastar um real. Ela cabe em uma lei.</h1>
-              <p className="hero-sub">Todo ano o Brasil desperdiça bilhões repetindo exames que já haviam sido feitos, e perde minutos decisivos no atendimento de um infarto, um AVC e outras emergências. A tecnologia que corrige isso já existe e não custa nada. Me chamo Matheus Vuicik, sou de Curitiba, e transformei esse problema em uma proposta de lei.</p>
+              <h1 className="hero-title" id="hero-title">E se um problema de R$ 12 bilhões por ano tivesse uma solução barata, que ainda salva vidas? Ela cabe em uma lei.</h1>
+              <p className="hero-sub">Todo ano o Brasil desperdiça bilhões repetindo exames que já haviam sido feitos, e perde minutos decisivos no atendimento de um infarto, um AVC e outras emergências. A tecnologia que corrige isso já existe; falta obrigar o seu uso, a um custo pequeno diante do que se economiza. Me chamo Matheus Vuicik, sou de Curitiba, e transformei esse problema em uma proposta de lei.</p>
               <div className="hero-cta">
                 <a href="#a-dor" className="btn btn-primary">Me dá 30 segundos</a>
               </div>
@@ -437,7 +437,7 @@ export default function Home() {
             <div className="regra-grid">
               <div className="regra-copy proj-prose">
                 <p>Não adianta obrigar sistemas a conversar se cada fabricante inventa os próprios campos. A lei alcança a origem do problema: todo software de prontuário vendido ao poder público precisa usar os mesmos campos, com os mesmos nomes e os mesmos códigos, no padrão nacional.</p>
-                <p>Sem gasto novo: a exigência entra nos contratos e nas licitações que já acontecem.</p>
+                <p>Sem criar infraestrutura nova: a exigência entra nos contratos e nas licitações que já acontecem, e o custo de adaptação é pequeno perto do desperdício que evita.</p>
                 <p className="regra-punch">Quem não segue a gramática, não vende para o SUS.</p>
               </div>
               <div className="regra-chips" data-reveal-group>
