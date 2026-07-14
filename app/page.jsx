@@ -265,7 +265,7 @@ export default function Home() {
           <div className="container">
             <p className="section-label section-label--salvia">A virada</p>
             <h2 className="h2">Tem conserto. E custa menos que o problema.</h2>
-            <p className="section-lead">A proposta é uma lei estadual do Paraná que obriga os sistemas de saúde a conversarem entre si. Na prática, o seu prontuário chega ao hospital <strong>junto com você</strong>, sem depender da sua memória.</p>
+            <p className="section-lead">A proposta é uma lei estadual do Paraná que obriga os sistemas de saúde a conversarem entre si. Na prática, assim que a transferência é aprovada, o seu prontuário chega ao hospital <strong>antes de você</strong>, por uma API, sem depender da sua memória.</p>
 
             <div className="virada-stage" id="virada-stage" data-state="hoje">
               <svg viewBox="0 0 800 80" className="virada-ecg" aria-hidden="true">
