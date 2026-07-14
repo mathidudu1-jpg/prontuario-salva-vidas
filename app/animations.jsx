@@ -286,23 +286,26 @@ export default function Animations() {
 
     /* ---------- analogia do Netflix: revelação simples ---------- */
     function netflixReveal() {
+      // once:true (como as demais revelações do arquivo): sem isso, o padrão
+      // do ScrollTrigger reverte a animação (esconde de novo) se o scroll
+      // passar do gatilho e voltar — fazendo a seção "sumir" ao rolar de volta.
       gsap.from(".netflix-quote", {
-        scrollTrigger: { trigger: ".netflix-quote", start: "top 82%" },
+        scrollTrigger: { trigger: ".netflix-quote", start: "top 82%", once: true },
         y: 30, autoAlpha: 0, duration: 0.9, ease: "power3.out",
       });
 
       gsap.from(".stream-card", {
-        scrollTrigger: { trigger: ".stream-cards", start: "top 82%" },
+        scrollTrigger: { trigger: ".stream-cards", start: "top 82%", once: true },
         y: 30, autoAlpha: 0, duration: 0.7, stagger: 0.15, ease: "power3.out",
       });
 
       gsap.from(".bar-fill", {
-        scrollTrigger: { trigger: ".stream-cards", start: "top 78%" },
+        scrollTrigger: { trigger: ".stream-cards", start: "top 78%", once: true },
         scaleX: 0, duration: 1.1, stagger: 0.15, ease: "power3.inOut",
       });
 
       gsap.from(".dor-bridge", {
-        scrollTrigger: { trigger: ".dor-bridge", start: "top 85%" },
+        scrollTrigger: { trigger: ".dor-bridge", start: "top 85%", once: true },
         y: 24, autoAlpha: 0, duration: 0.8, ease: "power3.out",
       });
     }
