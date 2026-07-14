@@ -300,7 +300,7 @@ section[id] { scroll-margin-top: 80px; }
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-weight: 560;
-  font-size: clamp(27px, 3.4vw, 44px);
+  font-size: clamp(30px, 3.8vw, 50px);
   line-height: 1.12;
   letter-spacing: -0.01em;
   margin: 0 0 24px;
