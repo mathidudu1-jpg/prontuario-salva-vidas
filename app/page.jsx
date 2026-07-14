@@ -17,7 +17,7 @@ export default function Home() {
           <div className="container hero-inner">
             <div className="hero-copy">
               <p className="section-label">Campanha cívica · Saúde pública</p>
-              <h1 className="hero-title" id="hero-title">E se desse para economizar até R$ 12 bilhões por ano e salvar vidas, com uma solução que já existe?<br />Ela cabe em uma lei.</h1>
+              <h1 className="hero-title" id="hero-title">E se desse para economizar até R$ 12 bilhões por ano e salvar vidas, com uma solução que já existe?<br />Esta solução cabe em uma lei.</h1>
               <p className="hero-sub">Todo ano o Brasil desperdiça bilhões repetindo exames que já haviam sido feitos, e perde minutos decisivos no atendimento de um infarto, um AVC (Acidente Vascular Cerebral) e outras emergências. A tecnologia que corrige isso já existe. Implantá-la exige um investimento inicial, pequeno diante da economia que gera. Me chamo Matheus Vuicik, sou de Curitiba, e transformei esse problema em uma proposta de lei.</p>
               <div className="hero-cta">
                 <a href="#a-dor" className="btn btn-primary">Me dá 30 segundos</a>
