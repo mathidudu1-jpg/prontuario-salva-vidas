@@ -45,7 +45,7 @@ export default function SiteHeader({ active }) {
       href: isHome ? "#a-dor" : "/#a-dor", hash: true, activeOn: "home" },
     { key: "projeto", label: "O Projeto", short: "Projeto", icon: "projeto",
       href: "/o-projeto", activeOn: "projeto" },
-    { key: "lei", label: "Proposta de Lei", short: "Lei", icon: "lei",
+    { key: "lei", label: "Projeto de Lei", short: "Lei", icon: "lei",
       href: "/projeto-de-lei", activeOn: "lei" },
     { key: "assinar", label: "Assine o Manifesto", short: "Assinar", icon: "assinar",
       href: isHome ? "#assinar" : "/#assinar", hash: true, cta: true },

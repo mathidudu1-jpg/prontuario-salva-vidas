@@ -197,18 +197,18 @@ export default function Home() {
         <section className="desperdicios" id="desperdicios">
           <div className="container">
             <p className="section-label section-label--barro">Os três desperdícios</p>
-            <h2 className="h2">Esse recomeço cobra caro. E quem paga é a gente.</h2>
+            <h2 className="h2">Esse retrabalho cobra caro. E quem paga é a gente.</h2>
 
             <div className="waste-cards">
               <article className="waste-card">
                 <p className="waste-kicker">Tempo · Brasil</p>
                 <p className="waste-number waste-number--word">tempo é músculo.</p>
-                <p className="waste-text">É o que a medicina diz sobre infarto. Em AVC, tempo é cérebro. E na emergência, refazer tudo do zero joga o relógio contra o paciente.</p>
-                <p className="waste-src">Fonte: OMS, Relatório Global de Segurança do Paciente (2024)</p>
+                <p className="waste-text">É o que a medicina diz sobre infarto. Em AVC, tempo é cérebro. E a emergência já está entre os ambientes de maior taxa de dano ao paciente, mesmo sem refazer o que já foi feito.</p>
+                <p className="waste-src">Máxima corrente na cardiologia e na neurologia de urgência · Dano em emergência: OMS, Relatório Global de Segurança do Paciente (2024)</p>
               </article>
               <article className="waste-card">
                 <p className="waste-kicker">Dinheiro · Brasil</p>
-                <p className="waste-number waste-number--sm">1 em <span className="count" data-target="5">5</span></p>
+                <p className="waste-number waste-number--sm">1 em cada <span className="count" data-target="5">5</span></p>
                 <p className="waste-text">exames de laboratório é repetido sem necessidade. Só com exame desnecessário, o país gasta cerca de R$ 12 bilhões por ano.</p>
                 <p className="waste-src">Fontes: Abramed · EY/IESS (2023)</p>
               </article>
@@ -216,10 +216,10 @@ export default function Home() {
                 <p className="waste-kicker">Segurança · Brasil</p>
                 <p className="waste-number">+<span className="count" data-target="50">50</span>%</p>
                 <p className="waste-text">dos erros de medicação acontecem na alta ou na transferência entre unidades. Justamente quando o seu histórico some.</p>
-                <p className="waste-src">Fonte: Rev. Latino-Am. de Enfermagem (2016), base OMS</p>
+                <p className="waste-src">Fonte: Rev. Latino-Americana de Enfermagem (2016), com base em literatura da OMS</p>
               </article>
             </div>
-            <p className="waste-note">Todo número deste site tem fonte, sempre logo ao lado. Estes são os números do Brasil; abaixo, a dimensão disso no Paraná. O resto da pesquisa está na página <Link href="/o-projeto">O projeto</Link>.</p>
+            <p className="waste-note">Todo número deste site tem fonte, sempre logo ao lado. Estes são os números do Brasil; abaixo, a dimensão disso no Paraná. Os principais números da pesquisa estão reunidos na página <Link href="/o-projeto">O projeto</Link>.</p>
           </div>
         </section>
 
@@ -241,8 +241,8 @@ export default function Home() {
               <div className="pr-stat" data-reveal>
                 <p className="pr-num">+50%</p>
                 <div className="pr-body">
-                  <p className="pr-text">dos erros de medicação acontecem justamente no momento da transferência (OMS), e cerca de 1 em cada 5 exames é repetido sem necessidade (Abramed). Ou seja: mais de 100 mil vezes por semestre, no Paraná, o sistema depende de um papel para não errar em um dos momentos mais críticos do atendimento.</p>
-                  <p className="waste-src">Fontes: OMS · Abramed (dados nacionais)</p>
+                  <p className="pr-text">dos erros de medicação acontecem nos momentos de alta e de transferência entre unidades, e cerca de 1 em cada 5 exames é repetido sem necessidade. Ou seja: mais de 100 mil vezes por semestre, no Paraná, o sistema depende de um papel para não errar em um dos momentos mais críticos do atendimento.</p>
+                  <p className="waste-src">Fontes: Rev. Latino-Americana de Enfermagem (2016), com base em literatura da OMS · Abramed (dados nacionais)</p>
                 </div>
               </div>
               <div className="pr-stat" data-reveal>
@@ -367,7 +367,7 @@ export default function Home() {
                   <span className="dic-arrow" aria-hidden="true">→</span>
                   <span className="dic-code">I21 · CID-10</span>
                 </div>
-                <p className="dic-rule">Agora isso vira regra da lei: o diagnóstico passa a ser registrado pela seleção da lista oficial da CID no momento do atendimento, e não em texto livre. Ao escolher <strong>infarto</strong>, o sistema grava sozinho o código único correspondente — e o dado nasce padronizado, legível por qualquer sistema.</p>
+                <p className="dic-rule">Agora isso vira regra da lei: o diagnóstico passa a ser registrado pela seleção da lista oficial da CID no momento do atendimento, e não em texto livre. Ao escolher <strong>infarto</strong>, o sistema grava sozinho o código único correspondente. O dado nasce padronizado, legível por qualquer sistema.</p>
               </div>
             </div>
           </div>
@@ -457,7 +457,7 @@ export default function Home() {
           <div className="container">
             <p className="section-label">O dossiê · Segurança</p>
             <h2 className="h2">Mais seguro que papel numa prancheta de{" "}ambulância.</h2>
-            <p className="section-lead">São duas camadas. Na urgência, os dados do episódio viajam automaticamente, porque a continuidade do cuidado exige. Fora dela, o histórico só se abre com vínculo de atendimento e trilha de auditoria. Nas duas, isso protege muito mais que o padrão atual: papel na prancheta da ambulância e telefonema sem registro.</p>
+            <p className="section-lead">São duas camadas. Na urgência, os dados do episódio viajam automaticamente, porque a continuidade do cuidado depende disso. Fora dela, o histórico só se abre com vínculo de atendimento e trilha de auditoria. Nas duas, a proteção é maior que a de hoje, em que o histórico depende de uma folha que qualquer um lê e de um telefonema sem registro.</p>
 
             <div className="lgpd-grid">
               <ul className="lgpd-list">
@@ -489,48 +489,7 @@ export default function Home() {
 
         {/* ============ BLOCO CREDIBILIDADE ============ */}
 
-        {/* 11. "MAS ISSO JÁ NÃO EXISTE?" */}
-        <section className="rnds dossie">
-          <div className="container container--narrow">
-            <p className="section-label">O dossiê · Contexto</p>
-            <h2 className="h2">&quot;Mas isso já não existe?&quot;</h2>
-            <p className="section-lead">Quase. O Brasil já construiu a base. O que falta é obrigar o último elo, que é justamente onde o paciente mais se machuca.</p>
-
-            <blockquote className="rnds-quote"><p>Não falta computador. Falta os computadores conversarem.</p></blockquote>
-
-            <details className="faq">
-              <summary>A RNDS existe. Por que ela ainda não resolve?</summary>
-              <div className="faq-body">
-                <p>A Rede Nacional de Dados em Saúde é coisa séria: desde 23 de julho de 2025, um decreto federal a tornou a plataforma oficial de interoperabilidade do SUS, no padrão HL7 FHIR. Mais de 80% dos estados e 3.805 municípios já enviam registros, e a base passa de 2,8 bilhões de documentos. O próprio ministro da Saúde resumiu na cerimônia: &quot;dado é vida&quot;.</p>
-                <p>Agora o outro lado da moeda: a maturidade digital média dos hospitais brasileiros está em 46,19%, e 75% deles seguem sem sistemas integrados entre si. O registro nacional existe. O resumo clínico chegando em tempo real numa transferência de urgência, esse ainda depende de boa vontade. É esse elo que a lei transforma em obrigação.</p>
-                <p className="faq-src">Fontes: Ministério da Saúde (jul/2025) · Mapa da Transformação Digital dos Hospitais Brasileiros 2024, Folks</p>
-              </div>
-            </details>
-            <details className="faq">
-              <summary>Os estados já se mexeram. O Paraná inclusive.</summary>
-              <div className="faq-body">
-                <p>São Paulo determinou a integração dos sistemas da sua rede por portaria da Secretaria da Saúde. E aqui do lado: o Paraná já está integrado à RNDS e iniciou a federalização, com a primeira oficina estadual realizada em Curitiba, em novembro de 2025. A pauta está viva, e está viva aqui.</p>
-                <p className="faq-src">Fontes: Secretaria da Saúde de SP · Sesa-PR, Resolução nº 1603/2025</p>
-              </div>
-            </details>
-            <details className="faq">
-              <summary>O Paraná já provou que integrar funciona.</summary>
-              <div className="faq-body">
-                <p>Desde 2020, o Paraná unificou a regulação de urgência de todo o estado com o sistema Care: a vaga, o leito e o transporte já são coordenados digitalmente, em rede única. O que falta é o próximo passo, fazer o dado clínico do paciente viajar junto, e não só a informação da vaga.</p>
-                <p className="faq-src">Fonte: Sesa-PR</p>
-              </div>
-            </details>
-            <details className="faq">
-              <summary>Por que uma lei, e não um aplicativo?</summary>
-              <div className="faq-body">
-                <p>Porque computador já existe: 92% dos estabelecimentos de saúde usam sistema eletrônico e 97,6% das UBS registram no e-SUS. O problema é que padrão sem obrigação vira recomendação, e recomendação não integra sistema de hospital. A lei dá prazo e consequência para o que a tecnologia já sabe fazer.</p>
-                <p className="faq-src">Fontes: TIC Saúde 2024, CETIC · Ministério da Saúde</p>
-              </div>
-            </details>
-          </div>
-        </section>
-
-        {/* 12. CURITIBA JÁ PROVOU QUE FUNCIONA */}
+        {/* 11. CURITIBA JÁ PROVOU QUE FUNCIONA */}
         <section className="curitiba">
           <div className="container curitiba-inner">
             <div className="curitiba-copy">
@@ -549,7 +508,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 13. COMEÇA NO PARANÁ, SERVE PARA O BRASIL */}
+        {/* 12. COMEÇA NO PARANÁ, SERVE PARA O BRASIL */}
         <section className="prbr">
           <div className="container container--narrow prbr-inner" data-reveal>
             <p className="section-label section-label--salvia">O horizonte</p>
@@ -584,7 +543,7 @@ export default function Home() {
 
         {/* ============ FECHO ============ */}
 
-        {/* 14. O ROSTO HUMANO */}
+        {/* 13. O ROSTO HUMANO */}
         <section className="rosto">
           <div className="rosto-media" id="rosto-media">
             {/* TODO(matheus): inserir foto de idoso feliz/cuidado (banco com licença livre, brasileiro se possível) */}
@@ -636,6 +595,47 @@ export default function Home() {
           </div>
         </section>
 
+        {/* 14. "MAS ISSO JÁ NÃO EXISTE?" — últimas objeções, antes de assinar */}
+        <section className="rnds dossie">
+          <div className="container container--narrow">
+            <p className="section-label">Antes de assinar · Tire suas dúvidas</p>
+            <h2 className="h2">&quot;Mas isso já não existe?&quot;</h2>
+            <p className="section-lead">Quase. O Brasil já construiu a base. Só que o último elo, justamente onde o paciente mais se machuca, ficou de fora.</p>
+
+            <blockquote className="rnds-quote"><p>Não falta computador. Falta os computadores conversarem.</p></blockquote>
+
+            <details className="faq">
+              <summary>A RNDS existe. Por que ela ainda não resolve?</summary>
+              <div className="faq-body">
+                <p>A Rede Nacional de Dados em Saúde é coisa séria: desde 23 de julho de 2025, um decreto federal a tornou a plataforma oficial de interoperabilidade do SUS, no padrão HL7 FHIR. Mais de 80% dos estados e 3.805 municípios já enviam registros, e a base passa de 2,8 bilhões de registros. O próprio ministro da Saúde resumiu na cerimônia: &quot;dado é vida&quot;.</p>
+                <p>Agora o outro lado da moeda: a maturidade digital média dos hospitais brasileiros está em 46,19%, e 75% deles seguem sem sistemas integrados entre si. O registro nacional existe. O resumo clínico chegando em tempo real numa transferência de urgência, esse ainda depende de boa vontade. É esse elo que a lei transforma em obrigação.</p>
+                <p className="faq-src">Fontes: Ministério da Saúde (jul/2025) · Mapa da Transformação Digital dos Hospitais Brasileiros 2024, Folks</p>
+              </div>
+            </details>
+            <details className="faq">
+              <summary>Os estados já se mexeram. O Paraná inclusive.</summary>
+              <div className="faq-body">
+                <p>São Paulo determinou a integração dos sistemas da sua rede por portaria da Secretaria da Saúde. E aqui do lado: o Paraná já está integrado à RNDS e iniciou a federalização, com a primeira oficina estadual realizada em Curitiba, em novembro de 2025. A pauta está viva, e está viva aqui.</p>
+                <p className="faq-src">Fontes: Secretaria da Saúde de SP · Sesa-PR, Resolução nº 1603/2025</p>
+              </div>
+            </details>
+            <details className="faq">
+              <summary>O Paraná já provou que integrar funciona.</summary>
+              <div className="faq-body">
+                <p>Desde 2020, o Paraná unificou a regulação de urgência de todo o estado com o sistema Care: a vaga, o leito e o transporte já são coordenados digitalmente, em rede única. O que falta é o próximo passo, fazer o dado clínico do paciente viajar junto, e não só a informação da vaga.</p>
+                <p className="faq-src">Fonte: Sesa-PR</p>
+              </div>
+            </details>
+            <details className="faq">
+              <summary>Por que uma lei, e não um aplicativo?</summary>
+              <div className="faq-body">
+                <p>Porque computador já existe: 92% dos estabelecimentos de saúde usam sistema eletrônico e 97,6% das UBS registram no e-SUS. O problema é que padrão sem obrigação vira recomendação, e recomendação não integra sistema de hospital. A lei dá prazo e consequência para o que a tecnologia já sabe fazer.</p>
+                <p className="faq-src">Fontes: TIC Saúde 2024, CETIC · Ministério da Saúde</p>
+              </div>
+            </details>
+          </div>
+        </section>
+
         {/* 15. ASSINE O MANIFESTO */}
         <section className="final" id="assinar">
           <div className="final-ecg" aria-hidden="true">
@@ -653,7 +653,7 @@ export default function Home() {
             <ManifestoForm />
 
             <div className="final-links">
-              <a href="/prontuario-salva-vidas-pl.pdf" download className="final-link">Baixar o dossiê (PDF)</a>
+              <a href="/prontuario-salva-vidas-pl.pdf" download className="final-link">Baixar o Projeto de Lei (PDF)</a>
               <Link href="/projeto-de-lei" className="final-link">Texto do Projeto de Lei</Link>
               <Link href="/o-projeto" className="final-link">A história por trás do projeto</Link>
             </div>
