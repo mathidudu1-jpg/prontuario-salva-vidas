@@ -223,7 +223,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ 3B. A DIMENSÃO LOCAL — PARANÁ ============ */}
+        {/* ============ 4. A DIMENSÃO LOCAL — PARANÁ ============ */}
         <section className="parana" id="parana">
           <div className="container">
             <p className="section-label section-label--barro">A dimensão local · Paraná</p>
@@ -260,7 +260,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ 4. A VIRADA — ANTES × DEPOIS ============ */}
+        {/* ============ 5. A VIRADA — ANTES × DEPOIS ============ */}
         <section className="virada" id="a-virada">
           <div className="container">
             <p className="section-label section-label--salvia">A virada</p>
@@ -303,28 +303,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ============ 4B. CURITIBA JÁ PROVOU QUE FUNCIONA ============ */}
-        <section className="curitiba">
-          <div className="container curitiba-inner">
-            <div className="curitiba-copy">
-              <p className="section-label section-label--band">Destaque municipal · Curitiba</p>
-              <h2 className="h2 h2--light">Curitiba já provou que funciona.</h2>
-              <p>Curitiba conectou a própria rede há mais de vinte anos. Desde 2000, o e-Saúde interliga as unidades de saúde e as UPAs do município, e o prontuário de quem é atendido numa unidade pode ser visto na outra. Dentro da rede municipal, a informação flui.</p>
-              <p>O problema começa na fronteira: quando o paciente precisa de um hospital, a comunicação volta ao papel, com relatórios médicos impressos indo e voltando.</p>
-              <p className="curitiba-punch">A cidade que provou que integrar funciona merece que a integração atravesse a porta do hospital.</p>
-              <p className="waste-src waste-src--light">Fontes: Saúde em Debate, estudo sobre as UPAs do Paraná · Prefeitura de Curitiba (estimativa)</p>
-            </div>
-            <div className="curitiba-stat" data-reveal>
-              <p className="curitiba-num">≈100 mil</p>
-              <p className="curitiba-caption">atendimentos por mês nas UPAs de Curitiba</p>
-              <p className="curitiba-since">e-Saúde interligando a rede municipal desde 2000</p>
-            </div>
-          </div>
-        </section>
-
         {/* ============ BLOCO DOSSIÊ ============ */}
 
-        {/* 5. COMO FUNCIONA */}
+        {/* 6. COMO FUNCIONA */}
         <section className="funciona dossie" id="como-funciona">
           <div className="container">
             <p className="section-label">O dossiê · Como funciona</p>
@@ -392,7 +373,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5B. O QUE VIAJA COM VOCÊ */}
+        {/* 7. O QUE VIAJA COM VOCÊ */}
         <section className="viaja dossie">
           <div className="container">
             <p className="section-label">O dossiê · O que viaja com você</p>
@@ -428,7 +409,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 5C. A REGRA VALE PARA QUEM FABRICA O SOFTWARE */}
+        {/* 8. A REGRA VALE PARA QUEM FABRICA O SOFTWARE */}
         <section className="regra dossie">
           <div className="container">
             <p className="section-label">O dossiê · A raiz do problema</p>
@@ -450,7 +431,65 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6. "MAS ISSO JÁ NÃO EXISTE?" */}
+        {/* 9. DOIS NÍVEIS, UMA REGRA DE OURO */}
+        <section className="niveis dossie">
+          <div className="container">
+            <p className="section-label">O dossiê · Como o dado circula</p>
+            <h2 className="h2">Dois níveis, uma regra de ouro.</h2>
+
+            <div className="nivel-grid" data-reveal-group>
+              <article className="nivel-card nivel-card--urgencia">
+                <p className="bloco-num">Nível 01 · Na urgência</p>
+                <p>Aprovada a transferência, o registro integral do episódio é enviado automaticamente ao hospital de destino, antes de a ambulância chegar.</p>
+              </article>
+              <article className="nivel-card nivel-card--dia">
+                <p className="bloco-num">Nível 02 · No dia a dia</p>
+                <p>O histórico completo do paciente fica acessível ao profissional que assume o cuidado, mediante vínculo de atendimento e com registro de cada acesso: quem viu, o quê, quando.</p>
+              </article>
+            </div>
+
+            <p className="nivel-fecho" data-reveal>Disponível não é o mesmo que espalhado. Nada fica trancado, nada viaja sem necessidade e sem rastro.</p>
+          </div>
+        </section>
+
+        {/* 10. SEGURANÇA E LGPD */}
+        <section className="lgpd dossie">
+          <div className="container">
+            <p className="section-label">O dossiê · Segurança</p>
+            <h2 className="h2">Mais seguro que papel numa prancheta de{" "}ambulância.</h2>
+            <p className="section-lead">São duas camadas. Na urgência, os dados do episódio viajam automaticamente, porque a continuidade do cuidado exige. Fora dela, o histórico só se abre com vínculo de atendimento e trilha de auditoria. Nas duas, isso protege muito mais que o padrão atual: papel na prancheta da ambulância e telefonema sem registro.</p>
+
+            <div className="lgpd-grid">
+              <ul className="lgpd-list">
+                <li><strong>Minimização</strong>: só viaja o essencial para o seu atendimento.</li>
+                <li><strong>Finalidade assistencial</strong>: o dado serve para tratar você, e nada além disso.</li>
+                <li><strong>Controle de acesso</strong>: apenas quem está cuidando do seu caso.</li>
+                <li><strong>Trilha de auditoria</strong>: todo acesso fica registrado, com nome e hora.</li>
+              </ul>
+
+              <div className="audit-card" id="audit-card">
+                <p className="audit-title">
+                  <svg viewBox="0 0 24 28" className="audit-shield" aria-hidden="true">
+                    <path id="shield-path" d="M12 2 L22 6 V14 C22 20 17.5 24.5 12 26 C6.5 24.5 2 20 2 14 V6 Z"
+                      fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+                    <path id="shield-check" d="M7.5 13.5 L11 17 L17 10.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  Trilha de auditoria
+                </p>
+                <ul className="audit-log">
+                  <li><time>14:32</time> Dra. Ana L. · HC <em>visualizou alergias</em></li>
+                  <li><time>14:31</time> Enf. Carlos M. · HC <em>visualizou medicações</em></li>
+                  <li><time>14:20</time> Sistema UPA Central <em>publicou resumo clínico</em></li>
+                  <li><time>14:19</time> Dr. João P. · UPA <em>autorizou transferência</em></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============ BLOCO CREDIBILIDADE ============ */}
+
+        {/* 11. "MAS ISSO JÁ NÃO EXISTE?" */}
         <section className="rnds dossie">
           <div className="container container--narrow">
             <p className="section-label">O dossiê · Contexto</p>
@@ -491,63 +530,61 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 6B. DOIS NÍVEIS, UMA REGRA DE OURO */}
-        <section className="niveis dossie">
-          <div className="container">
-            <p className="section-label">O dossiê · Como o dado circula</p>
-            <h2 className="h2">Dois níveis, uma regra de ouro.</h2>
-
-            <div className="nivel-grid" data-reveal-group>
-              <article className="nivel-card nivel-card--urgencia">
-                <p className="bloco-num">Nível 01 · Na urgência</p>
-                <p>Aprovada a transferência, o registro integral do episódio é enviado automaticamente ao hospital de destino, antes de a ambulância chegar.</p>
-              </article>
-              <article className="nivel-card nivel-card--dia">
-                <p className="bloco-num">Nível 02 · No dia a dia</p>
-                <p>O histórico completo do paciente fica acessível ao profissional que assume o cuidado, mediante vínculo de atendimento e com registro de cada acesso: quem viu, o quê, quando.</p>
-              </article>
+        {/* 12. CURITIBA JÁ PROVOU QUE FUNCIONA */}
+        <section className="curitiba">
+          <div className="container curitiba-inner">
+            <div className="curitiba-copy">
+              <p className="section-label section-label--band">Destaque municipal · Curitiba</p>
+              <h2 className="h2 h2--light">Curitiba já provou que funciona.</h2>
+              <p>Curitiba conectou a própria rede há mais de vinte anos. Desde 2000, o e-Saúde interliga as unidades de saúde e as UPAs do município, e o prontuário de quem é atendido numa unidade pode ser visto na outra. Dentro da rede municipal, a informação flui.</p>
+              <p>O problema começa na fronteira: quando o paciente precisa de um hospital, a comunicação volta ao papel, com relatórios médicos impressos indo e voltando.</p>
+              <p className="curitiba-punch">A cidade que provou que integrar funciona merece que a integração atravesse a porta do hospital.</p>
+              <p className="waste-src waste-src--light">Fontes: Saúde em Debate, estudo sobre as UPAs do Paraná · Prefeitura de Curitiba (estimativa)</p>
             </div>
-
-            <p className="nivel-fecho" data-reveal>Disponível não é o mesmo que espalhado. Nada fica trancado, nada viaja sem necessidade e sem rastro.</p>
-          </div>
-        </section>
-
-        {/* 7. SEGURANÇA E LGPD */}
-        <section className="lgpd dossie">
-          <div className="container">
-            <p className="section-label">O dossiê · Segurança</p>
-            <h2 className="h2">Mais seguro que papel numa prancheta de{" "}ambulância.</h2>
-            <p className="section-lead">São duas camadas. Na urgência, os dados do episódio viajam automaticamente, porque a continuidade do cuidado exige. Fora dela, o histórico só se abre com vínculo de atendimento e trilha de auditoria. Nas duas, isso protege muito mais que o padrão atual: papel na prancheta da ambulância e telefonema sem registro.</p>
-
-            <div className="lgpd-grid">
-              <ul className="lgpd-list">
-                <li><strong>Minimização</strong>: só viaja o essencial para o seu atendimento.</li>
-                <li><strong>Finalidade assistencial</strong>: o dado serve para tratar você, e nada além disso.</li>
-                <li><strong>Controle de acesso</strong>: apenas quem está cuidando do seu caso.</li>
-                <li><strong>Trilha de auditoria</strong>: todo acesso fica registrado, com nome e hora.</li>
-              </ul>
-
-              <div className="audit-card" id="audit-card">
-                <p className="audit-title">
-                  <svg viewBox="0 0 24 28" className="audit-shield" aria-hidden="true">
-                    <path id="shield-path" d="M12 2 L22 6 V14 C22 20 17.5 24.5 12 26 C6.5 24.5 2 20 2 14 V6 Z"
-                      fill="none" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
-                    <path id="shield-check" d="M7.5 13.5 L11 17 L17 10.5" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                  Trilha de auditoria
-                </p>
-                <ul className="audit-log">
-                  <li><time>14:32</time> Dra. Ana L. · HC <em>visualizou alergias</em></li>
-                  <li><time>14:31</time> Enf. Carlos M. · HC <em>visualizou medicações</em></li>
-                  <li><time>14:20</time> Sistema UPA Central <em>publicou resumo clínico</em></li>
-                  <li><time>14:19</time> Dr. João P. · UPA <em>autorizou transferência</em></li>
-                </ul>
-              </div>
+            <div className="curitiba-stat" data-reveal>
+              <p className="curitiba-num">≈100 mil</p>
+              <p className="curitiba-caption">atendimentos por mês nas UPAs de Curitiba</p>
+              <p className="curitiba-since">e-Saúde interligando a rede municipal desde 2000</p>
             </div>
           </div>
         </section>
 
-        {/* 8. O ROSTO HUMANO */}
+        {/* 13. COMEÇA NO PARANÁ, SERVE PARA O BRASIL */}
+        <section className="prbr">
+          <div className="container container--narrow prbr-inner" data-reveal>
+            <p className="section-label section-label--salvia">O horizonte</p>
+            <h2 className="h2">Começa no Paraná, serve para o Brasil.</h2>
+            <p className="section-lead">O Paraná já lidera em regulação integrada e em atendimento pré-hospitalar. Ao ser o primeiro estado a transformar a interoperabilidade clínica em obrigação, com prazo e indicadores, ele cria um modelo pronto para ser adotado por outros estados e, no limite, pelo país inteiro.</p>
+            <p className="section-lead">A infraestrutura nacional já existe; falta o exemplo de quem faz funcionar na ponta. <strong>O Paraná pode ser esse exemplo.</strong></p>
+
+            <svg className="prbr-net" viewBox="0 0 800 190" aria-hidden="true">
+              <g stroke="var(--linha)" strokeWidth="2">
+                <line x1="160" y1="95" x2="340" y2="40" />
+                <line x1="160" y1="95" x2="380" y2="120" />
+                <line x1="160" y1="95" x2="330" y2="160" />
+                <line x1="340" y1="40" x2="520" y2="60" />
+                <line x1="380" y1="120" x2="540" y2="140" />
+                <line x1="520" y1="60" x2="680" y2="100" />
+                <line x1="540" y1="140" x2="680" y2="100" />
+                <line x1="340" y1="40" x2="380" y2="120" />
+              </g>
+              <g fill="var(--papel)" stroke="var(--petroleo)" strokeWidth="2.5">
+                <circle cx="340" cy="40" r="11" />
+                <circle cx="380" cy="120" r="11" />
+                <circle cx="330" cy="160" r="11" />
+                <circle cx="520" cy="60" r="11" />
+                <circle cx="540" cy="140" r="11" />
+                <circle cx="680" cy="100" r="11" />
+              </g>
+              <circle cx="160" cy="95" r="26" fill="var(--clay)" />
+              <text x="160" y="102" textAnchor="middle" className="prbr-pr">PR</text>
+            </svg>
+          </div>
+        </section>
+
+        {/* ============ FECHO ============ */}
+
+        {/* 14. O ROSTO HUMANO */}
         <section className="rosto">
           <div className="rosto-media" id="rosto-media">
             {/* TODO(matheus): inserir foto de idoso feliz/cuidado (banco com licença livre, brasileiro se possível) */}
@@ -599,40 +636,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 8B. COMEÇA NO PARANÁ, SERVE PARA O BRASIL */}
-        <section className="prbr">
-          <div className="container container--narrow prbr-inner" data-reveal>
-            <p className="section-label section-label--salvia">O horizonte</p>
-            <h2 className="h2">Começa no Paraná, serve para o Brasil.</h2>
-            <p className="section-lead">O Paraná já lidera em regulação integrada e em atendimento pré-hospitalar. Ao ser o primeiro estado a transformar a interoperabilidade clínica em obrigação, com prazo e indicadores, ele cria um modelo pronto para ser adotado por outros estados e, no limite, pelo país inteiro.</p>
-            <p className="section-lead">A infraestrutura nacional já existe; falta o exemplo de quem faz funcionar na ponta. <strong>O Paraná pode ser esse exemplo.</strong></p>
-
-            <svg className="prbr-net" viewBox="0 0 800 190" aria-hidden="true">
-              <g stroke="var(--linha)" strokeWidth="2">
-                <line x1="160" y1="95" x2="340" y2="40" />
-                <line x1="160" y1="95" x2="380" y2="120" />
-                <line x1="160" y1="95" x2="330" y2="160" />
-                <line x1="340" y1="40" x2="520" y2="60" />
-                <line x1="380" y1="120" x2="540" y2="140" />
-                <line x1="520" y1="60" x2="680" y2="100" />
-                <line x1="540" y1="140" x2="680" y2="100" />
-                <line x1="340" y1="40" x2="380" y2="120" />
-              </g>
-              <g fill="var(--papel)" stroke="var(--petroleo)" strokeWidth="2.5">
-                <circle cx="340" cy="40" r="11" />
-                <circle cx="380" cy="120" r="11" />
-                <circle cx="330" cy="160" r="11" />
-                <circle cx="520" cy="60" r="11" />
-                <circle cx="540" cy="140" r="11" />
-                <circle cx="680" cy="100" r="11" />
-              </g>
-              <circle cx="160" cy="95" r="26" fill="var(--clay)" />
-              <text x="160" y="102" textAnchor="middle" className="prbr-pr">PR</text>
-            </svg>
-          </div>
-        </section>
-
-        {/* 9. ASSINE O MANIFESTO */}
+        {/* 15. ASSINE O MANIFESTO */}
         <section className="final" id="assinar">
           <div className="final-ecg" aria-hidden="true">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="xMidYMid slice" className="ecg-svg ecg-svg--final">
