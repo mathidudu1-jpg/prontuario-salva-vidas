@@ -2144,14 +2144,14 @@ section[id] { scroll-margin-top: 80px; }
 
 .dep-item {
   display: grid;
-  grid-template-columns: minmax(240px, 320px) 1fr;
+  grid-template-columns: minmax(260px, 360px) 1fr;
   gap: clamp(28px, 4vw, 56px);
   align-items: start;
 }
 .dep-item + .dep-item { border-top: 1px solid var(--linha); padding-top: clamp(48px, 7vw, 88px); }
 
 .dep-media {
-  position: relative;
+  margin: 0;
   aspect-ratio: 9 / 16;
   border-radius: 14px;
   overflow: hidden;
