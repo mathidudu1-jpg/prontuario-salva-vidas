@@ -3,6 +3,7 @@ import Animations from "./animations";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import ManifestoForm from "./components/ManifestoForm";
+import Especialistas from "./components/Especialistas";
 
 export default function Home() {
   return (
@@ -636,7 +637,10 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 15. ASSINE O MANIFESTO */}
+        {/* 15. OPINIÃO DE ESPECIALISTAS — a confiança, logo antes do pedido */}
+        <Especialistas />
+
+        {/* 16. ASSINE O MANIFESTO */}
         <section className="final" id="assinar">
           <div className="final-ecg" aria-hidden="true">
             <svg viewBox="0 0 1440 120" preserveAspectRatio="xMidYMid slice" className="ecg-svg ecg-svg--final">

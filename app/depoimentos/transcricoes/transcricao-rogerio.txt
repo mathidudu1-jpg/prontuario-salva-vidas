@@ -1,0 +1,9 @@
+Bom, meu nome é Rogério, eu sou médico, sou professor universitário, trabalho com gestão pública e privada há alguns anos. A ideia de ter uma informação centralizada do paciente, ela não só é desejável, como ela, sinceramente, deveria ser compulsória. A gente sabe, principalmente no maior sistema de saúde que a gente tem, que é o SUS, a gente tem aí quase 150 milhões de pessoas usando o SUS exclusivamente como seu sistema de saúde.
+
+Entremeado a isso, a gente tem o setor de saúde suplementar e os pacientes, as pessoas que procuram isso de forma totalmente privada. Não apenas para o SUS, né, você ter múltiplos prontuários, informações distribuídas, isso não é nem prático do ponto de vista clínico, porque informações desencontradas podem trazer prejuízo na análise de um quadro clínico.
+
+No meu entendimento, o ideal seria a pessoa ter um códigozinho, um PIN que já contasse toda a história dela. Reservadas às questões de LGPD, se conseguirmos a unificação das informações, isso já é uma grande vantagem. Então centenas de vidas vão se beneficiar com relação a isso. No meu entendimento, isso não deveria nem ser uma opção
+
+deveria ser compulsório, deveria ser uma lei, federal que obrigue a interoperabilidade entre as informações, entre as instituições, porque a gente tem, às vezes, sistemas de registro hospitalar que têm a mesma marca, mas eles não conversam nem de um hospital pro outro.
+
+A pessoa faz exame em um laboratório e esse exame não conversa com os outros, com as outras instituições, mesmo fazendo parte, de um mesmo programa, por exemplo. Então eu vejo grande valor em uma iniciativa que propõe que a segurança do paciente e a sua jornada mais bem executada seja uma questão de âmbito federal.

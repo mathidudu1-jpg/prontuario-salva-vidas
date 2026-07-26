@@ -13,5 +13,15 @@ export default function sitemap() {
       changeFrequency: "monthly",
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/projeto-de-lei`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
+      url: `${siteUrl}/depoimentos`,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
   ];
 }
