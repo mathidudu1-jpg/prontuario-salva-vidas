@@ -1951,7 +1951,34 @@ section[id] { scroll-margin-top: 80px; }
 }
 
 .esp-titulo { max-width: 22ch; }
-.esp-intro { margin-bottom: clamp(32px, 5vw, 48px); }
+.esp-intro { margin-bottom: 14px; }
+
+/* linha de enquadramento: liga a fala nacional dos especialistas ao caminho
+   estadual da proposta (começar pelo Paraná p/ servir de modelo ao Brasil) */
+.esp-enquadre {
+  max-width: 60ch;
+  margin: 0 0 clamp(32px, 5vw, 48px);
+  font-family: var(--font-body);
+  font-size: clamp(1rem, 1.5vw, 1.075rem);
+  line-height: 1.6;
+  font-weight: 500;
+  color: var(--petroleo);
+  border-left: 3px solid var(--clay);
+  padding-left: 16px;
+}
+.dep-enquadre { margin-bottom: 16px; }
+
+/* link para a transcrição em cada card de vídeo (acessível junto do vídeo) */
+.esp-transcricao-link {
+  display: inline-block;
+  margin-top: 10px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--petroleo);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.esp-transcricao-link:hover { color: var(--clay); }
 
 .esp-grade {
   list-style: none;
@@ -2230,4 +2257,55 @@ section[id] { scroll-margin-top: 80px; }
     margin-inline: auto;
     width: 100%;
   }
+}
+
+/* ==========================================================================
+   .fala — citação curta de especialista dentro das seções de argumento
+   (desperdícios, virada, "mas isso já não existe?"). Fecha com nome, cargo e
+   link para o depoimento completo.
+   ========================================================================== */
+
+.fala {
+  margin: clamp(32px, 5vw, 48px) 0 0;
+  max-width: 640px;
+  padding: clamp(20px, 3vw, 28px) clamp(22px, 3vw, 30px);
+  background: var(--superficie-2);
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--clay);
+  border-radius: 0 12px 12px 0;
+}
+
+.fala-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  line-height: 1.35;
+  color: var(--tinta);
+  margin: 0 0 14px;
+}
+
+.fala-quem {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 12px;
+  font-family: var(--font-body);
+}
+.fala-nome { font-weight: 650; color: var(--tinta); font-size: 0.95rem; }
+.fala-cargo {
+  color: color-mix(in srgb, var(--tinta) 62%, transparent);
+  font-size: 0.9rem;
+}
+.fala-link {
+  margin-left: auto;
+  color: var(--petroleo);
+  font-size: 0.9rem;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  white-space: nowrap;
+}
+.fala-link:hover { color: var(--clay); }
+
+@media (max-width: 480px) {
+  .fala-link { margin-left: 0; }
 }

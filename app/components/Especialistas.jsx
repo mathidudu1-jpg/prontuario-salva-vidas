@@ -21,6 +21,11 @@ export default function Especialistas() {
           Profissionais que vivem a rotina do SUS e dos hospitais falam sobre o que
           muda quando o prontuário acompanha o paciente.
         </p>
+        <p className="esp-enquadre">
+          Os três defendem que isso vire regra em todo o país. É exatamente o caminho da
+          proposta: começar pelo Paraná, o estado que pode provar que funciona, para depois
+          servir de modelo ao Brasil.
+        </p>
 
         <ul className="esp-grade">
           {especialistas.map((e) => (
@@ -92,6 +97,9 @@ function CardEspecialista({ pessoa }) {
           {pessoa.cargo}
           <span className="esp-local">{pessoa.local}</span>
         </p>
+        <Link href={`/depoimentos#${pessoa.slug}`} className="esp-transcricao-link">
+          Ler a transcrição
+        </Link>
       </figcaption>
     </figure>
   );

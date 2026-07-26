@@ -216,11 +216,18 @@ export default function Home() {
               <article className="waste-card">
                 <p className="waste-kicker">Segurança · Brasil</p>
                 <p className="waste-number">+<span className="count" data-target="50">50</span>%</p>
-                <p className="waste-text">dos erros de medicação acontecem na alta ou na transferência entre unidades. Justamente quando o seu histórico some.</p>
+                <p className="waste-text">mais da metade dos erros de medicação acontecem na alta ou na transferência entre unidades. Justamente quando o seu histórico some.</p>
                 <p className="waste-src">Fonte: Rev. Latino-Americana de Enfermagem (2016), com base em literatura da OMS</p>
               </article>
             </div>
             <p className="waste-note">Todo número deste site tem fonte, sempre logo ao lado. Estes são os números do Brasil; abaixo, a dimensão disso no Paraná. Os principais números da pesquisa estão reunidos na página <Link href="/o-projeto">O projeto</Link>.</p>
+
+            <Fala
+              quote="A gente desperdiça tempo e recursos caríssimos no retrabalho, por não ter acesso às informações."
+              nome="Jéssica"
+              cargo="Setor de contratualização e regulação"
+              slug="jessica"
+            />
           </div>
         </section>
 
@@ -242,7 +249,7 @@ export default function Home() {
               <div className="pr-stat" data-reveal>
                 <p className="pr-num">+50%</p>
                 <div className="pr-body">
-                  <p className="pr-text">dos erros de medicação acontecem nos momentos de alta e de transferência entre unidades, e cerca de 1 em cada 5 exames é repetido sem necessidade. Ou seja: mais de 100 mil vezes por semestre, no Paraná, o sistema depende de um papel para não errar em um dos momentos mais críticos do atendimento.</p>
+                  <p className="pr-text">mais da metade dos erros de medicação acontecem na alta ou na transferência entre unidades, e cerca de 1 em cada 5 exames é repetido sem necessidade. Ou seja: mais de 100 mil vezes por semestre, no Paraná, o sistema depende de um papel para não errar em um dos momentos mais críticos do atendimento.</p>
                   <p className="waste-src">Fontes: Rev. Latino-Americana de Enfermagem (2016), com base em literatura da OMS · Abramed (dados nacionais)</p>
                 </div>
               </div>
@@ -301,6 +308,13 @@ export default function Home() {
                 <p className="virada-caption" id="virada-caption" aria-live="polite">Hoje: o seu dado bate na parede e volta.</p>
               </div>
             </div>
+
+            <Fala
+              quote="Quando você deixa de repetir exames, consegue investir para que a sociedade tenha uma assistência melhor."
+              nome="Simone"
+              cargo="Gerência de infraestrutura e finanças"
+              slug="simone"
+            />
           </div>
         </section>
 
@@ -634,6 +648,13 @@ export default function Home() {
                 <p className="faq-src">Fontes: TIC Saúde 2024, CETIC · Ministério da Saúde</p>
               </div>
             </details>
+
+            <Fala
+              quote="Sistemas de registro hospitalar que têm a mesma marca não conversam nem de um hospital pro outro."
+              nome="Rogério"
+              cargo="Médico e professor universitário"
+              slug="rogerio"
+            />
           </div>
         </section>
 
@@ -669,5 +690,20 @@ export default function Home() {
 
       <Animations />
     </>
+  );
+}
+
+/* Citação curta de um especialista, puxando a fala para dentro do argumento.
+   Nome, cargo e link para o depoimento completo na página /depoimentos. */
+function Fala({ quote, nome, cargo, slug }) {
+  return (
+    <figure className="fala">
+      <blockquote className="fala-quote">“{quote}”</blockquote>
+      <figcaption className="fala-quem">
+        <span className="fala-nome">{nome}</span>
+        <span className="fala-cargo">{cargo}</span>
+        <Link href={`/depoimentos#${slug}`} className="fala-link">Ver o depoimento</Link>
+      </figcaption>
+    </figure>
   );
 }

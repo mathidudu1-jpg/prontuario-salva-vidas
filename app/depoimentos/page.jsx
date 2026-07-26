@@ -70,6 +70,11 @@ export default function Depoimentos() {
               Profissionais que vivem a rotina do SUS e dos hospitais falam sobre o que muda
               quando o prontuário acompanha o paciente.
             </p>
+            <p className="esp-enquadre dep-enquadre">
+              Os três defendem que isso vire regra em todo o país. É exatamente o caminho da
+              proposta: começar pelo Paraná, o estado que pode provar que funciona, para depois
+              servir de modelo ao Brasil.
+            </p>
             <p className="dep-context">
               Cada depoimento na íntegra, com a transcrição completa logo ao lado.
             </p>
