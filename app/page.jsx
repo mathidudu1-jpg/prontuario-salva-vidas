@@ -22,20 +22,24 @@ export default function Home() {
               <p className="hero-sub">Todo ano o Brasil desperdiça bilhões repetindo exames que já haviam sido feitos, e perde minutos decisivos no atendimento de um infarto, um AVC (Acidente Vascular Cerebral) e outras emergências. A tecnologia que corrige isso já existe. Implantá-la exige um investimento inicial, pequeno diante da economia que gera. Me chamo Matheus Vuicik, sou de Curitiba, e transformei esse problema em uma proposta de lei.</p>
               <div className="hero-cta">
                 <a href="#a-dor" className="btn btn-primary">Me dá 30 segundos</a>
+                <a href="#video" className="btn btn-secondary">Assistir ao vídeo</a>
               </div>
               <p className="hero-source">Os R$ 12 bilhões são o desperdício anual do país com exames desnecessários, não apenas nas transferências. Fonte: EY/IESS, 2023.</p>
             </div>
 
-            {/* TODO(matheus): substituir pelo vídeo de reels (o do "Netflix") */}
-            <div className="hero-media" aria-label="Vídeo da campanha (em breve)">
-              <div className="media-placeholder">
-                <svg viewBox="0 0 48 48" className="play-icon" aria-hidden="true" focusable="false">
-                  <circle cx="24" cy="24" r="23" fill="none" stroke="currentColor" strokeWidth="2" />
-                  <path d="M19 15 L34 24 L19 33 Z" fill="currentColor" />
-                </svg>
-                <p className="placeholder-label">Vídeo · Reels</p>
-                <p className="placeholder-hint">asset a inserir</p>
-              </div>
+            <div className="hero-media" id="video">
+              <video
+                className="hero-video"
+                poster="/videos/prontuario-principal.jpg"
+                preload="none"
+                playsInline
+                controls
+                aria-label="Vídeo: Matheus Vuicik explica o Prontuário Salva-Vidas"
+              >
+                <source src="/videos/prontuario-principal.mp4" type="video/mp4" />
+                Seu navegador não reproduz vídeo.{" "}
+                <a href="/videos/prontuario-principal.mp4">Baixe o arquivo</a>.
+              </video>
             </div>
           </div>
 
