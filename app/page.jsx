@@ -4,6 +4,7 @@ import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import ManifestoForm from "./components/ManifestoForm";
 import Especialistas from "./components/Especialistas";
+import HeroVideo from "./components/HeroVideo";
 
 export default function Home() {
   return (
@@ -27,20 +28,7 @@ export default function Home() {
               <p className="hero-source">Os R$ 12 bilhões são o desperdício anual do país com exames desnecessários, não apenas nas transferências. Fonte: EY/IESS, 2023.</p>
             </div>
 
-            <div className="hero-media" id="video">
-              <video
-                className="hero-video"
-                poster="/videos/prontuario-principal.jpg"
-                preload="none"
-                playsInline
-                controls
-                aria-label="Vídeo: Matheus Vuicik explica o Prontuário Salva-Vidas"
-              >
-                <source src="/videos/prontuario-principal.mp4" type="video/mp4" />
-                Seu navegador não reproduz vídeo.{" "}
-                <a href="/videos/prontuario-principal.mp4">Baixe o arquivo</a>.
-              </video>
-            </div>
+            <HeroVideo />
           </div>
 
           <div className="hero-ecg" aria-hidden="true">
