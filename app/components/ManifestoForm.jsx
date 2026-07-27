@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { supabase, supabaseConfigurado } from "../lib/supabase";
+import { formatarCPF, cpfValido, soDigitos } from "../lib/cpf";
 
 const TIPOS = [
   { value: "cidadao", label: "Cidadão ou cidadã" },
@@ -22,55 +22,26 @@ const TIPOS = [
 
 const formatarTotal = (n) => n.toLocaleString("pt-BR");
 
-const soDigitos = (v) => (v || "").replace(/\D/g, "");
-
-// máscara progressiva 000.000.000-00
-function formatarCPF(v) {
-  const d = soDigitos(v).slice(0, 11);
-  if (d.length > 9) return `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6, 9)}-${d.slice(9)}`;
-  if (d.length > 6) return `${d.slice(0, 3)}.${d.slice(3, 6)}.${d.slice(6)}`;
-  if (d.length > 3) return `${d.slice(0, 3)}.${d.slice(3)}`;
-  return d;
-}
-
-// validação real de CPF (11 dígitos + dígitos verificadores)
-function cpfValido(v) {
-  const d = soDigitos(v);
-  if (d.length !== 11 || /^(\d)\1{10}$/.test(d)) return false;
-  let soma = 0;
-  for (let i = 0; i < 9; i++) soma += Number(d[i]) * (10 - i);
-  let resto = (soma * 10) % 11;
-  if (resto === 10) resto = 0;
-  if (resto !== Number(d[9])) return false;
-  soma = 0;
-  for (let i = 0; i < 10; i++) soma += Number(d[i]) * (11 - i);
-  resto = (soma * 10) % 11;
-  if (resto === 10) resto = 0;
-  return resto === Number(d[10]);
-}
-
 export default function ManifestoForm() {
   const [form, setForm] = useState({ nome: "", cpf: "", email: "", cidade: "", tipo: "" });
   const [cpfInvalido, setCpfInvalido] = useState(false);
   const [status, setStatus] = useState("idle"); // idle | enviando | ok | erro
   const [total, setTotal] = useState(null);
+  const [ativo, setAtivo] = useState(null); // null: verificando | true/false: coleta ativa?
   const agradecimentoRef = useRef(null);
 
-  async function buscarTotal() {
-    if (!supabaseConfigurado) return;
-    const { data, error } = await supabase.rpc("total_apoiadores");
-    if (!error && data != null) setTotal(Number(data));
-  }
-
-  // contador ao vivo: busca o total ao carregar
+  // ao carregar: descobre se a coleta está ativa e busca o total
   useEffect(() => {
-    let ativo = true;
-    if (supabaseConfigurado) {
-      supabase.rpc("total_apoiadores").then(({ data, error }) => {
-        if (ativo && !error && data != null) setTotal(Number(data));
-      });
-    }
-    return () => { ativo = false; };
+    let vivo = true;
+    fetch("/api/assinar")
+      .then((r) => r.json())
+      .then((d) => {
+        if (!vivo) return;
+        setAtivo(Boolean(d?.ativo));
+        if (d?.total != null) setTotal(Number(d.total));
+      })
+      .catch(() => vivo && setAtivo(false));
+    return () => { vivo = false; };
   }, []);
 
   // acessibilidade: ao concluir, leva o foco para a confirmação
@@ -88,7 +59,7 @@ export default function ManifestoForm() {
 
   async function enviar(e) {
     e.preventDefault();
-    if (!supabaseConfigurado) return;
+    if (ativo !== true || status === "enviando") return;
 
     if (!cpfValido(form.cpf)) {
       setCpfInvalido(true);
@@ -96,24 +67,28 @@ export default function ManifestoForm() {
     }
 
     setStatus("enviando");
-
-    // a função assinar() retorna void mesmo para CPF/e-mail repetido (não revela
-    // quem já assinou); por isso o retorno é sempre o mesmo agradecimento.
-    const { error } = await supabase.rpc("assinar", {
-      p_nome: form.nome.trim(),
-      p_cpf: soDigitos(form.cpf),
-      p_email: form.email.trim().toLowerCase(),
-      p_cidade: form.cidade.trim(),
-      p_tipo: form.tipo,
-    });
-
-    if (error) {
+    try {
+      const res = await fetch("/api/assinar", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          nome: form.nome.trim(),
+          cpf: soDigitos(form.cpf),
+          email: form.email.trim().toLowerCase(),
+          cidade: form.cidade.trim(),
+          tipo: form.tipo,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setStatus("erro");
+        return;
+      }
+      if (data.total != null) setTotal(Number(data.total));
+      setStatus("ok");
+    } catch {
       setStatus("erro");
-      return;
     }
-
-    setStatus("ok");
-    buscarTotal(); // recontagem real (evita contagem dupla em reassinatura)
   }
 
   const contador =
@@ -191,7 +166,7 @@ export default function ManifestoForm() {
         )}
 
         <button type="submit" className="btn btn-primary"
-          disabled={!supabaseConfigurado || status === "enviando"}>
+          disabled={ativo !== true || status === "enviando"}>
           {status === "enviando" ? "Assinando…" : "Assinar o manifesto"}
         </button>
       </form>
