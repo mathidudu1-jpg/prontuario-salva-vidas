@@ -10,6 +10,7 @@ export default function SiteFooter() {
         <p>Prontuário Salva-Vidas · <a href="mailto:matheuseduardovuicik@gmail.com">matheuseduardovuicik@gmail.com</a></p>
         <nav className="footer-nav" aria-label="Rodapé">
           <Link href="/o-projeto">O projeto</Link>
+          <Link href="/privacidade">Privacidade e LGPD</Link>
         </nav>
       </div>
     </footer>

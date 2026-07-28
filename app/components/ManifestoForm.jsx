@@ -156,7 +156,10 @@ export default function ManifestoForm() {
         </label>
 
         <p className="manifesto-consent">
-          Ao assinar, você concorda em receber atualizações sobre a proposta. O CPF é usado apenas para validar a assinatura e seus dados não serão compartilhados com terceiros.
+          Ao assinar, você concorda em receber atualizações sobre a proposta. O CPF serve
+          para validar a assinatura e não aparece em nenhuma lista apresentada a
+          terceiros. Seus dados nunca serão vendidos nem usados para publicidade. Detalhes
+          em <a href="/privacidade">Privacidade e LGPD</a>.
         </p>
 
         {status === "erro" && (

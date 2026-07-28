@@ -2354,3 +2354,126 @@ section[id] { scroll-margin-top: 80px; }
 @media (max-width: 480px) {
   .fala-link { margin-left: 0; }
 }
+
+/* ==========================================================================
+   /privacidade — política de privacidade e LGPD (priv-*)
+   ========================================================================== */
+
+.priv-data {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: color-mix(in srgb, var(--tinta) 55%, transparent);
+  margin: 0;
+}
+
+/* o resumo de 20 segundos, em destaque no topo */
+.priv-resumo {
+  background: var(--superficie-2);
+  border: 1px solid var(--linha);
+  border-left: 4px solid var(--salvia);
+  border-radius: 0 14px 14px 0;
+  padding: clamp(20px, 3vw, 28px) clamp(22px, 3vw, 32px);
+  margin: 0 0 clamp(36px, 5vw, 56px);
+}
+.priv-resumo-titulo {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--petroleo);
+  margin: 0 0 14px;
+}
+.priv-resumo ul { margin: 0; padding-left: 20px; }
+.priv-resumo li {
+  margin: 0 0 8px;
+  font-size: 17px;
+  line-height: 1.55;
+  color: rgba(36, 31, 25, 0.86);
+}
+.priv-resumo li:last-child { margin-bottom: 0; }
+
+.priv-h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(23px, 3vw, 30px);
+  line-height: 1.2;
+  margin: clamp(38px, 5vw, 56px) 0 14px;
+  max-width: 30ch;
+}
+.priv-p {
+  max-width: 64ch;
+  margin: 0 0 15px;
+  color: rgba(36, 31, 25, 0.86);
+}
+.priv-lista {
+  max-width: 64ch;
+  margin: 0 0 15px;
+  padding-left: 22px;
+  color: rgba(36, 31, 25, 0.86);
+}
+.priv-lista li { margin-bottom: 7px; }
+
+/* tabela do que é coletado */
+.priv-tabela {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 22px 0 24px;
+  font-size: 16px;
+}
+.priv-tabela th,
+.priv-tabela td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--linha);
+}
+.priv-tabela th {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--petroleo);
+  border-bottom-width: 2px;
+}
+.priv-tabela td:first-child {
+  font-weight: 650;
+  white-space: nowrap;
+  width: 1%;
+}
+.priv-tabela td { line-height: 1.5; color: rgba(36, 31, 25, 0.86); }
+
+.priv-fecho {
+  margin-top: clamp(44px, 6vw, 68px);
+  padding-top: clamp(28px, 4vw, 40px);
+  border-top: 1px solid var(--linha);
+}
+.priv-fecho p { max-width: 64ch; margin: 0 0 12px; }
+.priv-voltar a {
+  color: var(--petroleo);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.priv-voltar a:hover { color: var(--clay); }
+
+/* no celular a tabela vira blocos empilhados, sem rolagem lateral */
+@media (max-width: 620px) {
+  .priv-tabela, .priv-tabela tbody, .priv-tabela tr, .priv-tabela td { display: block; width: auto; }
+  .priv-tabela thead { display: none; }
+  .priv-tabela tr {
+    border-bottom: 1px solid var(--linha);
+    padding: 14px 0;
+  }
+  .priv-tabela td { border: 0; padding: 0; }
+  .priv-tabela td:first-child {
+    white-space: normal;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--petroleo);
+    margin-bottom: 4px;
+  }
+}

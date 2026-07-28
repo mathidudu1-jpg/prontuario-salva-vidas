@@ -1,5 +1,6 @@
 import { Fraunces, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+import HashScroll from "./components/HashScroll";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -112,6 +113,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR" className={`${fraunces.variable} ${inter.variable} ${jetbrainsMono.variable}`}>
       <body>
+        <HashScroll />
         {children}
         <script
           type="application/ld+json"
