@@ -103,7 +103,7 @@ export default function ManifestoForm() {
       <div className="manifesto-box manifesto-box--ok" role="status">
         {contador}
         <p className="manifesto-thanks" ref={agradecimentoRef} tabIndex={-1}>
-          Assinatura registrada. Obrigado por colocar seu nome nisso.
+          Assinatura registrada. Obrigado por colocar seu nome nesta campanha.
         </p>
         <p className="manifesto-share">Se puder, compartilhe a página com mais uma pessoa.</p>
       </div>
