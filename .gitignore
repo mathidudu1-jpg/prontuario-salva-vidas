@@ -8,3 +8,8 @@ npm-debug.log*
 Thumbs.db
 
 .vercel
+
+# nota local com segredos do admin (nunca versionar)
+.env.local.admin
+
+.env*.local

@@ -1,43 +1,25 @@
+import { createHmac } from "crypto";
+import { put, list, head } from "@vercel/blob";
 import { cpfValido, soDigitos } from "../../lib/cpf";
 
-// Salva as assinaturas no armazenamento da própria Vercel (Redis/Upstash),
-// enquanto não há Supabase. Lê tanto as variáveis KV_REST_API_* (nomes antigos
-// do Vercel KV) quanto UPSTASH_REDIS_REST_* (integração atual do Marketplace).
+// Assinaturas do manifesto no Vercel Blob (storage da própria Vercel).
+// Uma assinatura = um arquivo JSON privado. Assim duas pessoas assinando ao
+// mesmo tempo nunca sobrescrevem uma à outra (o que aconteceria com um único
+// arquivo-lista), e o conteúdo (com CPF) não fica exposto por URL pública.
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const REST_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || "";
-const REST_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || "";
-const armazenamentoAtivo = Boolean(REST_URL && REST_TOKEN);
+const armazenamentoAtivo = Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 
-// chaves
-const K_LISTA = "psv:apoiadores";
-const K_CPF = "psv:cpf";
-const K_EMAIL = "psv:email";
-
-async function redis(command) {
-  const res = await fetch(REST_URL, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${REST_TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify(command),
-    cache: "no-store",
-  });
-  const json = await res.json();
-  if (json.error) throw new Error(json.error);
-  return json.result;
-}
-
-async function redisPipeline(commands) {
-  const res = await fetch(`${REST_URL}/pipeline`, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${REST_TOKEN}`, "Content-Type": "application/json" },
-    body: JSON.stringify(commands),
-    cache: "no-store",
-  });
-  const json = await res.json();
-  if (json.error) throw new Error(json.error);
-  return json; // array de { result } | { error }
-}
+const PREFIXO = "assinaturas/";
+// Nome determinístico (reassinar não duplica), porém via HMAC com segredo: sem
+// a chave, ninguém consegue derivar o nome do arquivo a partir de um CPF e
+// descobrir se aquela pessoa assinou.
+const chaveDe = (cpf) =>
+  `${PREFIXO}${createHmac("sha256", process.env.ASSINATURAS_SECRET || "dev")
+    .update(cpf)
+    .digest("hex")
+    .slice(0, 32)}.json`;
 
 const jsonResp = (data, status = 200) =>
   new Response(JSON.stringify(data), {
@@ -45,19 +27,29 @@ const jsonResp = (data, status = 200) =>
     headers: { "Content-Type": "application/json", "Cache-Control": "no-store" },
   });
 
-// GET → { ativo, total }. Sempre 200, para o formulário saber se pode coletar.
+async function contar() {
+  let total = 0;
+  let cursor;
+  do {
+    const r = await list({ prefix: PREFIXO, cursor, limit: 1000 });
+    total += r.blobs.length;
+    cursor = r.hasMore ? r.cursor : undefined;
+  } while (cursor);
+  return total;
+}
+
+// GET → { ativo, total }
 export async function GET() {
   if (!armazenamentoAtivo) return jsonResp({ ativo: false, total: null });
   try {
-    const total = await redis(["LLEN", K_LISTA]);
-    return jsonResp({ ativo: true, total: Number(total) || 0 });
+    return jsonResp({ ativo: true, total: await contar() });
   } catch {
     return jsonResp({ ativo: false, total: null });
   }
 }
 
-// POST → registra a assinatura. Retorna sempre o mesmo { ok, total } para
-// CPF/e-mail novos ou repetidos (não revela quem já assinou).
+// POST → registra. Responde igual para assinatura nova ou repetida
+// (não revela quem já assinou).
 export async function POST(req) {
   if (!armazenamentoAtivo) {
     return jsonResp({ ok: false, motivo: "armazenamento não configurado" }, 503);
@@ -70,43 +62,44 @@ export async function POST(req) {
     return jsonResp({ ok: false, motivo: "corpo inválido" }, 400);
   }
 
-  const nome = String(corpo?.nome ?? "").trim();
+  const nome = String(corpo?.nome ?? "").trim().slice(0, 120);
   const cpf = soDigitos(corpo?.cpf);
-  const email = String(corpo?.email ?? "").trim().toLowerCase();
-  const cidade = String(corpo?.cidade ?? "").trim();
-  const tipo = String(corpo?.tipo ?? "").trim();
+  const email = String(corpo?.email ?? "").trim().toLowerCase().slice(0, 200);
+  const cidade = String(corpo?.cidade ?? "").trim().slice(0, 120);
+  const tipo = String(corpo?.tipo ?? "").trim().slice(0, 40);
 
   const valido =
-    nome.length >= 1 && nome.length <= 120 &&
+    nome.length >= 1 &&
     cpfValido(cpf) &&
-    email.length >= 3 && email.length <= 200 && email.includes("@") &&
-    cidade.length >= 1 && cidade.length <= 120 &&
-    tipo.length >= 1 && tipo.length <= 40;
+    email.length >= 3 && email.includes("@") &&
+    cidade.length >= 1 &&
+    tipo.length >= 1;
 
   if (!valido) return jsonResp({ ok: false, motivo: "dados inválidos" }, 400);
 
   try {
-    // dedup atômico: SADD devolve 1 se novo, 0 se já existia
-    const [addCpf, addEmail] = await redisPipeline([
-      ["SADD", K_CPF, cpf],
-      ["SADD", K_EMAIL, email],
-    ]);
-    const jaAssinou = addCpf?.result === 0 || addEmail?.result === 0;
+    const chave = chaveDe(cpf);
 
-    if (!jaAssinou) {
-      const registro = JSON.stringify({
-        nome: nome.slice(0, 120),
-        cpf,
-        email,
-        cidade: cidade.slice(0, 120),
-        tipo: tipo.slice(0, 40),
-        criado_em: new Date().toISOString(),
-      });
-      await redis(["RPUSH", K_LISTA, registro]);
+    // já assinou? head() lança BlobNotFoundError quando não existe
+    let jaExiste = false;
+    try {
+      await head(chave);
+      jaExiste = true;
+    } catch {
+      jaExiste = false;
     }
 
-    const total = await redis(["LLEN", K_LISTA]);
-    return jsonResp({ ok: true, total: Number(total) || 0 });
+    if (!jaExiste) {
+      const registro = { nome, cpf, email, cidade, tipo, criado_em: new Date().toISOString() };
+      await put(chave, JSON.stringify(registro), {
+        access: "private",
+        contentType: "application/json",
+        addRandomSuffix: false,
+        allowOverwrite: true,
+      });
+    }
+
+    return jsonResp({ ok: true, total: await contar() });
   } catch {
     return jsonResp({ ok: false, motivo: "falha ao registrar" }, 500);
   }
